@@ -3,502 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Shivakumar Jolad — Associate Professor, Public Policy | FLAME University</title>
+  <title>Shivakumar Jolad — Associate Professor, Public Policy | FLAME University</title>
   <meta name="description" content="Associate Professor of Public Policy at FLAME University, Pune. Researcher in Education Policy, Governance, India's Administrative History, and Computational Epidemiology.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..900;1,9..144,200..900&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    /* === DESIGN TOKENS === */
-    :root {
-      --parchment: #F5EEE3;
-      --lapis: #0E0C1E;
-      --navy: #0E2340;
-      --ink: #0C1B2E;
-      --gold: #B8841A;
-      --gold-hover: #C9931F;
-      --gold-light: rgba(184,132,26,0.12);
-      --sienna: #8B3D2A;
-      --slate: #4A5568;
-      --muted: #5A677D;
-      --border: #DDE3EC;
-      --border-dark: rgba(255,255,255,0.12);
-      --cream-dark: #EDE5D8;
-      --on-dark: rgba(245,238,227,0.95);
-      --on-dark-dim: rgba(245,238,227,0.78);
-      --font-serif: 'Fraunces', Georgia, serif;
-      --font-sans: 'Inter', system-ui, sans-serif;
-      --font-mono: 'Space Grotesk', monospace;
-      --text-xs: 0.75rem;
-      --text-sm: 0.875rem;
-      --text-base: 1rem;
-      --text-lg: 1.125rem;
-      --text-xl: 1.25rem;
-      --text-2xl: 1.563rem;
-      --text-3xl: 1.953rem;
-      --text-4xl: 2.441rem;
-      --text-5xl: 3.052rem;
-      --hero-name: clamp(3.5rem, 7.5vw, 7.5rem);
-      --s1: 0.5rem; --s2: 1rem; --s3: 1.5rem; --s4: 2rem;
-      --s5: 2.5rem; --s6: 3rem; --s8: 4rem; --s10: 5rem;
-      --s12: 6rem; --s16: 8rem;
-      --max-w: 1320px;
-      --prose-w: 700px;
-      --gutter: clamp(1.25rem, 4vw, 3rem);
-      --shadow-card: 0 2px 16px rgba(14,12,30,0.08);
-      --shadow-hover: 0 10px 40px rgba(14,12,30,0.18);
-      --shadow-gold: 0 4px 20px rgba(184,132,26,0.30);
-      --radius-card: 10px;
-      --radius-pill: 100px;
-      --ease: cubic-bezier(0.4,0,0.2,1);
-      --dur: 250ms;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-sans);
-      font-size: var(--text-base);
-      color: var(--ink);
-      background: var(--parchment);
-      line-height: 1.85;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    ul, ol { list-style: none; }
-
-    .skip-link {
-      position: absolute; top: -100%; left: 1rem;
-      background: var(--gold); color: #fff;
-      padding: 0.5rem 1rem; border-radius: var(--radius-pill);
-      font-size: var(--text-sm); z-index: 9999;
-      transition: top var(--dur);
-    }
-    .skip-link:focus { top: 1rem; }
-
-    .container { max-width: var(--max-w); margin-inline: auto; padding-inline: var(--gutter); }
-    .section-pad { padding-block: var(--s16); }
-
-    .section-label {
-      display: flex; align-items: center; gap: var(--s1);
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: var(--s3);
-    }
-    .section-label::before { content: '✦'; font-size: 0.625rem; }
-
-    /* NAV */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: var(--s3) var(--gutter);
-      transition: background var(--dur) var(--ease), padding var(--dur) var(--ease);
-    }
-    .nav.scrolled {
-      background: rgba(14,12,30,0.88);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      padding-block: var(--s2);
-      border-bottom: 1px solid var(--border-dark);
-    }
-    .nav__inner {
-      max-width: var(--max-w); margin-inline: auto;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav__logo {
-      font-family: var(--font-serif); font-size: var(--text-xl);
-      font-weight: 300; color: var(--parchment); letter-spacing: -0.02em;
-    }
-    .nav__logo span { color: var(--gold); }
-    .nav__links { display: flex; align-items: center; gap: var(--s4); }
-    .nav__link {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--on-dark-dim); position: relative;
-      transition: color var(--dur);
-    }
-    .nav__link::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; right: 100%;
-      height: 1px; background: var(--gold); transition: right var(--dur) var(--ease);
-    }
-    .nav__link:hover, .nav__link.active { color: var(--on-dark); }
-    .nav__link:hover::after, .nav__link.active::after { right: 0; }
-    .nav__cta {
-      padding: 0.5rem 1.25rem; background: var(--gold); color: #fff;
-      border-radius: var(--radius-pill); font-family: var(--font-mono);
-      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; transition: background var(--dur), box-shadow var(--dur);
-    }
-    .nav__cta:hover { background: var(--gold-hover); box-shadow: var(--shadow-gold); }
-    .nav__toggle {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px;
-    }
-    .nav__toggle span {
-      display: block; width: 24px; height: 2px; background: var(--parchment);
-      transition: transform var(--dur) var(--ease), opacity var(--dur);
-    }
-
-    /* Accessibility: Focus Rings */
-    :focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 4px;
-    }
-    .btn:focus-visible, .nav__cta:focus-visible, .filter-btn:focus-visible {
-      outline-offset: 2px;
-    }
-    .paper-row__head:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: -2px;
-      border-radius: var(--radius-card);
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh; background: var(--lapis);
-      position: relative; display: flex; align-items: center; overflow: hidden;
-    }
-    .hero__lattice { position: absolute; inset: 0; opacity: 0.04; pointer-events: none; }
-    .hero__inner {
-      position: relative; z-index: 1;
-      max-width: var(--max-w); margin-inline: auto;
-      padding-inline: var(--gutter); padding-block: var(--s16) var(--s12);
-      display: grid; grid-template-columns: 1fr 1fr; gap: var(--s8);
-      align-items: center; width: 100%;
-    }
-    .hero__label {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
-      margin-bottom: var(--s3);
-    }
-    .hero__name {
-      font-family: var(--font-serif); font-size: var(--hero-name);
-      font-weight: 200; line-height: 1.0; letter-spacing: -0.03em;
-      color: var(--parchment); margin-bottom: var(--s3);
-    }
-    .hero__name em { font-style: italic; font-weight: 300; color: var(--gold); }
-    .hero__tagline {
-      font-family: var(--font-serif); font-size: var(--text-2xl);
-      font-weight: 300; color: var(--on-dark-dim); margin-bottom: var(--s4);
-    }
-    .hero__desc {
-      font-size: var(--text-lg); color: var(--on-dark-dim); line-height: 1.75;
-      margin-bottom: var(--s6);
-    }
-    .hero__actions {
-      display: flex; gap: var(--s2); flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 1.75rem; border-radius: var(--radius-pill);
-      font-family: var(--font-mono); font-size: var(--text-sm);
-      font-weight: 500; letter-spacing: 0.05em;
-      transition: all var(--dur) var(--ease); cursor: pointer; border: none;
-    }
-    .btn--primary { background: var(--gold); color: #fff; }
-    .btn--primary:hover { background: var(--gold-hover); box-shadow: var(--shadow-gold); transform: translateY(-1px); }
-    .btn--outline { background: transparent; border: 1px solid rgba(245,238,227,0.35); color: var(--parchment); }
-    .btn--outline:hover { border-color: rgba(245,238,227,0.75); background: rgba(245,238,227,0.06); }
-    .hero__viz {
-      display: flex; justify-content: center; align-items: center;
-    }
-    .hero__viz svg { width: 100%; max-width: 480px; filter: drop-shadow(0 0 40px rgba(184,132,26,0.15)); }
-    /* STATS */
-    .stats { background: rgba(14,12,30,0.92); padding-block: var(--s6); }
-    .stats__grid {
-      display: flex; justify-content: center; align-items: center; gap: var(--s10);
-      max-width: var(--max-w); margin-inline: auto; padding-inline: var(--gutter);
-    }
-    .stat__item { text-align: center; }
-    .stat__number {
-      font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 300;
-      color: var(--gold); line-height: 1; margin-bottom: var(--s1);
-    }
-    .stat__label {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-dim);
-    }
-    .stat__divider { width: 1px; background: var(--border-dark); align-self: center; height: 48px; }
-
-    /* ABOUT */
-    /* ABOUT */
-    .about { background: var(--parchment); }
-    .about__inner { display: grid; grid-template-columns: 340px 1fr; gap: var(--s10); align-items: start; }
-    .about__photo-wrap { position: sticky; top: calc(var(--s16) + var(--s4)); }
-    .about__photo {
-      width: 100%; aspect-ratio: 4/5;
-      background: var(--cream-dark);
-      border-radius: 10px;
-      overflow: hidden; display: flex; align-items: center; justify-content: center;
-      box-shadow: var(--shadow-card); position: relative;
-    }
-    .about__photo::after {
-      content: ''; position: absolute; inset: 0;
-      border: 1px solid rgba(184,132,26,0.2); border-radius: inherit;
-    }
-    .about__photo-placeholder {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--muted); text-align: center; padding: var(--s4); line-height: 1.8;
-      letter-spacing: 0.05em;
-    }
-    .about__photo img { width: 100%; height: 100%; object-fit: cover; }
-    .about__meta-list {
-      list-style: none; margin-top: var(--s5);
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--slate); line-height: 2.2; letter-spacing: 0.04em;
-      padding-top: var(--s4); border-top: 1px solid var(--border);
-    }
-    .about__quote {
-      font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 300;
-      font-style: italic; line-height: 1.5; color: var(--ink);
-      border-left: 3px solid var(--gold); padding-left: var(--s5);
-      margin-bottom: var(--s6);
-    }
-    .about__bio { font-size: var(--text-lg); color: var(--slate); line-height: 1.9; margin-bottom: var(--s5); max-width: 60ch; }
-    .about__links { display: flex; gap: var(--s5); flex-wrap: wrap; margin-bottom: var(--s6); align-items: center; }
-    .about__link {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      text-transform: uppercase; letter-spacing: 0.06em;
-      color: var(--slate); border-bottom: 1px solid var(--border);
-      padding-bottom: 2px; transition: color var(--dur), border-color var(--dur);
-    }
-    .about__link--primary { color: var(--gold); border-color: var(--gold); }
-    .about__link:hover { color: var(--gold); border-color: var(--gold); }
-    .about__link:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
-    .about__themes { display: flex; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s8); }
-    .theme-tag {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em;
-      padding: 0.4rem 1rem; border: 1px solid rgba(184,132,26,0.3);
-      border-radius: var(--radius-pill);
-    }
-    .pillar-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); margin-bottom: var(--s6); }
-    .pillar-row {
-      display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--s4);
-      padding: var(--s4) var(--s2); border-bottom: 1px solid var(--border);
-      transition: background var(--dur), padding-inline var(--dur);
-    }
-    .pillar-row:hover { background: var(--cream-dark); padding-inline: var(--s3); }
-    .pillar-row__num {
-      font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 200;
-      color: var(--gold); opacity: 0.45; line-height: 1.2;
-    }
-    .pillar-row__title {
-      font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 500;
-      color: var(--ink); display: block; margin-bottom: var(--s1);
-    }
-    .pillar-row__desc { font-size: var(--text-sm); color: var(--slate); line-height: 1.7; }
-
-    /* RESEARCH */
-    .research { background: var(--lapis); }
-    .research .section-label { color: var(--gold); }
-    .research__heading { font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 300; color: var(--parchment); margin-bottom: var(--s4); max-width: 640px; }
-    .research__intro { color: var(--on-dark-dim); max-width: var(--prose-w); margin-bottom: var(--s8); line-height: 1.9; }
-    .research__filters { display: flex; gap: var(--s2); flex-wrap: wrap; margin-bottom: var(--s8); }
-    .filter-btn {
-      padding: 0.5rem 1.25rem; border-radius: var(--radius-pill);
-      border: 1px solid var(--border-dark); background: transparent; color: var(--on-dark-dim);
-      font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
-      transition: all var(--dur) var(--ease);
-    }
-    .filter-btn:hover, .filter-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
-    .research__areas { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--s4); margin-bottom: var(--s10); }
-    .research-card {
-      padding: var(--s5); background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border-dark); border-radius: var(--radius-card);
-      transition: background var(--dur), border-color var(--dur), transform var(--dur);
-    }
-    .research-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(184,132,26,0.4); transform: translateY(-2px); }
-    .research-card__num { font-family: var(--font-serif); font-size: var(--text-3xl); font-weight: 200; color: var(--gold); opacity: 0.6; margin-bottom: var(--s3); line-height: 1; }
-    .research-card__title { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 500; color: var(--parchment); margin-bottom: var(--s2); }
-    .research-card__desc { font-size: var(--text-sm); color: var(--on-dark-dim); line-height: 1.8; }
-
-    /* PAPER ACCORDION */
-    .papers__heading { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 300; color: var(--parchment); margin-bottom: var(--s5); border-top: 1px solid var(--border-dark); padding-top: var(--s6); }
-    .paper-row { border-bottom: 1px solid var(--border-dark); }
-    .paper-row.hidden { display: none; }
-    .paper-row__head { display: grid; grid-template-columns: 1fr auto; gap: var(--s3); padding: var(--s4) 0; cursor: pointer; align-items: start; }
-    .paper-row__meta { display: flex; gap: var(--s1); align-items: center; margin-bottom: var(--s1); }
-    .badge { padding: 0.2rem 0.6rem; border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
-    .badge--jmp { background: var(--gold); color: #fff; }
-    .badge--wip { background: rgba(139,61,42,0.35); color: #E8A08A; }
-    .badge--pub { background: rgba(74,85,104,0.3); color: var(--muted); }
-    .paper-row__title { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 400; color: var(--parchment); margin-bottom: var(--s2); line-height: 1.45; }
-    .paper-row__coauth { font-size: var(--text-sm); color: var(--on-dark-dim); line-height: 1.7; }
-    .paper-row__right { display: flex; gap: var(--s2); align-items: center; }
-    .paper-tags { display: flex; gap: var(--s1); flex-wrap: wrap; }
-    .chevron { width: 20px; height: 20px; border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted); transform: rotate(45deg); transition: transform var(--dur) var(--ease), border-color var(--dur); flex-shrink: 0; margin-top: 4px; }
-    .paper-row.expanded .chevron { transform: rotate(-135deg); border-color: var(--gold); }
-    .paper-row__body { overflow: hidden; max-height: 0; transition: max-height 0.35s var(--ease); }
-    .paper-row__abstract { padding-bottom: var(--s4); padding-right: 10%; font-size: var(--text-sm); color: var(--on-dark-dim); line-height: 1.75; }
-    .paper-row__links { display: flex; gap: var(--s3); margin-top: var(--s2); }
-    .paper-link { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--gold); letter-spacing: 0.06em; border-bottom: 1px solid transparent; transition: border-color var(--dur); }
-    .paper-link:hover { border-color: var(--gold); }
-
-    /* PUBLICATIONS */
-    .publications { background: var(--parchment); }
-    .publications__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--s5); margin-bottom: var(--s10); }
-    .book-card { background: var(--cream-dark); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); transition: box-shadow var(--dur), transform var(--dur); }
-    .book-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
-    .book-card__cover {
-      height: 200px; background: linear-gradient(135deg, var(--navy) 0%, var(--lapis) 100%);
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-    }
-    .book-card__cover::before {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(184,132,26,0.05) 10px, rgba(184,132,26,0.05) 20px);
-    }
-    .book-card__cover-title { font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 300; color: var(--parchment); text-align: center; padding: var(--s4); position: relative; z-index: 1; line-height: 1.3; }
-    .book-card__body { padding: var(--s4); }
-    .book-card__publisher { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--s2); }
-    .book-card__desc { font-size: var(--text-sm); color: var(--slate); line-height: 1.8; }
-    .publications__list { border-top: 1px solid var(--border); }
-    .pub-item { padding: var(--s4) 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr; gap: var(--s4); align-items: baseline; }
-    .pub-item__year { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--gold); min-width: 3.5rem; }
-    .pub-item__title { font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 400; color: var(--ink); line-height: 1.5; }
-    .pub-item__meta { font-size: var(--text-sm); color: var(--slate); margin-top: 0.25rem; }
-    .award-callout { display: flex; align-items: center; gap: var(--s4); padding: var(--s4) var(--s5); background: var(--gold-light); border: 1px solid rgba(184,132,26,0.25); border-radius: var(--radius-card); margin-top: var(--s6); }
-    .award-callout__icon { font-size: 2rem; flex-shrink: 0; }
-    .award-callout__title { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 500; color: var(--ink); }
-    .award-callout__desc { font-size: var(--text-sm); color: var(--slate); }
-
-    /* PRACTICE */
-    .practice { background: var(--navy); position: relative; overflow: hidden; }
-    .practice::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(184,132,26,0.08) 0%, transparent 70%); pointer-events: none; }
-    .practice .section-label { color: var(--gold); }
-    .practice__heading { font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 300; color: var(--parchment); max-width: 640px; margin-bottom: var(--s5); }
-    .practice__quote { font-family: var(--font-serif); font-size: var(--text-2xl); font-style: italic; color: var(--gold); max-width: var(--prose-w); line-height: 1.55; margin-bottom: var(--s6); }
-    .practice__body { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s8); }
-    .practice__desc { color: var(--on-dark-dim); line-height: 1.9; margin-bottom: var(--s4); }
-    .practice__sub-title { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--s3); }
-    .practice__tag-list { display: flex; flex-wrap: wrap; gap: var(--s2); margin-bottom: var(--s5); }
-    .expect-list { color: var(--on-dark-dim); }
-    .expect-list li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: var(--text-sm); line-height: 1.75; }
-    .expect-list li::before { content: '◆'; position: absolute; left: 0; font-size: 0.4rem; color: var(--gold); top: 0.75rem; }
-
-    /* TEACHING */
-    .teaching { background: var(--parchment); }
-    .teaching__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--s4); }
-    .course-card { padding: var(--s5); background: var(--cream-dark); border-radius: var(--radius-card); border-top: 3px solid transparent; transition: border-color var(--dur), box-shadow var(--dur), transform var(--dur); }
-    .course-card:hover { border-color: var(--gold); box-shadow: var(--shadow-card); transform: translateY(-2px); }
-    .course-card__level { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--s2); }
-    .course-card__title { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 500; margin-bottom: var(--s3); }
-    .course-card__desc { font-size: var(--text-sm); color: var(--slate); line-height: 1.8; }
-
-    /* BACKGROUND / TIMELINE */
-    .background { background: var(--parchment); border-top: 1px solid var(--border); }
-    .background__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s10); }
-    .timeline { position: relative; }
-    .timeline__heading, .education__heading { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 300; margin-bottom: var(--s5); }
-    .timeline__line { position: absolute; left: 7px; top: 72px; bottom: 0; width: 1px; background: var(--border); }
-    .timeline__item { display: grid; grid-template-columns: 16px 1fr; gap: var(--s3); padding-bottom: var(--s5); position: relative; }
-    .timeline__dot { width: 15px; height: 15px; border-radius: 50%; background: var(--parchment); border: 2px solid var(--border); margin-top: 4px; transition: border-color var(--dur), background var(--dur); position: relative; z-index: 1; }
-    .timeline__item:hover .timeline__dot { border-color: var(--gold); background: var(--gold-light); }
-    .timeline__period { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--gold); margin-bottom: var(--s1); }
-    .timeline__role { font-weight: 500; font-size: var(--text-base); margin-bottom: var(--s1); line-height: 1.5; }
-    .timeline__org { font-size: var(--text-sm); color: var(--slate); line-height: 1.6; }
-    .edu-cards { display: flex; flex-direction: column; gap: var(--s4); }
-    .edu-card { padding: var(--s4) var(--s5); background: var(--cream-dark); border-radius: var(--radius-card); border-left: 3px solid var(--gold); }
-    .edu-card__degree { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 500; margin-bottom: var(--s1); }
-    .edu-card__inst { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--gold); margin-bottom: var(--s1); }
-    .edu-card__year { font-size: var(--text-sm); color: var(--slate); }
-
-    /* CONTACT */
-    .contact { background: var(--navy); }
-    .contact .section-label { color: var(--gold); }
-    .contact__heading { font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 300; color: var(--parchment); margin-bottom: var(--s8); max-width: 640px; }
-    .contact__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s8); align-items: start; }
-    .contact__detail { display: flex; align-items: flex-start; gap: var(--s2); margin-bottom: var(--s4); }
-    .contact__icon { font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
-    .contact__detail-label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
-    .contact__detail-val { color: var(--on-dark-dim); font-size: var(--text-base); }
-    .contact__detail-val a { color: var(--on-dark-dim); border-bottom: 1px solid transparent; transition: border-color var(--dur), color var(--dur); }
-    .contact__detail-val a:hover { color: var(--gold); border-color: var(--gold); }
-    .contact__social { display: flex; gap: var(--s2); flex-wrap: wrap; margin-top: var(--s5); }
-    .contact__social-link { padding: 0.5rem 1.25rem; border: 1px solid var(--border-dark); border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--on-dark-dim); letter-spacing: 0.08em; transition: all var(--dur); }
-    .contact__social-link:hover { border-color: var(--gold); color: var(--gold); }
-    .contact__form { display: flex; flex-direction: column; gap: var(--s3); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
-    .form-field { display: flex; flex-direction: column; gap: var(--s1); }
-    .form-field label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-dim); }
-    .form-field input, .form-field select, .form-field textarea { background: rgba(255,255,255,0.06); border: 1px solid var(--border-dark); border-radius: var(--radius-card); padding: 0.75rem 1rem; color: var(--parchment); font-family: var(--font-sans); font-size: var(--text-base); transition: border-color var(--dur); width: 100%; }
-    .form-field input::placeholder, .form-field textarea::placeholder { color: var(--on-dark-dim); }
-    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline: none; border-color: var(--gold); }
-    .form-field select option { background: var(--navy); color: var(--parchment); }
-    .form-field textarea { resize: vertical; min-height: 120px; }
-    .form-submit { align-self: flex-start; background: var(--gold); color: #fff; padding: 0.75rem 2rem; border: none; border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.06em; cursor: pointer; transition: background var(--dur), box-shadow var(--dur), transform var(--dur); }
-    .form-submit:hover { background: var(--gold-hover); box-shadow: var(--shadow-gold); transform: translateY(-1px); }
-    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    .media-card { background: var(--parchment); border-color: var(--border); }
-    .media-card .research-card__num { color: var(--gold); }
-    .media-card .research-card__title { color: var(--ink); }
-    .media-card .research-card__desc { color: var(--slate); }
-
-    .writing-item { padding: var(--s4) 0; border-bottom: 1px solid var(--border); }
-    .writing-item__meta { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--gold); margin-bottom: var(--s1); text-transform: uppercase; letter-spacing: 0.1em; }
-    .writing-item__title { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 400; color: var(--ink); margin-bottom: var(--s1); line-height: 1.4; transition: color var(--dur); }
-    .writing-item:hover .writing-item__title { color: var(--gold); }
-    .writing-item__desc { font-size: var(--text-sm); color: var(--slate); line-height: 1.7; }
-
-    .outreach-card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
-    .outreach-card .book-card__publisher { color: var(--gold); }
-    .outreach-card .book-card__desc { color: var(--parchment); }
-
-    /* FOOTER */
-    footer { background: var(--lapis); padding: var(--s6) var(--gutter); border-top: 1px solid var(--border-dark); }
-    .footer__inner { max-width: var(--max-w); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--s3); }
-    .footer__logo { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 300; color: var(--parchment); }
-    .footer__logo span { color: var(--gold); }
-    .footer__links { display: flex; gap: var(--s4); }
-    .footer__link { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark-dim); transition: color var(--dur); }
-    .footer__link:hover { color: var(--gold); }
-    .footer__copy { font-size: var(--text-xs); color: var(--on-dark-dim); }
-
-
-
-    /* RESPONSIVE */
-    @media (max-width: 1100px) {
-      .research__areas { grid-template-columns: repeat(2,1fr); }
-      .publications__grid { grid-template-columns: repeat(2,1fr); }
-      .about__pillars { grid-template-columns: repeat(2,1fr); }
-      .teaching__grid { grid-template-columns: repeat(2,1fr); }
-    }
-    @media (max-width: 900px) {
-      .hero__inner { grid-template-columns: 1fr; }
-      .hero__viz { display: none; }
-      .stats__grid { grid-template-columns: repeat(2,1fr); }
-      .stat__divider { display: none; }
-      .about__inner { grid-template-columns: 1fr; }
-      .about__photo-wrap { position: static; }
-      .about__photo { max-width: 260px; }
-      .background__inner { grid-template-columns: 1fr; }
-      .contact__inner { grid-template-columns: 1fr; }
-      .practice__body { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav__links { display: none; }
-      .nav__toggle { display: flex; }
-      .nav__links.open {
-        display: flex; flex-direction: column;
-        position: absolute; top: 100%; left: 0; right: 0;
-        background: rgba(14,12,30,0.97); backdrop-filter: blur(16px);
-        padding: var(--s4) var(--gutter); gap: var(--s3);
-        border-bottom: 1px solid var(--border-dark);
-      }
-      .research__areas { grid-template-columns: 1fr; }
-      .teaching__grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero__name { font-size: clamp(2.5rem,10vw,4rem); }
-    }
-    @media (max-width: 480px) {
-      .publications__grid { grid-template-columns: 1fr; }
-      .about__pillars { grid-template-columns: 1fr; }
-      .stats__grid { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
+  
+  <!-- GSAP for High-End Motion Design -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -506,13 +21,14 @@
   <header>
     <nav class="nav" id="nav" aria-label="Primary navigation">
       <div class="nav__inner">
-        <a href="#" class="nav__logo" aria-label="Dr. Shivakumar Jolad — Home">Dr. <span>Shivakumar Jolad</span></a>
+        <a href="#" class="nav__logo" aria-label="Shivakumar Jolad — Home"><span>Shivakumar Jolad</span></a>
         <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-label="Toggle navigation" aria-controls="navLinks">
           <span></span><span></span><span></span>
         </button>
         <ul class="nav__links" id="navLinks" role="list">
           <li><a href="#about" class="nav__link">About</a></li>
           <li><a href="#research" class="nav__link">Research</a></li>
+          <li><a href="#grants" class="nav__link">Grants</a></li>
           <li><a href="#publications" class="nav__link">Publications</a></li>
           <li><a href="#state-story" class="nav__link">India State Story</a></li>
           <li><a href="#media" class="nav__link">Media</a></li>
@@ -541,11 +57,23 @@
         <rect width="100%" height="100%" fill="url(#lattice)"/>
       </svg>
 
-      <div class="hero__inner">
+      <div class="hero__inner hero__inner--centered">
         <div class="hero__content">
-          <p class="hero__label">Associate Professor · Policy Researcher · Education Historian</p>
-          <h1 class="hero__name" id="hero-name">Dr.<br><em>Shivakumar</em><br>Jolad</h1>
-          <p class="hero__tagline">Public Policy &amp; Governance · FLAME University, Pune</p>
+          <h1 class="hero__name" id="hero-name">
+            <span class="hero__name-first">Shivakumar</span>
+            <span class="hero__name-last">Jolad</span>
+          </h1>
+          
+          <div class="hero__underline"></div>
+
+          <div class="hero__roles">
+            <span class="hero__role-tag">Associate Professor</span>
+            <span class="hero__role-sep">·</span>
+            <span class="hero__role-tag">Policy Researcher</span>
+            <span class="hero__role-sep">·</span>
+            <span class="hero__role-tag">Education Historian</span>
+          </div>
+
           <p class="hero__desc">
             Bridging computational science and social inquiry, I trace India's administrative evolution, 
             education systems, and public health from colonial roots to the present. My work combines 
@@ -557,62 +85,64 @@
             <a href="#" class="btn btn--outline">Download Full CV (PDF)</a>
           </div>
         </div>
+      </div>
 
-        <!-- Replace SVG path data with your own chart/visualization -->
-        <div class="hero__viz" aria-label="Research visualization">
-          <svg viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Research chart placeholder">
-            <rect x="40" y="20" width="400" height="240" fill="none" stroke="rgba(245,238,227,0.08)" stroke-width="1"/>
-            <line x1="80" y1="20" x2="80" y2="260" stroke="rgba(245,238,227,0.2)" stroke-width="1"/>
-            <line x1="80" y1="190" x2="440" y2="190" stroke="rgba(245,238,227,0.2)" stroke-width="1"/>
-            <line x1="80" y1="140" x2="440" y2="140" stroke="rgba(184,132,26,0.3)" stroke-width="1" stroke-dasharray="4 4"/>
-            <text x="70" y="144" fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="end" font-family="Space Grotesk">0</text>
-            <text x="70" y="104" fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="end" font-family="Space Grotesk">.5</text>
-            <text x="70" y="64"  fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="end" font-family="Space Grotesk">1</text>
-            <text x="70" y="180" fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="end" font-family="Space Grotesk">-.5</text>
-            <text x="160" y="275" fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="middle" font-family="Space Grotesk">t-3</text>
-            <text x="220" y="275" fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="middle" font-family="Space Grotesk">t-1</text>
-            <text x="260" y="275" fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="middle" font-family="Space Grotesk">0</text>
-            <text x="310" y="275" fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="middle" font-family="Space Grotesk">t+2</text>
-            <text x="380" y="275" fill="rgba(245,238,227,0.4)" font-size="9" text-anchor="middle" font-family="Space Grotesk">t+5</text>
-            <path d="M120,125 L160,130 L200,128 L240,133 L260,140 L290,155 L320,168 L360,175 L400,180 L430,182 L430,165 L400,160 L360,152 L320,143 L290,136 L260,132 L240,122 L200,116 L160,120 L120,115 Z" fill="rgba(184,132,26,0.12)"/>
-            <polyline points="120,120 160,125 200,122 240,127 260,140 290,148 320,156 360,164 400,170 430,174" stroke="#B8841A" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="120" cy="120" r="3" fill="#B8841A"/>
-            <circle cx="160" cy="125" r="3" fill="#B8841A"/>
-            <circle cx="200" cy="122" r="3" fill="#B8841A"/>
-            <circle cx="240" cy="127" r="3" fill="#B8841A"/>
-            <circle cx="260" cy="140" r="4" fill="#B8841A" stroke="rgba(245,238,227,0.4)" stroke-width="1.5"/>
-            <circle cx="290" cy="148" r="3" fill="#B8841A"/>
-            <circle cx="320" cy="156" r="3" fill="#B8841A"/>
-            <circle cx="360" cy="164" r="3" fill="#B8841A"/>
-            <text x="260" y="14" fill="rgba(245,238,227,0.45)" font-size="8" text-anchor="middle" font-family="Space Grotesk" letter-spacing="0.5">[REPLACE WITH YOUR VISUALIZATION]</text>
-          </svg>
-        </div>
+
       </div>
 
     </section>
 
     <!-- ═══════════════════════ STATS ═══════════════════════ -->
     <section class="stats" aria-label="Key metrics">
-      <div class="stats__grid">
-        <div class="stat__item fade-up">
-          <div class="stat__number">30+</div>
-          <div class="stat__label">Publications &amp; Reports</div>
+      <div class="histogram" aria-label="Key academic metrics">
+
+        <!-- Faint grid lines -->
+        <div class="histogram__grid" aria-hidden="true">
+          <div class="histogram__gridline"></div>
+          <div class="histogram__gridline"></div>
+          <div class="histogram__gridline"></div>
         </div>
-        <div class="stat__divider" aria-hidden="true"></div>
-        <div class="stat__item fade-up" style="transition-delay:.1s">
-          <div class="stat__number">20+</div>
-          <div class="stat__label">Years Research</div>
+
+        <!-- Bar 1: Publications -->
+        <div class="histogram__col">
+          <div class="histogram__value">30+</div>
+          <div class="histogram__bar-wrap">
+            <div class="histogram__bar" style="--bar-height: 120px;"></div>
+          </div>
+          <div class="histogram__axis"></div>
+          <div class="histogram__label">Publications<br>&amp; Reports</div>
         </div>
-        <div class="stat__divider" aria-hidden="true"></div>
-        <div class="stat__item fade-up" style="transition-delay:.2s">
-          <div class="stat__number">25+</div>
-          <div class="stat__label">Courses Taught</div>
+
+        <!-- Bar 2: Years Research -->
+        <div class="histogram__col">
+          <div class="histogram__value">20+</div>
+          <div class="histogram__bar-wrap">
+            <div class="histogram__bar" style="--bar-height: 80px;"></div>
+          </div>
+          <div class="histogram__axis"></div>
+          <div class="histogram__label">Years<br>Research</div>
         </div>
-        <div class="stat__divider" aria-hidden="true"></div>
-        <div class="stat__item fade-up" style="transition-delay:.3s">
-          <div class="stat__number">3</div>
-          <div class="stat__label">Institutions</div>
+
+        <!-- Bar 3: Courses Taught -->
+        <div class="histogram__col">
+          <div class="histogram__value">25+</div>
+          <div class="histogram__bar-wrap">
+            <div class="histogram__bar" style="--bar-height: 100px;"></div>
+          </div>
+          <div class="histogram__axis"></div>
+          <div class="histogram__label">Courses<br>Taught</div>
         </div>
+
+        <!-- Bar 4: Institutions -->
+        <div class="histogram__col">
+          <div class="histogram__value">3</div>
+          <div class="histogram__bar-wrap">
+            <div class="histogram__bar" style="--bar-height: 30px;"></div>
+          </div>
+          <div class="histogram__axis"></div>
+          <div class="histogram__label">Institutions</div>
+        </div>
+
       </div>
     </section>
 
@@ -621,25 +151,28 @@
       <div class="container">
         <div class="about__inner">
 
-          <!-- LEFT: Photo + Meta -->
-          <div class="about__photo-wrap fade-up">
-            <div class="about__photo" aria-hidden="true">
-              <div class="about__photo-placeholder">Photo placeholder</div>
+          <!-- LEFT: Professional Profile -->
+          <div class="about__sidebar fade-up">
+            <div class="profile-card">
+              <div class="profile-card__item">
+                <span class="profile-card__label">Current Role</span>
+                <span class="profile-card__value">Associate Professor, Public Policy</span>
+              </div>
+              <div class="profile-card__item">
+                <span class="profile-card__label">Institution</span>
+                <span class="profile-card__value">FLAME University, Pune</span>
+              </div>
+              <div class="profile-card__item">
+                <span class="profile-card__label">Leadership</span>
+                <span class="profile-card__value">Chair, Centre for Legislative Education &amp; Research</span>
+              </div>
             </div>
-            <ul class="about__meta-list">
-              <li>Associate Professor, Public Policy</li>
-              <li>FLAME University, Pune</li>
-              <li>Chair, Centre for Legislative Education &amp; Research</li>
-            </ul>
           </div>
 
           <!-- RIGHT: Content -->
           <div class="about__content">
             <div class="section-label">About</div>
-
-            <blockquote class="about__quote fade-up" id="about-heading">
-              I study how India is governed — by tracing its districts, schools, and the people who shaped them.
-            </blockquote>
+            <h2 class="fade-up" id="about-heading" style="font-family:var(--font-serif); font-size:var(--text-4xl); font-weight:300; color:var(--ink); margin-bottom:var(--s6); margin-top:var(--s2);">Biography</h2>
 
             <p class="about__bio fade-up">
               My research sits at the intersection of computational science and public policy. Starting from a PhD in Physics, I now study India's administrative evolution, education governance, and public health — bringing quantitative rigour to historical and policy questions. I lead IndiaStateStory, tracing India's district boundaries from 1872 to the present.
@@ -688,7 +221,7 @@
     </section>
 
     <!-- ═══════════════════════ RESEARCH ═══════════════════════ -->
-    <section class="research section-pad" id="research" aria-labelledby="research-heading">
+    <section class="research section-pad-sm" id="research" aria-labelledby="research-heading">
       <div class="container">
         <div class="section-label">Research</div>
         <h2 class="research__heading fade-up" id="research-heading">Areas of Inquiry</h2>
@@ -830,77 +363,147 @@
         <div class="section-label">Publications</div>
         <h2 class="fade-up" id="pub-heading" style="font-family:var(--font-serif);font-size:var(--text-4xl);font-weight:300;margin-bottom:var(--s8);">Reports &amp; Datasets</h2>
 
-        <div class="publications__grid">
-          <div class="book-card fade-up">
-            <div class="book-card__cover"><div class="book-card__cover-title">Transforming Educational Systems</div></div>
-            <div class="book-card__body">
-              <div class="book-card__publisher">Leadership for Equity · 2024</div>
-              <div class="book-card__desc">Ensuring Equity Amidst Change: A comprehensive look at 21st-century skills in education systems.</div>
+        <ul class="publications__list fade-up" id="reports-list">
+          <div class="pub-line" id="reports-line"></div>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2026</span>
+            <div>
+              <div class="pub-item__title"><a href="https://doi.org/10.7910/DVN/D1AGUR" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">India State and District Evolution Database, 1872-2025. ↗</a></div>
+              <div class="pub-item__meta">with Mehr Kalra, and Madhav Singh. Harvard Dataverse.</div>
             </div>
-          </div>
-          <div class="book-card fade-up" style="transition-delay:.1s">
-            <div class="book-card__cover"><div class="book-card__cover-title">District Human Development Report</div></div>
-            <div class="book-card__body">
-              <div class="book-card__publisher">Govt of Gujarat · 2016</div>
-              <div class="book-card__desc">A detailed analysis of human development indicators for the Ahmedabad district.</div>
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2025</span>
+            <div>
+              <div class="pub-item__title"><a href="https://www.indiastatestory.in/indiaevolution/integrationofindia" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Blog Series: Partition and Integration of India 1947-1950 (38 blogs) ↗</a></div>
+              <div class="pub-item__meta">with Gauravv Kalyani. India State Stories-Integration of India.</div>
             </div>
-          </div>
-          <div class="book-card fade-up" style="transition-delay:.2s">
-            <div class="book-card__cover"><div class="book-card__cover-title">Restructuring Government Schools</div></div>
-            <div class="book-card__body">
-              <div class="book-card__publisher">Akshara Foundation · 2019</div>
-              <div class="book-card__desc">A study of small schools and the impact of school consolidation in Karnataka.</div>
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2025</span>
+            <div>
+              <div class="pub-item__title"><a href="https://www.indiastatestory.in/state-evolution" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Blog Posts: Formation story of Indian states (35 posts) ↗</a></div>
+              <div class="pub-item__meta">with Kalra, M., Bedkute, U., Malladi, S. S., & Kalyani, G. India State Story blog posts.</div>
             </div>
-          </div>
-        </div>
-
-        <div class="section-label fade-up" style="margin-top:var(--s6);margin-bottom:var(--s4);">Journal Articles</div>
-        <ul class="publications__list">
-          <li class="pub-item fade-up">
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2025</span>
+            <div>
+              <div class="pub-item__title"><a href="https://www.indiastatestory.in/podcast-1" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Audio Podcast: Drawn and Redrawn-Making of India’s Internal boundaries ↗</a></div>
+              <div class="pub-item__meta">with Kalyani, G., Ramachandra, M., & Singh, M. (Spotify/Youtube).</div>
+            </div>
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
             <span class="pub-item__year">2024</span>
             <div>
-              <div class="pub-item__title">Mapping India’s Linguistic Diversity and Exclusion in the Indian Census</div>
-              <div class="pub-item__meta">Practices of Digital Humanities in India, 121-144.</div>
+              <div class="pub-item__title">Transforming Educational Systems at Scale for 21st Century Skills: Ensuring Equity Amidst Change</div>
+              <div class="pub-item__meta">with Umesh Bedkute (editors). Leadership for Equity, Dec 2024.</div>
             </div>
           </li>
-          <li class="pub-item fade-up">
-            <span class="pub-item__year">2023</span>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2024</span>
             <div>
-              <div class="pub-item__title">Colonial Legacy of English as Medium of Instruction in India</div>
-              <div class="pub-item__meta">Language and Language Teaching.</div>
+              <div class="pub-item__title">Developing Children’s Scale for Social-Emotional Learning (CHISSEL)</div>
+              <div class="pub-item__meta">with Shalaka Shah. Insights from the Government Schools in Maharashtra, Leadership for Equity, Sept 2024.</div>
             </div>
           </li>
-          <li class="pub-item fade-up">
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2024</span>
+            <div>
+              <div class="pub-item__title">Study on Status of Decentralised In-Service Teacher Training (Review and Analysis)</div>
+              <div class="pub-item__meta">Leadership for Equity, Sept 2024.</div>
+            </div>
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2024</span>
+            <div>
+              <div class="pub-item__title">Rethinking Educational Transformation: Systems Change for a Better Future</div>
+              <div class="pub-item__meta">Editorial team. LFE - FLAME Symposium-2023 reflection papers, March 2024.</div>
+            </div>
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
             <span class="pub-item__year">2022</span>
             <div>
-              <div class="pub-item__title">Caste, Conservative, Colonial, and State Paternalism in India’s Alcohol Policies</div>
-              <div class="pub-item__meta">Indian Public Policy Review, 3(5), 87-106.</div>
+              <div class="pub-item__title">Challenges to Implementation of Mother Tongue as Medium of Instruction in India: A Case Study of Maharashtra</div>
+              <div class="pub-item__meta">with Sumana Acharya, Ritika Sebastian, Rucha Kardle, Swapnil Goel. Leadership for Equity, Jan 2022.</div>
             </div>
           </li>
-          <li class="pub-item fade-up">
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2021</span>
+            <div>
+              <div class="pub-item__title">Impact of COVID-19 Lockdown 2021 on Unorganized & Migrant Workers in Pune</div>
+              <div class="pub-item__meta">with Shalaka Shah. FLAME University, Oct 2021.</div>
+            </div>
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
             <span class="pub-item__year">2021</span>
             <div>
               <div class="pub-item__title">Surviving in a crisis: Distress of Migrants left behind during Lockdown in Pune</div>
-              <div class="pub-item__meta">FLAME University and National Alliance for Peoples Movement.</div>
+              <div class="pub-item__meta">with Shalaka Shah, and Chaitanya Ravi. FLAME University and National Alliance for Peoples Movement, Feb 2021.</div>
             </div>
           </li>
-          <li class="pub-item fade-up">
-            <span class="pub-item__year">2020</span>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2019</span>
             <div>
-              <div class="pub-item__title">Evolution of interdependent co-authorship and citation networks</div>
-              <div class="pub-item__meta">Scientometrics, 125, 385–404.</div>
+              <div class="pub-item__title"><a href="https://akshara.org.in/wp-content/uploads/Restructuring-Government-Schools-report.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Restructuring government schools in Karnataka- a study of small schools and school consolidation ↗</a></div>
+              <div class="pub-item__meta">with Vaijayanti K. Akshara Foundation, Jan 2019.</div>
+            </div>
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2016</span>
+            <div>
+              <div class="pub-item__title">District Human Development Report of Ahmedabad</div>
+              <div class="pub-item__meta">with Tannistha Samanta, Malavaika Subramanyam, Mukta Gundi. Gujarat Social Infrastructure Development Society.</div>
+            </div>
+          </li>
+          <li class="pub-item reports-item"><div class="pub-node"></div>
+            <span class="pub-item__year">2014</span>
+            <div>
+              <div class="pub-item__title">Evaluation of Pratham Open School Education and Pratham Supported Schools in Gujarat and Rajasthan blocks</div>
+              <div class="pub-item__meta">PI. Funded by Pratham, India.</div>
             </div>
           </li>
         </ul>
 
-        <div class="award-callout fade-up">
-          <div class="award-callout__icon">★</div>
-          <div>
-            <div class="award-callout__title">David C Duncan Fellowship — 2009</div>
-            <div class="award-callout__desc">Recognizing promising doctoral students at the Department of Physics, Penn State University.</div>
-          </div>
-        </div>
-      </div>
+        <h2 class="fade-up" style="font-family:var(--font-serif);font-size:var(--text-4xl);font-weight:300;margin-bottom:var(--s8);margin-top:var(--s4);">Journal Papers &amp; Articles</h2>
+        <ul class="publications__list journal-list">
+          <li class="pub-item"><span class="pub-item__year">2025</span><div><div class="pub-item__title">From Colonial Legacy to Contemporary Times: Characterizing District Proliferation in India</div><div class="pub-item__meta">with Mehr Kalra, & Madhav Singh. in review Territory, Politics, and Governance.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title">Assessing the gaps in family-school engagement using conversation starter tools: Insights from Tripura, India</div><div class="pub-item__meta">with Shalaka Shah, Samruddhi Gole. under review in Preventing School Failure.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://doi.org/10.1177/08920206241278469" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">State control of school education in colonial and post-colonial India. ↗</a></div><div class="pub-item__meta">with Rajpuria, K. Management in Education.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://osf.io/preprints/socarxiv/sjxc6/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Mapping India’s Linguistic Diversity and Exclusion in the Indian Census ↗</a></div><div class="pub-item__meta">with Aayush Agarwal. Practices of Digital Humanities in India, 121-144.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title"><a href="https://llt.org.in/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Colonial Legacy of English as Medium of Instruction in India ↗</a></div><div class="pub-item__meta">with Isha Doshi. Language and Language Teaching, July 2023.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title">Surviving the Waves of Lockdown: Economic & Psychological Distress of Unorganised Migrant Workers during First & Second Wave Lockdown in Pune</div><div class="pub-item__meta">with Shalaka Shah, and Aalisha Jadhav. Proceedings of SALAM International Conference on Migration.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2022</span><div><div class="pub-item__title">Into the Minds of Middle Schoolers in India: Assessing Social-emotional Learning Inside and Beyond Classroom.</div><div class="pub-item__meta">with Shalaka Shah, and Anirudh Prasadh.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2022</span><div><div class="pub-item__title"><a href="https://www.ippr.in/index.php/ippr/article/view/141" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Caste, Conservative, Colonial, and State Paternalism in India’s Alcohol Policies ↗</a></div><div class="pub-item__meta">with Chaitanya Ravi. Indian Public Policy Review 3 87-106.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2022</span><div><div class="pub-item__title">Debating Decentralization of Education in India- From the Colonial Period to the Right to Education Act</div><div class="pub-item__meta">with Khushi Rajpuria. GNLU Conference on Right to Education, Sept 2022.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2021</span><div><div class="pub-item__title">Food Security and Psychological Distress of Migrants during COVID-19 Lockdown</div><div class="pub-item__meta">with Shalaka Sharad Shah. India Migration Report.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2020</span><div><div class="pub-item__title"><a href="https://www.theindiaforum.in/article/indian-census-pedagogical-problem" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">The pedagogical problems of the census ↗</a></div><div class="pub-item__meta">with Aayush Agarwal. The India Forum.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2020</span><div><div class="pub-item__title">Evolution of interdependent co-authorship and citation networks</div><div class="pub-item__meta">with Chakresh Kumar Singh, Demival Vasques Filho, Dion R. J. O’Neale. Scientometrics, 125, 385–404.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2019</span><div><div class="pub-item__title">Characterization of functional brain networks and emotional centers using the complex networks techniques</div><div class="pub-item__meta">with Richa Tripathi, Dyutiman Mukhopadhay, Chakresh K Singh, Krishna Prasad. Complex Networks and Their Applications VIII.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2019</span><div><div class="pub-item__title"><a href="https://arxiv.org/abs/1801.05400" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Structure and Evolution of Indian Physics Coauthorship Networks ↗</a></div><div class="pub-item__meta">with Chakresh Kumar Singh. Scientometrics.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2019</span><div><div class="pub-item__title">Exploring the Role and Nature of Interactions Between Institutes in a Local Affiliation Network.</div><div class="pub-item__meta">with Chakresh Kumar Singh, Ravi Vishwakarma. CompleNet 2019.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2018</span><div><div class="pub-item__title"><a href="https://in.sagepub.com/en-in/sas/journal/vikalpa" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">India needs to restructure its government schools to prevent its collapse ↗</a></div><div class="pub-item__meta">with K Vaijayanti. Vikalpa.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2018</span><div><div class="pub-item__title">Restructuring the schooling system in India</div><div class="pub-item__meta">Ideas for India.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title">Drain of government schools in India: Is school consolidation, the answer? Evidences from Karnataka</div><div class="pub-item__meta">with Vaijayanti K. Eighth CESI International Conference.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title">Can India reap the demographic ’dividend’ in higher education?</div><div class="pub-item__meta">Ideas for India.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title"><a href="https://arxiv.org/abs/1611.05741" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Estimation of reproduction number and non stationary spectral analysis of Dengue epidemic ↗</a></div><div class="pub-item__meta">with Murali Krishna Enduri. Mathematical Biosciences, 288: 140-148.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2016</span><div><div class="pub-item__title">District Human Development Report- Ahmedabad</div><div class="pub-item__meta">with Tannistha Samanta, Malavaika Subramanyam, Mukta Gundi. Gujarat Social Infrastructure Development Society.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2015</span><div><div class="pub-item__title"><a href="https://arxiv.org/abs/1512.05057" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Does diversity of papers affect their citations? Evidence from American Physical Society Journals ↗</a></div><div class="pub-item__meta">with Murali Krishna Enduri, I. Vinod Reddy. The 4th International Workshop on Complex Networks.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2014</span><div><div class="pub-item__title">Evaluation of Pratham Open School Education and Pratham Supported Schools program in Gujarat and Rajasthan blocks</div><div class="pub-item__meta">with Malavika Subramanyam. Pratham.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2014</span><div><div class="pub-item__title"><a href="https://arxiv.org/abs/1409.0965" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Dynamics of Dengue with human and vector mobility ↗</a></div><div class="pub-item__meta">with Murali Krishna Enduri. Bulletin of Mathematical Biology.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2014</span><div><div class="pub-item__title">Evolution of scientific collaboration networks.</div><div class="pub-item__meta">with Gaurav Madaan. 2014 IEEE International Conference on Big Data.</div></div></li>
+          <li class="pub-item"><span class="pub-item__year">2012</span><div><div class="pub-item__title"><a href="https://arxiv.org/abs/1109.5440" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Epidemic spreading on static and adaptive preferred degree networks. ↗</a></div><div class="pub-item__meta">with Wenjia Liu, R.K.P. Zia, Beate Schmittmann. PLoS ONE 7(11).</div></div></li>
+        </ul>
+
+        <h2 class="fade-up" style="font-family:var(--font-serif);font-size:var(--text-4xl);font-weight:300;margin-bottom:var(--s8);margin-top:var(--s4);">Awards and Honours</h2>
+        <ul class="publications__list awards-list">
+            <li class="pub-item"><span class="pub-item__year">2007, '09</span><div><div class="pub-item__title">David C Duncan Fellowship</div><div class="pub-item__meta">Support for promising doctoral students, Department of Physics, Penn State University</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2003</span><div><div class="pub-item__title">AUF Fellowship</div><div class="pub-item__meta">Department of Physics, Texas A&M University</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2002</span><div><div class="pub-item__title">Summer Research Fellowship</div><div class="pub-item__meta">Center for Theoretical Studies, Indian Institute of Science, Bangalore, India</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2000</span><div><div class="pub-item__title">Summer Research Fellowship</div><div class="pub-item__meta">Indian Academy of Sciences, Bangalore, India</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">1996</span><div><div class="pub-item__title">Inter-State Mathematical Talent Search Exam–10th Rank</div><div class="pub-item__meta">Association of Mathematics Teachers of India, Chennai, India</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">1996</span><div><div class="pub-item__title">Indian National Mathematics Olympiad (represented Karnataka state)</div><div class="pub-item__meta">National Board of Higher Mathematics, India</div></div></li>
+        </ul>
     </section>
 
     <!-- ═══════════════════════ INDIA STATE STORY ═══════════════════════ -->
@@ -908,30 +511,30 @@
       <div class="container">
         <div class="section-label">Featured Project</div>
         <div class="practice__inner-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s10); align-items: center; margin-bottom: var(--s8);">
-          <div>
-            <h2 class="practice__heading fade-up" id="state-story-heading" style="font-size: var(--text-5xl); margin-bottom: var(--s4);">
+          <div class="state-story-left">
+            <h2 class="practice__heading" id="state-story-heading" style="font-size: var(--text-5xl); margin-bottom: var(--s4);">
               India State &amp; District Evolution
             </h2>
-            <p class="practice__quote fade-up" style="margin-bottom: var(--s6);">
+            <p class="practice__quote" style="margin-bottom: var(--s6);">
               Tracing the political and administrative history of India since 1872.
             </p>
-            <p class="practice__desc fade-up">
-              Curated by Dr. Shivakumar Jolad and research associate Mehr Kalra, this project maps the 
-              evolution of administrative boundaries, linking them with India's complex political history 
-              from the Colonial period to the present.
+            <p class="practice__desc">
+              Founder-Director of a one-of-its-kind project curated with research associate Mehr Kalra and team members Madhav Singh and others. It maps transitions in administrative boundaries from the Colonial period (start of Indian Census in 1872) to the present, combining time series analysis with India's complex political history.
             </p>
-            <div class="fade-up" style="margin-top: var(--s6);">
+            <div style="margin-top: var(--s6);">
               <a href="https://doi.org/10.7910/DVN/D1AGUR" class="btn btn--primary">Access Dataset on Dataverse ↗</a>
             </div>
           </div>
-          <div class="fade-up">
+          <div class="state-story-card">
             <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-dark); padding: var(--s6); border-radius: var(--radius-card);">
-              <div class="practice__sub-title">Project Scope &amp; Outcomes</div>
+              <div class="practice__sub-title">Project Outputs</div>
               <ul class="expect-list" style="margin-bottom: var(--s6);">
                 <li><strong>Spatial Database:</strong> District-level evolution from 1872 to 2025</li>
-                <li><strong>Interactive Dashboards:</strong> Visualization of boundary transitions</li>
-                <li><strong>Visual Stories:</strong> Educational threads on administrative shifts</li>
-                <li><strong>Public History:</strong> Bridging academic research with public awareness</li>
+                <li><strong>Interactive Dashboards:</strong> District evolution 1951–2024, District Splits, New Districts</li>
+                <li><strong>Twitter Threads:</strong> State evolution stories for every Indian state</li>
+                <li><strong>Posters:</strong> Visual evolution poster for every state</li>
+                <li><strong>Booklets:</strong> Comprehensive booklets on India's administrative evolution</li>
+                <li><strong>Media Articles:</strong> The Wire, India Spend, Deccan Herald, Economic Times, Scroll, News Minute, Newslaundry</li>
               </ul>
               <div class="practice__sub-title">Research Pillars</div>
               <div class="practice__tag-list">
@@ -939,6 +542,7 @@
                 <span class="tag tag--dark">Political History</span>
                 <span class="tag tag--dark">Boundary Analytics</span>
                 <span class="tag tag--dark">Census Transitions</span>
+                <span class="tag tag--dark">Time Series Analysis</span>
               </div>
             </div>
           </div>
@@ -950,51 +554,85 @@
     <section class="section-pad" id="media" aria-labelledby="media-heading" style="background: var(--parchment)">
       <div class="container">
         <div class="section-label" style="color: var(--gold)">Communication</div>
-        <h2 class="fade-up" id="media-heading" style="font-family:var(--font-serif); font-size:var(--text-4xl); font-weight:300; color:var(--ink); margin-bottom:var(--s8);">Public Writing &amp; Media</h2>
+        <h2 class="fade-up" id="media-heading" style="font-family:var(--font-serif); font-size:var(--text-4xl); font-weight:300; color:var(--ink); margin-bottom:var(--s8);">Media and Magazine Articles</h2>
         
-        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--s10); align-items: start;">
-          <!-- PUBLIC WRITING LIST -->
-          <div>
-            <div class="practice__sub-title" style="color: var(--gold); margin-bottom: var(--s4);">Op-eds &amp; Public Writing</div>
-            <div class="writing-list">
-              <div class="writing-item fade-up">
-                <div class="writing-item__meta">Scroll.in · Feb 2025</div>
-                <a href="https://scroll.in/" class="writing-item__title" style="display: block;">Budget 2025: NEP vision needs greater funding, not just rhetoric</a>
-                <p class="writing-item__desc">Analyzing the gap between policy vision and budgetary allocations in the Indian education sector.</p>
-              </div>
-              <div class="writing-item fade-up">
-                <div class="writing-item__meta">The Wire · Aug 2024</div>
-                <a href="https://thewire.in/" class="writing-item__title" style="display: block;">Political Motives Trump Administrative Reasons in District Creation</a>
-                <p class="writing-item__desc">A deep dive into why Indian districts are split and the underlying political dynamics behind administrative redrawing.</p>
-              </div>
-              <div class="writing-item fade-up">
-                <div class="writing-item__meta">India Spend · Sep 2024</div>
-                <a href="https://indiaspend.com/" class="writing-item__title" style="display: block;">Dataviz: Why Indian Districts Are Not Created Equal</a>
-                <p class="writing-item__desc">Visualizing the stark disparities in population and resources across India's administrative units.</p>
-              </div>
-            </div>
-          </div>
+        <ul class="publications__list media-list">
+            <li class="pub-item"><span class="pub-item__year">2025</span><div><div class="pub-item__title"><a href="https://www.downtoearth.org.in/energy/to-truly-electrify-personal-mobility-india-must-make-charging-easy-reliable-and-accessible-for-all" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">To truly electrify personal mobility, India must make charging easy, reliable, and accessible for all ↗</a></div><div class="pub-item__meta">with Chaitanya Ravi, & Mimansa Sharda. Down to Earth.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2025</span><div><div class="pub-item__title"><a href="https://scroll.in/article/1078655/budget-allocations-undercut-vision-of-new-education-policy" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Budget 2025: NEP vision needs greater funding. ↗</a></div><div class="pub-item__meta">with Bedkute, U. Scroll.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2025</span><div><div class="pub-item__title"><a href="https://scroll.in/article/1078114/the-many-names-and-unchanging-borders-of-uttar-pradesh-from-the-19th-century-to-today" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">From the 19th century to today: The many names and unchanging boundaries of Uttar Pradesh. ↗</a></div><div class="pub-item__meta">with Kalra, M. Scroll.In.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://scroll.in/article/1075103/from-patchwork-of-princely-states-to-heart-of-india-how-modern-day-madhya-pradesh-came-to-be" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">From patchwork of princely states to ‘heart’ of India: How modern-day Madhya Pradesh came to be. ↗</a></div><div class="pub-item__meta">with Bharghava, K., Kalra, M. Scroll.In.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://www.newslaundry.com/2024/12/04/splits-single-party-dominance-the-unusual-trajectory-of-maharashtra-politics" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Splits, single-party dominance: The unusual trajectory of Maharashtra politics. ↗</a></div><div class="pub-item__meta">with Bedkute, U., & Kalra, M. Newslaundry.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://www.thenewsminute.com/news/dravida-nadus-many-languages-the-long-shadow-of-linguistic-state-formation" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Dravida Nadu’s many languages: The long shadow of linguistic state formation. ↗</a></div><div class="pub-item__meta">with Venugopal, R. The News Minute.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://www.theindiaforum.in/society/many-malayalams" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Many Malayalams. ↗</a></div><div class="pub-item__meta">with Venugopal, R. The India Forum.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://shiva-jolad-46811.medium.com/jammu-and-kashmir-elections-and-echoes-from-the-past-395696d6abcc" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Jammu and Kashmir- Elections and echoes from the past. ↗</a></div><div class="pub-item__meta">with Kharat, T. Medium.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://thewire.in/government/drawing-lines-searching-for-a-rationale-in-district-creation-in-india" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Political Motives Trump Administrative Reasons: Tracing the History of District Creation in India. ↗</a></div><div class="pub-item__meta">with Kalra, M. The Wire.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://www.deccanherald.com/india/karnataka/what-is-in-a-name-2-3131429" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">What is in a name? ↗</a></div><div class="pub-item__meta">with Kalra, M. Deccan Herald.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://www.indiaspend.com/data-viz/why-indian-districts-are-not-equal-925439" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Dataviz: Why Indian Districts Are Not Equal. ↗</a></div><div class="pub-item__meta">with Kalra, M. India Spend.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2024</span><div><div class="pub-item__title"><a href="https://www.thenewsminute.com/news/indias-districts-are-not-equal-heres-why" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">India’s districts are not equal: Here’s why. ↗</a></div><div class="pub-item__meta">with Kalra, M. The Newsminute.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title"><a href="https://shiva-jolad-46811.medium.com/centralized-constitution-and-its-consequences-8243fa810653" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Perils of a Centralized State. How Centralization of power with the Union and the States creates barriers between the citizens and the state. ↗</a></div><div class="pub-item__meta">Medium.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title"><a href="https://scroll.in/article/1056754/gandhis-vision-of-a-constitution-was-imperfect-but-is-india-paying-the-price-for-neglecting-it" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Gandhi’s vision of a constitution was imperfect, but is India paying the price for neglecting it? ↗</a></div><div class="pub-item__meta">Scroll.In.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title"><a href="https://shiva-jolad-46811.medium.com/shriman-narayan-agarwal-author-of-gandhian-constitution-and-soothsayer-of-indian-politics-ef5e5171814e" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Shriman Narayan Agarwal: Author of Gandhian Constitution and Soothsayer of Indian Politics. ↗</a></div><div class="pub-item__meta">Medium.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title"><a href="https://shiva-jolad-46811.medium.com/why-do-we-need-to-educate-people-about-the-population-5ca41e1e43fc" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Why do we need to educate people about the population?: False notions about the population have created fear, prejudice, and communal hatred ↗</a></div><div class="pub-item__meta">with Trishala S. Medium.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title"><a href="https://medium.com/@shiva-jolad-46811/demography-in-service-of-other-social-sciences-6cfef9fae568" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Demography in service of ‘other’ social sciences ↗</a></div><div class="pub-item__meta">Medium.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2022</span><div><div class="pub-item__title">Today’s conflicts about Indian federalism were predicted by Constituent Assembly seven decades ago</div><div class="pub-item__meta">with Saumya Gupta. Scroll.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2021</span><div><div class="pub-item__title">E-Governance and its Discontents: The Traps of Tech Revolutions in Stratified Societies</div><div class="pub-item__meta">with Ragini Rao Munjuluri and Sambit Dash. The Bastion.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2020</span><div><div class="pub-item__title">COVID-19 Pandemic has exposed the endemic inequality in Education and widened the Learning Gaps</div><div class="pub-item__meta">with Mehr Kalra. ORF Issue Brief.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2020</span><div><div class="pub-item__title">One State, Many Languages: Mapping India’s Language and Mother Tongue Diversity</div><div class="pub-item__meta">with Aayush Agarwal. The India Forum.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2020</span><div><div class="pub-item__title">On English-medium education, India is having the same debates it did 200 years ago</div><div class="pub-item__meta">Scroll.In.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2020</span><div><div class="pub-item__title">Indian Textbooks Need to Account for Minority Identities Better</div><div class="pub-item__meta">with Abhramika Choudhuri. The Bastion.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2019</span><div><div class="pub-item__title">NEP and Higher Education</div><div class="pub-item__meta">India Education Diary.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2019</span><div><div class="pub-item__title">Farm sector doles: Band-aid solutions hide jobless growth</div><div class="pub-item__meta">Firstpost.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2019</span><div><div class="pub-item__title">Constitutional Journey of the Fundamental Rights</div><div class="pub-item__meta">Medium.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2018</span><div><div class="pub-item__title">Higher Education Council should stand for support rather than control of higher education</div><div class="pub-item__meta">DNA.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2018</span><div><div class="pub-item__title">Restructuring the public school system</div><div class="pub-item__meta">Mint.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2018</span><div><div class="pub-item__title">Beyond physical access to schools</div><div class="pub-item__meta">Mint.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2018</span><div><div class="pub-item__title">Nation and Nationalism is incomplete if we don’t own the dark shades of our past</div><div class="pub-item__meta">DNA.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title">Namma Sarkaaari Shaalegalige Bhavishyavideya ?</div><div class="pub-item__meta">Prajavani (Kannada daily).</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title">Aadhaar linkage will set the record straight; detractors must move on</div><div class="pub-item__meta">Swarajya.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2015</span><div><div class="pub-item__title">Five Suggestions For The New Education Policy</div><div class="pub-item__meta">Swarajya Magazine.</div></div></li>
+        </ul>
 
-          <!-- MEDIA APPEARANCES -->
-          <div>
-            <div class="practice__sub-title" style="color: var(--gold); margin-bottom: var(--s4);">Media Mentions</div>
-            <div style="display: flex; flex-direction: column; gap: var(--s4);">
-              <div class="research-card fade-up media-card" style="padding: var(--s4);">
-                <div class="research-card__num" style="font-size: var(--text-xl);">BBC News</div>
-                <div class="research-card__title" style="font-size: var(--text-base);">Expert View on Indian Demographics</div>
-                <div class="research-card__desc">Quoted on the implications of India's changing population landscape.</div>
-              </div>
-              <div class="research-card fade-up media-card" style="padding: var(--s4);">
-                <div class="research-card__num" style="font-size: var(--text-xl);">NDTV</div>
-                <div class="research-card__title" style="font-size: var(--text-base);">Panel Discussion: Education Reform</div>
-                <div class="research-card__desc">Discussing the roadmap for implementing the National Education Policy.</div>
-              </div>
-            </div>
-            <div class="fade-up" style="margin-top: var(--s6);">
-              <a href="https://x.com/shjolad" class="btn btn--outline" style="width: 100%; text-align: center; border-color: var(--gold); color: var(--gold);">Follow Updates on Twitter ↗</a>
-            </div>
-          </div>
+        <h2 class="fade-up" style="font-family:var(--font-serif);font-size:var(--text-4xl);font-weight:300;margin-bottom:var(--s8);margin-top:var(--s4);">Conference, Symposium, and Workshops Organized</h2>
+        <div id="conference-list" style="position: relative;">
+          <div class="timeline__line" id="conference-line" style="position: absolute; left: 1rem; top: 0; bottom: 0; width: 2px; background: var(--gold); transform-origin: top; transform: translateX(-50%) scaleY(0); z-index: 1;"></div>
+          <ul class="publications__list conference-list">
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2025</span><div><div class="pub-item__title">India in Transition: 75 years of evolution of Indian states and districts</div><div class="pub-item__meta">Organizer. FLAME University, Pune. March 24, 2025.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2024</span><div><div class="pub-item__title">LFE-FLAME: Transforming Educational Systems at Scale for 21st Century Skills</div><div class="pub-item__meta">Co-organizer. FLAME University, Pune, Sept 2024.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2023</span><div><div class="pub-item__title">LFE-FLAME: Rethinking Educational Transformation: Systems Change for a Better Future</div><div class="pub-item__meta">Co-organizer. FLAME University, Pune, July 2023.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2023</span><div><div class="pub-item__title">Accessing Democracy: Civic Tech, Governance, Data Privacy, and Digital Rights</div><div class="pub-item__meta">Co-organizer. FLAME Center for Legislative Education and Research, Sept 2023.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2019</span><div><div class="pub-item__title">Cornell-GRAAM Policy Analysis and Program Evaluation workshop</div><div class="pub-item__meta">GRAAM, Mysore, June 2019.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2017</span><div><div class="pub-item__title">IITGN-JPAL short course on Human Development and Public Policy</div><div class="pub-item__meta">Organizer and Instructor. March 2017.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2016</span><div><div class="pub-item__title">Orientation programme on Professional Policy Making</div><div class="pub-item__meta">NUEPA, New Delhi, Nov 2016.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2016</span><div><div class="pub-item__title">Workshop on Reflections on Six Years of Right to Education Act - 2009</div><div class="pub-item__meta">Organizer. IIT Gandhinagar, July 2016.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2015</span><div><div class="pub-item__title">NNCMCB- Symposium on Mathematical and Computational Biology</div><div class="pub-item__meta">Organizer. March 2015.</div></div></li>
+              <li class="pub-item conference-item"><div class="pub-node"></div><span class="pub-item__year">2013</span><div><div class="pub-item__title">Research Methods in Population Sciences</div><div class="pub-item__meta">Organizer. July 2013.</div></div></li>
+          </ul>
         </div>
+        
+        <h2 class="fade-up" style="font-family:var(--font-serif);font-size:var(--text-4xl);font-weight:300;margin-bottom:var(--s8);margin-top:var(--s4);">Selected Talks &amp; Presentations</h2>
+        <ul class="publications__list talks-list">
+            <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title">6th International Conference on New Trends in Teaching</div><div class="pub-item__meta">Presenter. Brussels, May 2023.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2023</span><div><div class="pub-item__title">SALAM-IIPS: Labor Migration & Sustainable Development in Asia Conference</div><div class="pub-item__meta">Presenter. Mumbai, June 2023.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2022</span><div><div class="pub-item__title">Law Economics and Policy- 2022</div><div class="pub-item__meta">Presenter. FLAME Center for Economics and Public Policy, Nov 2022.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2022</span><div><div class="pub-item__title">Right to Education Conclave-2022</div><div class="pub-item__meta">Presenter. Gujarat National Law University, Gandhinagar, Oct 2022.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title">Right to Education in India, 12(1)(C) and Beyond</div><div class="pub-item__meta">Riverside School, Ahmedabad, Aug 2017.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title">Evidence based research in public policy: Problem identification</div><div class="pub-item__meta">Seminar, Directorate of Economics and Statistics, Gandhinagar, Gujarat., Aug 2017.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title">Shrinking government schools, Small schools and Implications on access, equity and efficiency in Karnataka</div><div class="pub-item__meta">July 2017 (ICTS, Akshara Foundation, RV Teachers College).</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2017</span><div><div class="pub-item__title">Data in India Challenges and Opportunities in Data Driven Modelling</div><div class="pub-item__meta">PES University, Bengaluru, June 2017.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2016</span><div><div class="pub-item__title">Policy process analysis</div><div class="pub-item__meta">NUEPA, New Delhi, Nov 2016.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2016</span><div><div class="pub-item__title">Journey towards Right to Education in India</div><div class="pub-item__meta">IIT Gandhinagar, July 2016.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2016</span><div><div class="pub-item__title">Human Development in Ahmedabad</div><div class="pub-item__meta">Gujarat Social Infrastructure Development Society, April 2016.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2015</span><div><div class="pub-item__title">Epidemiological and Public Health Data in India</div><div class="pub-item__meta">2015 NNMCB Math Bio National Meeting, Pune.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2015</span><div><div class="pub-item__title">Understanding the poor: socio-cultural context of Health and Sanitation</div><div class="pub-item__meta">IIT Gandhinagar, June 2015.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2015</span><div><div class="pub-item__title">Geographical Information and Health- spatial analysis and public health</div><div class="pub-item__meta">IIT Gandhinagar, June 2015.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2014</span><div><div class="pub-item__title">Host-Pathogen Interactions symposium</div><div class="pub-item__meta">Indian Academy of Sciences, Coorg, Dec 2014.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2009</span><div><div class="pub-item__title">Spatial Dimensions of Health Services Availability and Utilization in Rural India</div><div class="pub-item__meta">Intl Institute of Population Sciences, Mumbai.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2009</span><div><div class="pub-item__title">Spatial Correlates of Under-5 Mortality in rural India</div><div class="pub-item__meta">Penn State University.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2008</span><div><div class="pub-item__title">Demographic Dividend</div><div class="pub-item__meta">Penn State University.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2008</span><div><div class="pub-item__title">India: Progress towards Universal Elementary Education</div><div class="pub-item__meta">Association for India’s Development.</div></div></li>
+            <li class="pub-item"><span class="pub-item__year">2006</span><div><div class="pub-item__title">Policy Analysis: Right to Education (India) Bill-2005</div><div class="pub-item__meta">Penn State University.</div></div></li>
+        </ul>
+
       </div>
     </section>
 
@@ -1008,128 +646,232 @@
           the analytical tools needed to understand complex governance structures, from urban decentralization 
           to national education policy reforms.
         </p>
-        <div class="teaching__grid">
-          <div class="course-card fade-up">
-            <div class="course-card__level">FLAME · UG</div>
-            <div class="course-card__title">Education Policy</div>
-            <div class="course-card__desc">Exploring the history, governance, and reform processes in the Indian education system.</div>
-          </div>
-          <div class="course-card fade-up" style="transition-delay:.05s">
-            <div class="course-card__level">FLAME · UG</div>
-            <div class="course-card__title">Introduction to Demography</div>
-            <div class="course-card__desc">Studying population dynamics, migration, and their implications for public policy.</div>
-          </div>
-          <div class="course-card fade-up" style="transition-delay:.10s">
-            <div class="course-card__level">FLAME · UG</div>
-            <div class="course-card__title">Urban Governance</div>
-            <div class="course-card__desc">Analyzing the challenges of urbanization and the administrative structures of Indian cities.</div>
-          </div>
-          <div class="course-card fade-up" style="transition-delay:.15s">
-            <div class="course-card__level">FLAME · UG</div>
-            <div class="course-card__title">Statistical Data Analysis</div>
-            <div class="course-card__desc">Foundational methods for quantitative analysis in the social sciences.</div>
-          </div>
-          <div class="course-card fade-up" style="transition-delay:.20s">
-            <div class="course-card__level">IITGN · PG</div>
-            <div class="course-card__title">Computational Physics</div>
-            <div class="course-card__desc">Numerical methods and simulations applied to physical systems and complex networks.</div>
-          </div>
-          <div class="course-card fade-up" style="transition-delay:.25s">
-            <div class="course-card__level">IITGN · PG</div>
-            <div class="course-card__title">Quantum Mechanics</div>
-            <div class="course-card__desc">Advanced theoretical physics covering the foundations and applications of quantum theory.</div>
-          </div>
+
+        <h3 class="practice__sub-title fade-up" style="color: var(--gold); margin-bottom: var(--s4); margin-top: var(--s6);">At FLAME University</h3>
+        <div class="teaching__grid fade-up" style="margin-bottom: var(--s8);">
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 309: Education Policy</div><div class="course-card__desc">Spring 2019-2023, 2026</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 233: Introduction to Demography</div><div class="course-card__desc">Spring 2022-2026</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 315: Policy Evaluation and Impact Assessment</div><div class="course-card__desc">Fall 2025</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">SOCY 303: Education and Society</div><div class="course-card__desc">Spring 2025</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">STAT 221: Fundamentals of Statistical Data Analysis</div><div class="course-card__desc">Fall 2022-2025</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 313: Urban Governance and Development</div><div class="course-card__desc">Fall 2022, Fall 2023</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 381: Quantitative Research Methods</div><div class="course-card__desc">Spring 2020, 2021</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 385: Policy Analysis Project</div><div class="course-card__desc">Spring 2021</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 306: Rural and Urban Development Policy</div><div class="course-card__desc">Fall 2019, 2020</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 313: Demography</div><div class="course-card__desc">Fall 2019, 2020</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 204: Policy Formulation, Implementation, and Evaluation</div><div class="course-card__desc">Spring 2019</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PUBP 308: Global Economy and Public Policy</div><div class="course-card__desc">Spring 2019</div></div>
+        </div>
+
+        <h3 class="practice__sub-title fade-up" style="color: var(--gold); margin-bottom: var(--s4);">At IIT Gandhinagar</h3>
+        <div class="teaching__grid fade-up" style="margin-bottom: var(--s8);">
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">HS 511: Education in Modern India</div><div class="course-card__desc">Fall 2018, 2017, 2016</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PH 509: Computational Physics</div><div class="course-card__desc">Fall 2017</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">HS 322: Introduction to Demography</div><div class="course-card__desc">Spring 2017, 2015, 2013</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PH 101: Electricity and Magnetism</div><div class="course-card__desc">Spring 2018, 2013</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PH 605: Topics in Classical Mechanics and Electrodynamics</div><div class="course-card__desc">Fall 2016</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PH 507: Statistical Mechanics</div><div class="course-card__desc">Spring 2015, Spring 2016</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PH 503: Quantum Mechanics- I</div><div class="course-card__desc">Fall 2014, Fall 2015</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">ES 404: Networks and Complex Systems</div><div class="course-card__desc">Spring 2014</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">ES 102: Introduction to Computing with Python</div><div class="course-card__desc">Fall 2013</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">MA 202: Numerical Analysis</div><div class="course-card__desc">Fall 2012</div></div>
+        </div>
+
+        <h3 class="practice__sub-title fade-up" style="color: var(--gold); margin-bottom: var(--s4);">Other Instructional Activity</h3>
+        <div class="teaching__grid fade-up">
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">Policy Boot Camp</div><div class="course-card__desc">FLAME University, July 2023</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">Evidence based research in public policy - seminar</div><div class="course-card__desc">August 2017</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">SC 187 - IITGN-JPAL short course on Human Development</div><div class="course-card__desc">March 2017</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">IN 792 - School Consolidation: Comparative Analysis</div><div class="course-card__desc">Spring 2017</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">HS 599 - Statistical methods for public health</div><div class="course-card__desc">Fall 2015</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">IN 791 - Evolutionary Dynamics</div><div class="course-card__desc">Fall 2015</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">PH 599 - Introduction to Nonlinear Dynamics</div><div class="course-card__desc">Spring 2015</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">IN 791 - Statistical Physics of Social Systems</div><div class="course-card__desc">Spring 2015</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">IN 791 - Modeling Epidemic Processes</div><div class="course-card__desc">Fall 2014</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">DES 301 - Disruptive design for Indian Health care</div><div class="course-card__desc">March 2014</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">Workshop on Introduction to R</div><div class="course-card__desc">July 2013</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">Public Health in India - lectures</div><div class="course-card__desc">July 2013</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">Short Course - Simulating Life, Agent based models</div><div class="course-card__desc">July 2013</div></div>
+            <div class="course-card"><div class="course-card__title" style="font-size: var(--text-lg); margin-bottom: var(--s1);">IN 792 - Pattern formation in Nature / Dynamics of Social Group formation</div><div class="course-card__desc"></div></div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════ BACKGROUND ═══════════════════════ -->
-    <section class="background section-pad" id="background" aria-labelledby="bg-heading">
+    <section class="background section-pad-sm" id="background" aria-labelledby="bg-heading">
       <div class="container">
         <div class="section-label">Background</div>
         <h2 class="fade-up" id="bg-heading" style="font-family:var(--font-serif);font-size:var(--text-4xl);font-weight:300;margin-bottom:var(--s8);">Career &amp; Education</h2>
         <div class="background__inner">
-          <div class="timeline fade-up">
-            <h3 class="timeline__heading">Professional Experience</h3>
-            <div class="timeline__line" aria-hidden="true"></div>
-            <div class="timeline__item">
-              <div class="timeline__dot" aria-hidden="true"></div>
-              <div>
-                <div class="timeline__period">2019–Present</div>
+          <!-- WRAPPER TO ISOLATE NODE FROM GRID -->
+          <div class="timeline-column" style="position: relative; width: 100%;">
+            <div class="timeline__moving-node" id="moving-node">
+              <div class="node-glow"></div>
+            </div>
+
+            <div class="timeline exp-timeline">
+              <h3 class="timeline__heading">Professional Experience</h3>
+              <div class="timeline__line" aria-hidden="true"></div>
+              
+              <div class="timeline__item" data-icon="graduation-cap">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div>
+                  <div class="timeline__period">Jan 2019–Present</div>
                 <div class="timeline__role">Associate Professor, Public Policy</div>
                 <div class="timeline__org">FLAME University, Pune</div>
+                <div class="timeline__desc">Leading research in public policy, demography, and education. Teaching across multiple departments and mentoring students in interdisciplinary studies.</div>
               </div>
             </div>
-            <div class="timeline__item">
+            <div class="timeline__item" data-icon="users">
               <div class="timeline__dot" aria-hidden="true"></div>
               <div>
-                <div class="timeline__period">2025–Present</div>
+                <div class="timeline__period">Aug 2025–Present</div>
                 <div class="timeline__role">Chair, Center for Legislative Education and Research</div>
                 <div class="timeline__org">FLAME University, Pune</div>
+                <div class="timeline__desc">Orchestrating legislative studies and civic education programs. Designing curriculum for public policy professionals.</div>
               </div>
             </div>
-            <div class="timeline__item">
+            <div class="timeline__item" data-icon="search">
               <div class="timeline__dot" aria-hidden="true"></div>
               <div>
-                <div class="timeline__period">2012–2018</div>
-                <div class="timeline__role">Assistant Professor (Physics &amp; Social Science)</div>
-                <div class="timeline__org">IIT Gandhinagar, Gujarat</div>
+                <div class="timeline__period">May 2024–Dec 2024</div>
+                <div class="timeline__role">Head, Research vertical</div>
+                <div class="timeline__org">Leadership for Equity, Pune</div>
+                <div class="timeline__desc">Managing large-scale educational research initiatives and policy evaluations. Coordinating with government stakeholders for data-driven reforms.</div>
               </div>
             </div>
-            <div class="timeline__item">
+            <div class="timeline__item" data-icon="users">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__period">Aug 2023–May 2024</div>
+                <div class="timeline__role">Head, Department of Social Science</div>
+                <div class="timeline__org">FLAME University, Pune</div>
+                <div class="timeline__desc">Overseeing departmental growth, curriculum development, and faculty coordination. Focusing on interdisciplinary social science research.</div>
+              </div>
+            </div>
+            <div class="timeline__item" data-icon="graduation-cap">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__period">2012–Dec 2018</div>
+                <div class="timeline__role">Assistant Professor (Physics, jointly with Social Science)</div>
+                <div class="timeline__org">IIT Gandhinagar, Gujarat</div>
+                <div class="timeline__desc">Conducting interdisciplinary research bridging Physics and Social Sciences. Developed new courses in Computational Physics and Demography.</div>
+              </div>
+            </div>
+            <div class="timeline__item" data-icon="atom">
               <div class="timeline__dot" aria-hidden="true"></div>
               <div>
                 <div class="timeline__period">2010–2012</div>
                 <div class="timeline__role">Postdoctoral Research Associate</div>
                 <div class="timeline__org">Virginia Tech, VA, USA</div>
+                <div class="timeline__desc">Specializing in computational models and social systems. Research focused on epidemic spreading and network dynamics.</div>
               </div>
             </div>
-            <div class="timeline__item">
+            <div class="timeline__item" data-icon="book-open">
               <div class="timeline__dot" aria-hidden="true"></div>
               <div>
                 <div class="timeline__period">2005–2009</div>
                 <div class="timeline__role">Teaching Assistant</div>
                 <div class="timeline__org">The Pennsylvania State University, PA</div>
+                <div class="timeline__desc">Assisting in undergraduate physics courses and labs. Mentoring students in foundational physics and problem-solving.</div>
+              </div>
+            </div>
+            <div class="timeline__item" data-icon="book-open">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__period">2003–2005</div>
+                <div class="timeline__role">Teaching Assistant</div>
+                <div class="timeline__org">Texas A&M University, TX</div>
+                <div class="timeline__desc">Supporting laboratory sessions and grading for various physics modules.</div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="fade-up" style="transition-delay:.15s">
+        <div class="background__details" style="margin-top: var(--s4);">
+          <div class="fade-up">
             <h3 class="education__heading">Education</h3>
             <div class="edu-cards">
               <div class="edu-card">
                 <div class="edu-card__degree">Ph.D. in Physics</div>
                 <div class="edu-card__inst">The Pennsylvania State University, USA</div>
                 <div class="edu-card__year">2010 · Minor in Demography (2007-2010)</div>
+                <div class="edu-card__desc">Thesis focused on complex networks and epidemic spreading. The minor in Demography provided critical population-modeling tools.</div>
               </div>
               <div class="edu-card">
                 <div class="edu-card__degree">M.S. in Physics</div>
                 <div class="edu-card__inst">Texas A&amp;M University, TX, USA</div>
                 <div class="edu-card__year">2005</div>
+                <div class="edu-card__desc">Advanced coursework in Statistical Mechanics and Quantum Field Theory.</div>
               </div>
               <div class="edu-card">
                 <div class="edu-card__degree">B.E. in Electronics &amp; Communications</div>
                 <div class="edu-card__inst">M S Ramaiah Institute of Technology, Bangalore</div>
                 <div class="edu-card__year">2003</div>
+                <div class="edu-card__desc">Undergraduate focus on digital signal processing and communication systems.</div>
               </div>
             </div>
 
-            <div style="margin-top:var(--s6)">
-              <div class="section-label">Grants &amp; Projects</div>
-              <ul style="margin-top:var(--s2)">
-                <li style="padding:.5rem 0;border-bottom:1px solid var(--border);font-size:var(--text-sm);color:var(--slate)">
-                  <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--gold);margin-right:.75rem">DST Grant</span>
-                  Modeling vector-borne disease spread (PI: Rs. 9,00,000)
-                </li>
-                <li style="padding:.5rem 0;border-bottom:1px solid var(--border);font-size:var(--text-sm);color:var(--slate)">
-                  <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--gold);margin-right:.75rem">ICSSR Grant</span>
-                  Geospatial Analysis of Older Adults' Health (Co-PI: Rs. 16.28 lacs)
-                </li>
-                <li style="padding:.5rem 0;font-size:var(--text-sm);color:var(--slate)">
-                  <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--gold);margin-right:.75rem">IITGN Seed</span>
-                  Modeling Dengue epidemic in urban areas (PI: Rs. 12,00,000)
-                </li>
-              </ul>
+            <div style="margin-top:var(--s10)">
+              <div class="section-label">Foundational Research Experience</div>
+              <div class="research-grid">
+                <div class="foundation-card fade-up">
+                  <div class="research-card__meta">2009 · Mumbai, India</div>
+                  <div class="research-card__role">Spatial Analysis of Health Systems</div>
+                  <div class="research-card__inst">Internship at International Institute of Population Sciences (IIPS)</div>
+                  <div class="research-card__desc">Investigated spatial correlates of maternal and child health using DLHS-3 data; applied spatial autocorrelation and regression using GeoDa, Arc GIS, and STATA.</div>
+                </div>
+
+                <div class="foundation-card fade-up">
+                  <div class="research-card__meta">2009 · Penn State University, PA</div>
+                  <div class="research-card__role">Spatial Analysis of Under-5 Mortality</div>
+                  <div class="research-card__inst">The Pennsylvania State University</div>
+                  <div class="research-card__desc">Explored spatial dimensions of child mortality based on DLHS-2 and Census data; studied socio-economic correlates using LM-Error and LM-Lag models in GeoDa.</div>
+                </div>
+
+                <div class="foundation-card fade-up">
+                  <div class="research-card__meta">2006 · Penn State University, PA</div>
+                  <div class="research-card__role">Education Policy: Right to Education (RTE)</div>
+                  <div class="research-card__inst">The Pennsylvania State University</div>
+                  <div class="research-card__desc">Conducted extensive policy analysis of the RTE (Draft) Bill-2005; formulated recommendations that were forwarded to the Government of India.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ RESEARCH GRANTS ═══════════════════════ -->
+    <section class="grants section-pad-sm" id="grants" style="background: var(--cream); border-top: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-label">Research Grants</div>
+        <div class="grants-grid">
+          <div class="grant-card fade-up">
+            <span class="grant-card__source">DST- Fast Track Grant</span>
+            <h4 class="grant-card__title">Modeling spread of vector borne diseases in urban areas from a spatial interacting networks perspective</h4>
+            <div class="grant-card__value">
+              <span class="grant-card__amount">Rs. 9,00,000</span>
+              <span class="grant-card__role">Principal Investigator (PI)</span>
+            </div>
+          </div>
+
+          <div class="grant-card fade-up" style="transition-delay: 0.1s;">
+            <span class="grant-card__source">Indian Council of Social Science Research</span>
+            <h4 class="grant-card__title">How Are Context And Health Of Older Adults Related? Incorporation of Geospatial Analysis into Sociology of Aging</h4>
+            <div class="grant-card__value">
+              <span class="grant-card__amount">Rs 16.28 Lacs</span>
+              <span class="grant-card__role">Co-PI</span>
+            </div>
+          </div>
+
+          <div class="grant-card fade-up" style="transition-delay: 0.2s;">
+            <span class="grant-card__source">Seed grant – IITGN</span>
+            <h4 class="grant-card__title">Modeling spread of Dengue epidemic in urban areas from a spatial interacting networks perspective</h4>
+            <div class="grant-card__value">
+              <span class="grant-card__amount">Rs 12,00,000</span>
+              <span class="grant-card__role">PI</span>
             </div>
           </div>
         </div>
@@ -1137,30 +879,94 @@
     </section>
 
     <!-- ═══════════════════════ OUTREACH ═══════════════════════ -->
-    <section class="section-pad" id="outreach" style="background: var(--navy); color: var(--parchment)">
+    <section class="section-pad" id="outreach" style="background: var(--parchment); color: var(--ink); border-top: 1px solid var(--border);">
       <div class="container">
-        <div class="section-label" style="color: var(--gold)">Outreach</div>
-        <h2 class="fade-up" style="font-family:var(--font-serif);font-size:var(--text-4xl);font-weight:300;margin-bottom:var(--s8);">Education Outreach &amp; Service</h2>
-        <div class="publications__grid">
-          <div class="book-card fade-up outreach-card">
-            <div class="book-card__body">
-              <div class="book-card__publisher">Science Communication</div>
-              <div class="book-card__desc">Member of Rashtriya Avishkar Abhiyan (RAA) and mentor for Science and Math programs in rural schools.</div>
+        <div class="section-label">Service &amp; Experience</div>
+        <h2 class="fade-up" style="font-family:var(--font-serif);font-size:var(--text-4xl);font-weight:300;margin-bottom:var(--s8);">Outreach &amp; Initiatives</h2>
+        
+        <div class="background__inner">
+          <!-- EDUCATION OUTREACH -->
+          <div class="timeline outreach-timeline">
+            <h3 class="timeline__heading">Education Outreach</h3>
+            <div class="timeline__line" aria-hidden="true"></div>
+            
+            <div class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__role">Rashtriya Avishkar Abhiyan</div>
+                <div class="timeline__org">Ministry of Human Resource Development, GoI</div>
+                <div class="timeline__desc">Nodal Officer for IIT Gandhinagar. Conducted Science Day, coordinated with KV and Navodaya schools, and judged KV school science projects. Conducted a 'Science from Toys' workshop.</div>
+              </div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__role">PAHELI Survey</div>
+                <div class="timeline__desc">Conducted Peoples Health, Education and Livelihood Survey in Palaj and Basan villages (March-April 2015).</div>
+              </div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__role">Village school teaching</div>
+                <div class="timeline__desc">Coordinated teaching activities in Palaj and Basan Villages by IITGN Students as part of Unnat Bharat Abhiyan (Feb-April 2015).</div>
+              </div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__role">Symposium Judge</div>
+                <div class="timeline__org">Penn State & Pennsylvania Junior Science</div>
+                <div class="timeline__desc">Graduate Poster Exhibition (Penn State 2009, 2010); Pennsylvania Junior Science & Humanities Symposium (2008).</div>
+              </div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__role">Volunteer</div>
+                <div class="timeline__org">Bangalore Association for Science Education</div>
+                <div class="timeline__desc">Science in Action (1997-1999).</div>
+              </div>
             </div>
           </div>
-          <div class="book-card fade-up outreach-card" style="transition-delay:.1s">
-            <div class="book-card__body">
-              <div class="book-card__publisher">Election Studies</div>
-              <div class="book-card__desc">Coordinator for Election Studies and Voter Awareness programs at FLAME University and IIT Gandhinagar.</div>
+
+          <!-- GRASS-ROOT INITIATIVES -->
+          <div class="timeline outreach-timeline">
+            <h3 class="timeline__heading">Grass-root Initiatives</h3>
+            <div class="timeline__line" aria-hidden="true"></div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__role">Petition drive for absentee Voting</div>
+                <div class="timeline__desc">Created an online group called voterswithoutborders and initiated the petition drive to allow Non resident Indians and People on the move in Indian Elections (2008-2009).</div>
+              </div>
             </div>
-          </div>
-          <div class="book-card fade-up outreach-card" style="transition-delay:.2s">
-            <div class="book-card__body">
-              <div class="book-card__publisher">Community Service</div>
-              <div class="book-card__desc">Volunteered for Ekal Vidyalaya, Asha for Education, and various educational NGOs in India and USA.</div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__role">Association for India’s Development (AID)</div>
+                <div class="timeline__org">Secretary and Project Coordinator</div>
+                <div class="timeline__desc">Penn State & Texas A&M (2003-2008). Involved in Sikshana, Eureka Quality Improvement Program (EQUIP) in Tsunami affected districts, and RTI Campaign.</div>
+              </div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div>
+                <div class="timeline__role">Asha for education</div>
+                <div class="timeline__org">Right To Education (RTE) Cell</div>
+                <div class="timeline__desc">Evaluated the RTE Bill for amendments, coordinated campaign efforts in 2006.</div>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -1180,13 +986,16 @@
             <div class="contact__detail">
               <div>
                 <div class="contact__detail-label">Location</div>
-                <div class="contact__detail-val">APJ 306, FLAME University<br>Pune-412115, MH, India</div>
+                <div class="contact__detail-val">APJ 306, FLAME University<br>Gat No. 1270, Lavale, Off. Pune Bangalore Highway, Lavale<br>Pune-412115, MH, India</div>
               </div>
             </div>
             <div class="contact__detail">
               <div>
-                <div class="contact__detail-label">Email</div>
-                <div class="contact__detail-val"><a href="mailto:shivakumar.jolad@flame.edu.in">shivakumar.jolad@flame.edu.in</a></div>
+                <div class="contact__detail-label">Contact</div>
+                <div class="contact__detail-val">
+                  Ph: <a href="tel:+919712936004">+91-9712936004</a><br>
+                  E-mail: <a href="mailto:shivakumar.jolad@flame.edu.in">shivakumar.jolad@flame.edu.in</a>
+                </div>
               </div>
             </div>
             <div class="contact__social">
@@ -1231,11 +1040,12 @@
 
   <footer>
     <div class="footer__inner">
-      <a href="#" class="footer__logo">Dr. <span>Shivakumar Jolad</span></a>
+      <a href="#" class="footer__logo"><span>Shivakumar Jolad</span></a>
       <nav aria-label="Footer navigation">
         <ul class="footer__links" role="list">
           <li><a href="#about" class="footer__link">About</a></li>
           <li><a href="#research" class="footer__link">Research</a></li>
+          <li><a href="#grants" class="footer__link">Grants</a></li>
           <li><a href="#publications" class="footer__link">Publications</a></li>
           <li><a href="#state-story" class="footer__link">India State Story</a></li>
           <li><a href="#media" class="footer__link">Media</a></li>
@@ -1244,118 +1054,10 @@
           <li><a href="#contact" class="footer__link">Contact</a></li>
         </ul>
       </nav>
-      <p class="footer__copy">© <span id="footerYear"></span> Dr. Shivakumar Jolad. All rights reserved.</p>
+      <p class="footer__copy">© <span id="footerYear"></span> Shivakumar Jolad. All rights reserved.</p>
     </div>
   </footer>
 
-  <script>
-    // NAV: scroll state + active link
-    const nav = document.getElementById('nav');
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-      const sections = document.querySelectorAll('section[id]');
-      let current = '';
-      sections.forEach(s => { if (s.getBoundingClientRect().top <= 120) current = s.id; });
-      navLinks.querySelectorAll('.nav__link').forEach(l => {
-        l.classList.toggle('active', l.getAttribute('href') === `#${current}`);
-      });
-    }, { passive: true });
-
-    // NAV: mobile toggle
-    navToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
-        navLinks.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-    });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }));
-
-    // SMOOTH SCROLL with nav offset
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
-      });
-    });
-
-    // PAPER ACCORDION
-    document.querySelectorAll('.paper-row').forEach(row => {
-      const head = row.querySelector('.paper-row__head');
-      const body = row.querySelector('.paper-row__body');
-      function toggle() {
-        const wasOpen = row.classList.contains('expanded');
-        document.querySelectorAll('.paper-row').forEach(r => {
-          r.classList.remove('expanded');
-          r.querySelector('.paper-row__head').setAttribute('aria-expanded', 'false');
-          r.querySelector('.paper-row__body').style.maxHeight = '0';
-        });
-        if (!wasOpen) {
-          row.classList.add('expanded');
-          head.setAttribute('aria-expanded', 'true');
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }
-      }
-      head.addEventListener('click', e => { if (!e.target.closest('a')) toggle(); });
-      head.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
-    });
-
-    // RESEARCH FILTER
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const field = btn.dataset.field;
-        document.querySelectorAll('.research-card').forEach(card => {
-          card.style.display = (field === 'all' || (card.dataset.fields || '').split(' ').includes(field)) ? '' : 'none';
-        });
-        document.querySelectorAll('.paper-row').forEach(row => {
-          const show = field === 'all' || !row.dataset.field || row.dataset.field === field;
-          row.classList.toggle('hidden', !show);
-          if (!show) { row.classList.remove('expanded'); row.querySelector('.paper-row__body').style.maxHeight = '0'; }
-        });
-      });
-    });
-
-
-
-    // FOOTER YEAR
-    document.getElementById('footerYear').textContent = new Date().getFullYear();
-
-    // CONTACT FORM
-    const form = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('formSubmit');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-      
-      // Simulate network request
-      setTimeout(() => {
-        submitBtn.textContent = 'Sent';
-        submitBtn.style.background = 'var(--slate)';
-        
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.background = '';
-          form.reset();
-        }, 3000);
-      }, 1000);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
