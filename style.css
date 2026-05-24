@@ -328,6 +328,36 @@ ul, ol { list-style: none; }
   opacity: 0;
 }
 
+.hero__socials {
+  display: flex;
+  gap: var(--s3);
+  justify-content: center;
+  margin-bottom: var(--s6);
+  opacity: 0;
+}
+
+.hero__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(245,238,227,0.05);
+  border: 1px solid rgba(245,238,227,0.1);
+  color: rgba(245,238,227,0.7);
+  transition: all var(--dur) ease;
+}
+
+.hero__social-link:hover {
+  background: rgba(184,132,26,0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(184,132,26,0.2);
+}
+
+
 .hero__stats {
   display: flex;
   align-items: center;
@@ -919,6 +949,42 @@ ul, ol { list-style: none; }
 .expect-list li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: var(--text-sm); line-height: 1.75; }
 .expect-list li::before { content: '◆'; position: absolute; left: 0; font-size: 0.4rem; color: var(--gold); top: 0.75rem; }
 
+/* OUTPUT LINK LIST — India State Story project outputs */
+.output-link-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.output-link-item a {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: 0.55rem 0.75rem;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  color: var(--on-dark-dim);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+.output-link-item a:hover {
+  background: rgba(184,132,26,0.07);
+  border-left-color: var(--gold);
+  color: var(--parchment);
+  padding-left: 1rem;
+}
+.output-link-item__icon { font-size: 0.95rem; flex-shrink: 0; width: 1.4rem; text-align: center; opacity: 0.75; }
+.output-link-item__text { flex: 1; }
+.output-link-item__text strong { color: var(--parchment); font-weight: 600; }
+.output-link-item__text span { color: var(--on-dark-dim); font-size: 0.8rem; display: block; margin-top: 1px; }
+.output-link-item__arrow {
+  font-size: 0.75rem;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+.output-link-item a:hover .output-link-item__arrow { opacity: 1; transform: translateX(0); }
+
+
 .text-list { color: var(--slate); }
 .text-list li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: var(--text-sm); line-height: 1.75; }
 .text-list li::before { content: '◆'; position: absolute; left: 0; font-size: 0.4rem; color: var(--gold); top: 0.75rem; }
@@ -1487,4 +1553,19 @@ footer { background: var(--lapis); padding: var(--s6) var(--gutter); border-top:
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
+}
+
+/* BOOK IMAGES */
+.book-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.book-image:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
 }

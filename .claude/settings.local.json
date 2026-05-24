@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(agent-browser close *)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\aarja\\\\OneDrive\\\\Desktop\\\\Shivakumar Jolad 3\\\\\" | Where-Object { $_.Extension -eq \".mp4\" } | ForEach-Object { $_.Name })"
+    ]
+  }
+}

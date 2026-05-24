@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.set('.hero__desc',        { opacity: 0, y: 20 });
   gsap.set('.hero__pillars',     { opacity: 0, y: 20 });
   gsap.set('.hero__credentials', { opacity: 0 });
+  gsap.set('.hero__socials',     { opacity: 0, y: 15 });
   gsap.set('.hero__stats',       { opacity: 0, y: 20 });
   gsap.set('.hero__stat-num',    { opacity: 0, y: 15 });
 
@@ -148,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .to('.hero__desc',        { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 3.5)
     .to('.hero__pillars',     { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 4.1)
     .to('.hero__credentials', { opacity: 1, duration: 0.7, ease: 'power2.out' }, 4.7)
+    .to('.hero__socials',     { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 4.9)
     .to('.hero__stats',       { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 5.1)
     .to('.hero__stat-num',    { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.15 }, 5.4);
 
