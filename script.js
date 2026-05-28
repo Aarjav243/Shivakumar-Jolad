@@ -261,137 +261,136 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: "none",
       scrollTrigger: {
         trigger: reportsList,
-        start: "top 80%",
+        start: "top 75%",
         end: "bottom 85%",
         scrub: true
       }
     });
 
+    // Set initial states for all items up-front
     items.forEach((item) => {
       const year = item.querySelector(".pub-item__year");
       const content = item.querySelector("div:not(.pub-node)");
-      const title = item.querySelector(".pub-item__title");
       const node = item.querySelector(".pub-node");
-      
-      gsap.set(year, { x: -40, opacity: 0 }); // Slide from left
-      gsap.set(content, { x: 40, opacity: 0 }); // Slide from right
+      gsap.set(year, { x: -40, opacity: 0 });
+      gsap.set(content, { x: 40, opacity: 0 });
+      gsap.set(node, { scale: 0, opacity: 0 });
+      gsap.set(item, { opacity: 0 });
+    });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: "top 85%",
-          toggleActions: "play none none reverse"
-        }
+    // One shared trigger fires all items together with stagger
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: reportsList,
+        start: "top 75%",
+        toggleActions: "play none none none"
+      }
+    }).add(() => {
+      items.forEach((item, i) => {
+        const year = item.querySelector(".pub-item__year");
+        const content = item.querySelector("div:not(.pub-node)");
+        const title = item.querySelector(".pub-item__title");
+        const node = item.querySelector(".pub-node");
+        const delay = i * 0.07;
+
+        gsap.timeline({ delay })
+          .to(item, { opacity: 1, duration: 0.1 }, "start")
+          .to(node, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, "start")
+          .add(() => node.classList.add("glow"), "-=0.1")
+          .to(year, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, "-=0.1")
+          .to(content, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, "-=0.4")
+          .to(title, { color: "#B8841A", textShadow: "0 0 15px rgba(184,132,26,0.6)", duration: 0.2 }, "-=0.2")
+          .to(title, { color: "var(--ink)", textShadow: "0 0 0px rgba(184,132,26,0)", duration: 0.3 }, "+=0.1")
+          .add(() => node.classList.remove("glow"), "-=0.2");
       });
-
-      tl.to(item, { opacity: 1, duration: 0.1 }, "start")
-        .to(node, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, "start")
-        .add(() => node.classList.add("glow"), "-=0.2")
-        .to(year, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }, "-=0.2") // Synchronized slide
-        .to(content, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }, "-=0.8")
-        .to(title, { 
-          color: "#B8841A", 
-          textShadow: "0 0 15px rgba(184,132,26,0.6)",
-          duration: 0.4 
-        }, "-=0.6")
-        .to(title, { 
-          color: "var(--ink)", 
-          textShadow: "0 0 0px rgba(184,132,26,0)",
-          duration: 0.6 
-        }, "+=0.2")
-        .add(() => node.classList.remove("glow"), "-=0.4");
     });
   }
 
   // 4. ARCHIVAL LEDGER (JOURNAL PAPERS)
-  gsap.utils.toArray(".journal-list .pub-item").forEach((item) => {
-    // Create and inject the scanner line
+  const journalItems = gsap.utils.toArray(".journal-list .pub-item");
+  // Set initial states for all items
+  journalItems.forEach((item) => {
     const scanner = document.createElement("div");
     scanner.className = "scanner-line";
     item.appendChild(scanner);
-    
-    const content = item.querySelector("div"); 
+    gsap.set(item, { opacity: 0, x: -10, filter: "blur(4px)" });
     const year = item.querySelector(".pub-item__year");
-    
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: item,
-        start: "top 90%",
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    tl.to(item, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.8 })
-      .to(scanner, { opacity: 1, duration: 0.2 }, "scan")
-      .to(scanner, { 
-        left: "100%", 
-        duration: 1.4, 
-        ease: "power3.inOut" 
-      }, "scan")
-      .to(content, { 
-        clipPath: "inset(0 0% 0 0)", 
-        duration: 1.4, 
-        ease: "power3.inOut" 
-      }, "scan")
-      .to(year, { 
-        opacity: 1, 
-        x: 0, 
-        duration: 0.8, 
-        ease: "back.out(1.4)" 
-      }, "scan+=0.1")
-      .add(() => item.classList.add("revealed"), "scan+=0.4")
-      .to(scanner, { opacity: 0, duration: 0.4 }, "scan+=1.0");
+    const content = item.querySelector("div");
+    if (year) gsap.set(year, { opacity: 0, x: -10 });
+    if (content) gsap.set(content, { clipPath: "inset(0 100% 0 0)" });
   });
 
+  // One shared trigger fires all items together
+  const journalList = document.querySelector(".journal-list");
+  if (journalList) {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: journalList,
+        start: "top 75%",
+        toggleActions: "play none none none"
+      }
+    }).add(() => {
+      journalItems.forEach((item, i) => {
+        const scanner = item.querySelector(".scanner-line");
+        const content = item.querySelector("div");
+        const year = item.querySelector(".pub-item__year");
+        const delay = i * 0.07;
+
+        gsap.timeline({ delay })
+          .to(item, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.3 })
+          .to(scanner, { opacity: 1, duration: 0.1 }, "scan")
+          .to(scanner, { left: "100%", duration: 0.5, ease: "power3.inOut" }, "scan")
+          .to(content, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power3.inOut" }, "scan")
+          .to(year, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.4)" }, "scan+=0.05")
+          .add(() => item.classList.add("revealed"), "scan+=0.2")
+          .to(scanner, { opacity: 0, duration: 0.2 }, "scan+=0.4");
+      });
+    });
+  }
+
   // 5. MEDALLION IMPACT (AWARDS)
-  gsap.utils.toArray(".awards-list .pub-item").forEach((item) => {
-    // Create medallion and ripple elements
+  const awardsItems = gsap.utils.toArray(".awards-list .pub-item");
+  // Create elements and set initial states for all awards up-front
+  awardsItems.forEach((item) => {
     const medallion = document.createElement("div");
     medallion.className = "medallion";
     item.appendChild(medallion);
-    
     const ripple = document.createElement("div");
     ripple.className = "impact-ripple";
     item.appendChild(ripple);
-    
     const content = item.querySelector("div");
     const year = item.querySelector(".pub-item__year");
-    
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: item,
-        start: "top 92%",
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    // Reset initial states for these specific items
+    gsap.set(item, { opacity: 0 });
     gsap.set(content, { opacity: 0, x: 20 });
     gsap.set(year, { opacity: 0, x: -20 });
-
-    tl.to(item, { opacity: 1, duration: 0.1 })
-      .fromTo(medallion, 
-        { y: -120, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: "bounce.out" }
-      )
-      .fromTo(ripple,
-        { scale: 1, opacity: 1 },
-        { scale: 5, opacity: 0, duration: 1, ease: "power2.out" },
-        "-=0.3"
-      )
-      .to(year, { 
-        opacity: 1, 
-        x: 0, 
-        duration: 0.5, 
-        ease: "back.out(1.7)" 
-      }, "-=0.8")
-      .to(content, { 
-        opacity: 1, 
-        x: 0, 
-        duration: 0.6, 
-        ease: "power2.out" 
-      }, "-=0.6");
   });
+
+  // One shared trigger fires all awards together
+  const awardsList = document.querySelector(".awards-list");
+  if (awardsList) {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: awardsList,
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    }).add(() => {
+      awardsItems.forEach((item, i) => {
+        const medallion = item.querySelector(".medallion");
+        const ripple = item.querySelector(".impact-ripple");
+        const content = item.querySelector("div");
+        const year = item.querySelector(".pub-item__year");
+        const delay = i * 0.08;
+
+        gsap.timeline({ delay })
+          .to(item, { opacity: 1, duration: 0.1 })
+          .fromTo(medallion, { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "bounce.out" })
+          .fromTo(ripple, { scale: 1, opacity: 1 }, { scale: 5, opacity: 0, duration: 0.4, ease: "power2.out" }, "-=0.2")
+          .to(year, { opacity: 1, x: 0, duration: 0.25, ease: "back.out(1.7)" }, "-=0.35")
+          .to(content, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, "-=0.3");
+      });
+    });
+  }
 
   // 6. FEATURED PROJECT: COUNTER-FLOW REVEAL
   const stateStory = document.querySelector("#state-story");
@@ -435,42 +434,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 7. NEWS TICKER (MEDIA ARTICLES)
-  gsap.utils.toArray(".media-list .pub-item").forEach((item) => {
+  const mediaItems = gsap.utils.toArray(".media-list .pub-item");
+  // Store text content and set initial states for all media items up-front
+  const mediaData = mediaItems.map((item) => {
     const year = item.querySelector(".pub-item__year");
     const title = item.querySelector(".pub-item__title");
     const meta = item.querySelector(".pub-item__meta");
-
-    // Animate text inside <a> if present, so the link tag is preserved
     const textTarget = title.querySelector('a') || title;
     const originalText = textTarget.textContent;
     title.style.minHeight = title.offsetHeight + "px";
     textTarget.textContent = "";
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: item,
-        start: "top 90%",
-        toggleActions: "play reset play reset"
-      }
-    });
-
     gsap.set(item, { opacity: 0, x: -10 });
     gsap.set(year, { opacity: 0, x: -10 });
     gsap.set(meta, { opacity: 0 });
-
-    tl.to(item, { opacity: 1, x: 0, duration: 0.1 })
-      .to(year, { opacity: 1, x: 0, duration: 0.4 }, "start")
-      .to(textTarget, {
-        text: { value: originalText },
-        duration: Math.min(originalText.length * 0.02, 1.5),
-        ease: "none",
-        onStart: () => item.classList.add("typing"),
-        onComplete: () => {
-          gsap.delayedCall(0.8, () => item.classList.remove("typing"));
-        }
-      }, "start+=0.2")
-      .to(meta, { opacity: 1, duration: 0.5 }, ">-0.2");
+    return { item, year, meta, textTarget, originalText };
   });
+
+  // One shared trigger fires all media items together
+  const mediaList = document.querySelector(".media-list");
+  if (mediaList) {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: mediaList,
+        start: "top 75%",
+        toggleActions: "play none none none"
+      }
+    }).add(() => {
+      mediaData.forEach(({ item, year, meta, textTarget, originalText }, i) => {
+        const delay = i * 0.06;
+        // Faster type speed: 3x (0.007s per char instead of 0.02)
+        const typeDuration = Math.min(originalText.length * 0.007, 0.5);
+
+        gsap.timeline({ delay })
+          .to(item, { opacity: 1, x: 0, duration: 0.1 })
+          .to(year, { opacity: 1, x: 0, duration: 0.25 }, "start")
+          .to(textTarget, {
+            text: { value: originalText },
+            duration: typeDuration,
+            ease: "none",
+            onStart: () => item.classList.add("typing"),
+            onComplete: () => { gsap.delayedCall(0.4, () => item.classList.remove("typing")); }
+          }, "start+=0.1")
+          .to(meta, { opacity: 1, duration: 0.25 }, ">-0.1");
+      });
+    });
+  }
 
   // 8. COURSES & PEDAGOGY: LIQUID EDGE & NODE ANIMATION
   gsap.utils.toArray(".course-card").forEach((card) => {
@@ -530,64 +538,74 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Set initial states for all items up-front
     items.forEach((item) => {
       const year = item.querySelector(".pub-item__year");
       const content = item.querySelector("div:not(.pub-node)");
       const node = item.querySelector(".pub-node");
-      
-      // Set initial states: year dropped from top (thrown), content slides in
-      gsap.set(year, { y: -100, opacity: 0 });
+      gsap.set(year, { y: -60, opacity: 0 });
       gsap.set(content, { x: 20, opacity: 0 });
+      gsap.set(node, { scale: 0, opacity: 0 });
+      gsap.set(item, { opacity: 0 });
+    });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: "top 80%",
-          toggleActions: "play none none reverse"
-        }
+    // One shared trigger fires all items together with stagger
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: conferenceList,
+        start: "top 75%",
+        toggleActions: "play none none none"
+      }
+    }).add(() => {
+      items.forEach((item, i) => {
+        const year = item.querySelector(".pub-item__year");
+        const content = item.querySelector("div:not(.pub-node)");
+        const node = item.querySelector(".pub-node");
+        const delay = i * 0.07;
+
+        gsap.timeline({ delay })
+          .to(item, { opacity: 1, duration: 0.1 }, "start")
+          .to(node, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, "start")
+          .add(() => node.classList.add("glow"), "-=0.1")
+          .to(year, { opacity: 1, y: 0, duration: 0.4, ease: "bounce.out" }, "-=0.2")
+          .to(content, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, "-=0.4")
+          .add(() => node.classList.remove("glow"), "-=0.2");
       });
-
-      tl.to(item, { opacity: 1, duration: 0.1 }, "start")
-        .to(node, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, "start")
-        .add(() => node.classList.add("glow"), "-=0.2")
-        .to(year, { opacity: 1, y: 0, duration: 1, ease: "bounce.out" }, "-=0.3") // Thrown drop
-        .to(content, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }, "-=0.8") // Content slides into place
-        .add(() => node.classList.remove("glow"), "-=0.4");
     });
   }
 
   // 10. SPOTLIGHT FOCUS (SELECTED TALKS)
-  gsap.utils.toArray(".talks-list .pub-item").forEach((item) => {
+  const talksItems = gsap.utils.toArray(".talks-list .pub-item");
+  // Set initial states for all talks items up-front
+  talksItems.forEach((item) => {
     const year = item.querySelector(".pub-item__year");
-    const content = item.querySelector("div");
-    
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: item,
-        start: "top 90%",
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    // Initial state: blurred, slightly smaller, and transparent
-    gsap.set(item, { opacity: 0, scale: 0.96, filter: "blur(10px)" });
-    gsap.set(year, { opacity: 0, x: -10 });
-
-    tl.to(item, { 
-        opacity: 1, 
-        scale: 1, 
-        filter: "blur(0px)", 
-        duration: 1.2, 
-        ease: "power2.out" 
-      })
-      .to(year, { opacity: 1, x: 0, duration: 0.6 }, "-=0.8")
-      .add(() => item.classList.add("focused"), "-=0.6")
-      .to({}, { duration: 1.0 }, "+=0.1") // Hold the focus
-      .add(() => {
-        // Optional: fade out the highlight underline after a moment
-        // item.classList.remove("focused"); 
-      });
+    gsap.set(item, { opacity: 0, scale: 0.97, filter: "blur(6px)" });
+    if (year) gsap.set(year, { opacity: 0, x: -10 });
   });
+
+  // One shared trigger fires all talks together
+  const talksList = document.querySelector(".talks-list");
+  if (talksList) {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: talksList,
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    }).add(() => {
+      talksItems.forEach((item, i) => {
+        const year = item.querySelector(".pub-item__year");
+        const delay = i * 0.07;
+
+        gsap.timeline({ delay })
+          .to(item, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power2.out" })
+          .to(year, { opacity: 1, x: 0, duration: 0.3 }, "-=0.35")
+          .add(() => item.classList.add("focused"), "-=0.3")
+          .to({}, { duration: 0.4 }, "+=0.05")
+          .add(() => {});
+      });
+    });
+  }
 
   // 11. TIMELINE ANIMATIONS
   
