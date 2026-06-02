@@ -822,19 +822,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, "-=0.6");
   }); // closes .edu-card forEach
 
-  // 14. RESEARCH GRANTS (STAGGERED LIST)
-  gsap.from(".grant-card", {
-    scrollTrigger: {
-      trigger: ".grants-grid",
-      start: "top 90%",
-      toggleActions: "play none none reverse"
-    },
-    opacity: 0,
-    y: 30,
-    stagger: 0.2,
-    duration: 0.8,
-    ease: "power2.out"
-  });
 
   // 15. FOUNDATION RESEARCH CARDS — each card triggers itself
   gsap.utils.toArray(".foundation-card").forEach((card, i) => {
