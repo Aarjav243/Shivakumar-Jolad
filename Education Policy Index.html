@@ -469,28 +469,39 @@ main { min-width: 0; }
   border-top: 1px solid var(--border);
 }
 .ref-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   margin-top: 2rem;
 }
 .ref-card {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 200ms var(--ease);
+}
+.ref-card:hover { box-shadow: var(--shadow-hover); }
+.ref-card.hidden { display: none; }
+.ref-summary {
   padding: 1.25rem 1.25rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  box-shadow: var(--shadow-card);
-  transition: box-shadow 200ms var(--ease), transform 200ms var(--ease);
+  cursor: pointer;
+  list-style: none;
 }
-.ref-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
+.ref-summary::-webkit-details-marker { display: none; }
+.ref-chevron {
+  display: inline-block;
+  font-size: 0.65rem;
+  color: var(--gold);
+  transition: transform 200ms var(--ease);
+  margin-top: 0.25rem;
+  flex-shrink: 0;
 }
-.ref-card.hidden { display: none; }
+.ref-card[open] .ref-chevron { transform: rotate(90deg); }
 .ref-meta { flex: 1; min-width: 0; }
 .ref-module-tag {
   font-family: var(--font-mono);
@@ -511,7 +522,6 @@ main { min-width: 0; }
   display: block;
   transition: color 180ms;
 }
-.ref-link:hover { color: var(--gold); }
 .ref-count {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -522,6 +532,34 @@ main { min-width: 0; }
   border-radius: 100px;
   border: 1px solid var(--border);
   margin-top: 0.15rem;
+}
+.ref-file-list {
+  list-style: none;
+  padding: 0 1.25rem 0.5rem;
+  border-top: 1px solid var(--border);
+}
+.ref-file-list li { border-bottom: 1px solid var(--border); }
+.ref-file-list li:last-child { border-bottom: none; }
+.ref-file-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  font-size: var(--text-sm);
+  color: var(--slate);
+  transition: color 180ms;
+}
+.ref-file-list a:hover { color: var(--gold); }
+.ref-file-ext {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.1rem 0.5rem;
+  flex-shrink: 0;
 }
 
 /* ── Footer ── */
@@ -550,7 +588,6 @@ main { min-width: 0; }
 }
 @media (max-width: 540px) {
   .module-cards { grid-template-columns: 1fr; }
-  .ref-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -571,7 +608,7 @@ main { min-width: 0; }
       <div class="stat-item"><span class="stat-val">8</span><span class="stat-label">Modules</span></div>
       <div class="stat-item"><span class="stat-val">28</span><span class="stat-label">Submodules</span></div>
       <div class="stat-item"><span class="stat-val">879</span><span class="stat-label">Total Slides</span></div>
-      <div class="stat-item"><span class="stat-val">197</span><span class="stat-label">References</span></div>
+      <div class="stat-item"><span class="stat-val">173</span><span class="stat-label">References</span></div>
     </div>
   </div>
 </div>
@@ -674,7 +711,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Course Introduction</div></div>
             <div class="card-actions">
               <a href="html-slides/1.1 - Course Introduction_Redesigned.html" class="btn btn-primary" title="View slides in browser">&#9654; View Slides</a>
-              <a href="pdf/1.1 - Course Introduction_Redesigned.pdf" class="btn btn-ghost" download title="Download PDF">&#8615; PDF</a>
+              <a href="pdf/1.1 - Course Introduction_Redesigned.pdf" class="btn btn-ghost" target="_blank" rel="noopener" title="Download PDF">&#8615; PDF</a>
               <a href="slides/1.1 - Course Introduction_Redesigned.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
             </div>
           </div>
@@ -683,7 +720,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Education Philosophy and Indian Thinkers</div></div>
             <div class="card-actions">
               <a href="html-slides/1.2 - Education Philosophy and Indian Thinkers-Redesigned.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/1.2 - Education Philosophy and Indian Thinkers-Redesigned.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/1.2 - Education Philosophy and Indian Thinkers-Redesigned.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/1.2 - Education Philosophy and Indian Thinkers-Redesigned.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -702,7 +739,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Indigenous Education in Pre-Colonial India</div></div>
             <div class="card-actions">
               <a href="html-slides/2.1 - Indigenous Education in Pre-Colonial India.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.1 - Indigenous Education in Pre-Colonial India.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.1 - Indigenous Education in Pre-Colonial India.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.1 - Indigenous Education in Pre-Colonial India.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -711,7 +748,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">British Surveys of Indigenous Schools</div></div>
             <div class="card-actions">
               <a href="html-slides/2.2 - British Surveys of Indigenous Schools – Parimala Rao.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.2 - British Surveys of Indigenous Schools – Parimala Rao.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.2 - British Surveys of Indigenous Schools – Parimala Rao.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.2 - British Surveys of Indigenous Schools – Parimala Rao.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -720,7 +757,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Colonial Education 1757–1835</div></div>
             <div class="card-actions">
               <a href="html-slides/2.3 - Education in Colonial India 1757-1835.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.3 - Education in Colonial India 1757-1835.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.3 - Education in Colonial India 1757-1835.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.3 - Education in Colonial India 1757-1835.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -729,7 +766,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Colonial Education 1835–1854</div></div>
             <div class="card-actions">
               <a href="html-slides/2.4 - Education in Colonial India 1835-1854.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.4 - Education in Colonial India 1835-1854.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.4 - Education in Colonial India 1835-1854.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.4 - Education in Colonial India 1835-1854.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -738,7 +775,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Policies 1854–1882: Woods Despatch to Hunter Commission</div></div>
             <div class="card-actions">
               <a href="html-slides/2.5 - Colonial Education Policies – 1854-1882-Woods Despatch to Hunter Commission.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.5 - Colonial Education Policies – 1854-1882-Woods Despatch to Hunter Commission.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.5 - Colonial Education Policies – 1854-1882-Woods Despatch to Hunter Commission.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.5 - Colonial Education Policies – 1854-1882-Woods Despatch to Hunter Commission.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -747,7 +784,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Policies 1882–1930: Nationalism to Dyarchy</div></div>
             <div class="card-actions">
               <a href="html-slides/2.6 - Colonial Education Policies – 1882–1930-Nationalism to Dyarchy.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.6 - Colonial Education Policies – 1882–1930-Nationalism to Dyarchy.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.6 - Colonial Education Policies – 1882–1930-Nationalism to Dyarchy.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.6 - Colonial Education Policies – 1882–1930-Nationalism to Dyarchy.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -756,7 +793,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Policies 1930–1947: Compulsory Education to Independence</div></div>
             <div class="card-actions">
               <a href="html-slides/2.7 - Colonial Education Policies – 1930-1947-Era of Compulsory Education to Independence .html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.7 - Colonial Education Policies – 1930-1947-Era of Compulsory Education to Independence .pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.7 - Colonial Education Policies – 1930-1947-Era of Compulsory Education to Independence .pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.7 - Colonial Education Policies – 1930-1947-Era of Compulsory Education to Independence .pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -765,7 +802,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Compulsory Education Debates 1792–1920</div></div>
             <div class="card-actions">
               <a href="html-slides/2.8 - Compulsory Education Debates in Colonial India 1792-1920– Parimala Rao.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.8 - Compulsory Education Debates in Colonial India 1792-1920– Parimala Rao.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.8 - Compulsory Education Debates in Colonial India 1792-1920– Parimala Rao.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.8 - Compulsory Education Debates in Colonial India 1792-1920– Parimala Rao.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -774,7 +811,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Impact of British Education on Indian Society</div></div>
             <div class="card-actions">
               <a href="html-slides/2.9 - Impact of British Education on Indian Society.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/2.9 - Impact of British Education on Indian Society.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/2.9 - Impact of British Education on Indian Society.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/2.9 - Impact of British Education on Indian Society.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -793,7 +830,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Education and the Constitution</div></div>
             <div class="card-actions">
               <a href="html-slides/3.1 - Education and Constitution.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/3.1 - Education and Constitution.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/3.1 - Education and Constitution.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/3.1 - Education and Constitution.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -802,7 +839,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Journey to the Right to Education Act 2009</div></div>
             <div class="card-actions">
               <a href="html-slides/3.2 - Journey to the Right to Education Act 2009.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/3.2 - Journey to the Right to Education Act 2009.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/3.2 - Journey to the Right to Education Act 2009.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/3.2 - Journey to the Right to Education Act 2009.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -811,7 +848,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Child Labour in India: Problem and Legislation</div></div>
             <div class="card-actions">
               <a href="html-slides/3.3 - Child Labour in India – Problem and Legislation.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/3.3 - Child Labour in India – Problem and Legislation.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/3.3 - Child Labour in India – Problem and Legislation.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/3.3 - Child Labour in India – Problem and Legislation.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -820,7 +857,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Child Labour Debates and Policy</div></div>
             <div class="card-actions">
               <a href="html-slides/3.4 - Child Labour Debates and Policy.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/3.4 - Child Labour Debates and Policy.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/3.4 - Child Labour Debates and Policy.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/3.4 - Child Labour Debates and Policy.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -839,7 +876,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">School System in Post-Colonial India</div></div>
             <div class="card-actions">
               <a href="html-slides/4.1 - School System in Post colonial India.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/4.1 - School System in Post colonial India.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/4.1 - School System in Post colonial India.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/4.1 - School System in Post colonial India.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -848,7 +885,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Private Schools: Growth, Types and Regulation</div></div>
             <div class="card-actions">
               <a href="html-slides/4.2 - Private Schools in India- Growth Types and Regulation.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/4.2 - Private Schools in India- Growth Types and Regulation.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/4.2 - Private Schools in India- Growth Types and Regulation.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/4.2 - Private Schools in India- Growth Types and Regulation.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -857,7 +894,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Access, Enrolment and Universal Elementary Education</div></div>
             <div class="card-actions">
               <a href="html-slides/4.3 - Access and Enrollement and Universal Elementary Education.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/4.3 - Access and Enrollement and Universal Elementary Education.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/4.3 - Access and Enrollement and Universal Elementary Education.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/4.3 - Access and Enrollement and Universal Elementary Education.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -876,7 +913,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Higher Education Structure</div></div>
             <div class="card-actions">
               <a href="html-slides/5.1 - Higher Education Structure.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/5.1 - Higher Education Structure.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/5.1 - Higher Education Structure.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/5.1 - Higher Education Structure.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -885,7 +922,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Higher Education Governance and Regulation</div></div>
             <div class="card-actions">
               <a href="html-slides/5.2 - Higher Education Governance and Regulation.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/5.2 - Higher Education Governance and Regulation.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/5.2 - Higher Education Governance and Regulation.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/5.2 - Higher Education Governance and Regulation.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -894,7 +931,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Higher Education Systemic Issues</div></div>
             <div class="card-actions">
               <a href="html-slides/5.3 - Higher Education Systemic Issues.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/5.3 - Higher Education Systemic Issues.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/5.3 - Higher Education Systemic Issues.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/5.3 - Higher Education Systemic Issues.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -913,7 +950,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Kothari Commission and NPE 1968</div></div>
             <div class="card-actions">
               <a href="html-slides/6.1 - Kothari Commission and National Policy on Education 1968.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/6.1 - Kothari Commission and National Policy on Education 1968.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/6.1 - Kothari Commission and National Policy on Education 1968.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/6.1 - Kothari Commission and National Policy on Education 1968.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -922,7 +959,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">National Policy on Education 1986 and POA 1992</div></div>
             <div class="card-actions">
               <a href="html-slides/6.2 - National Policy on Education 1986 and Programme of Action 1992.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/6.2 - National Policy on Education 1986 and Programme of Action 1992.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/6.2 - National Policy on Education 1986 and Programme of Action 1992.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/6.2 - National Policy on Education 1986 and Programme of Action 1992.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -941,7 +978,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">The Learning Level Crisis: Evidence and Data</div></div>
             <div class="card-actions">
               <a href="html-slides/7.1 - The Learning Level Crisis Evidence and Data_mod.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/7.1 - The Learning Level Crisis Evidence and Data_mod.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/7.1 - The Learning Level Crisis Evidence and Data_mod.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/7.1 - The Learning Level Crisis Evidence and Data_mod.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -950,7 +987,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">The Learning Level Crisis: Debates and Perspectives</div></div>
             <div class="card-actions">
               <a href="html-slides/7.2 - The Learning Level Crisis Debates and Perspectives.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/7.2 - The Learning Level Crisis Debates and Perspectives.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/7.2 - The Learning Level Crisis Debates and Perspectives.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/7.2 - The Learning Level Crisis Debates and Perspectives.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -959,8 +996,8 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Education Equity: Theory and Measurement</div></div>
             <div class="card-actions">
               <a href="html-slides/7.3 - Education Equity Theory and Measurement_mod.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/7.3 - Education Equity Theory and Measurement_mod.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
-              <a href="slides/7.3 - Education Equity Theory and Measurement_mod.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+              <a href="pdf/7.3 - Education Equity Theory and Measurement_mod.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
+              <a href="slides/7.3 - Education Equity Theory and Measurement.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
         </div>
@@ -978,7 +1015,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">Teaching at the Right Level and Incentive Programs</div></div>
             <div class="card-actions">
               <a href="html-slides/8.1 - Edu Interventions-Teaching at the Right Level and Incentive Programs.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/8.1 - Edu Interventions-Teaching at the Right Level and Incentive Programs.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/8.1 - Edu Interventions-Teaching at the Right Level and Incentive Programs.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/8.1 - Edu Interventions-Teaching at the Right Level and Incentive Programs.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -987,7 +1024,7 @@ main { min-width: 0; }
             <div class="card-body"><div class="card-title">School Choice, Vouchers and Pragmatic Policies</div></div>
             <div class="card-actions">
               <a href="html-slides/8.2 - Edu Interventions-School Choice- Vouchers and Pragmatic Policies.html" class="btn btn-primary">&#9654; View Slides</a>
-              <a href="pdf/8.2 - Edu Interventions-School Choice- Vouchers and Pragmatic Policies.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="pdf/8.2 - Edu Interventions-School Choice- Vouchers and Pragmatic Policies.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8615; PDF</a>
               <a href="slides/8.2 - Edu Interventions-School Choice- Vouchers and Pragmatic Policies.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
             </div>
           </div>
@@ -1000,7 +1037,7 @@ main { min-width: 0; }
     <div class="references-section" id="references">
       <div class="section-eyebrow">Reading Material</div>
       <h2 class="section-title">Books &amp; References</h2>
-      <p style="color:var(--muted); font-size:var(--text-sm); margin-top:-0.75rem; margin-bottom:1.5rem;">197 files organised by module theme — click a folder to browse</p>
+      <p style="color:var(--muted); font-size:var(--text-sm); margin-top:-0.75rem; margin-bottom:1.5rem;">173 files organised by module theme — click a category to expand</p>
 
       <div class="filter-bar" id="refFilterBar">
         <button class="ref-btn filter-btn active" data-filter="all">All</button>
@@ -1016,69 +1053,287 @@ main { min-width: 0; }
       </div>
 
       <div class="ref-grid" id="refGrid">
-        <div class="ref-card" data-module="1">
-          <div class="ref-meta">
-            <span class="ref-module-tag">Module 1</span>
-            <a href="Books and References/01 - Introduction and Education Philosophy/" class="ref-link">Introduction and Education Philosophy</a>
-          </div>
-          <span class="ref-count">10 files</span>
-        </div>
-        <div class="ref-card" data-module="2">
-          <div class="ref-meta">
-            <span class="ref-module-tag">Module 2</span>
-            <a href="Books and References/02 - History Pre-Colonial and Colonial Education/" class="ref-link">History Pre-Colonial and Colonial Education</a>
-          </div>
-          <span class="ref-count">49 files</span>
-        </div>
-        <div class="ref-card" data-module="3">
-          <div class="ref-meta">
-            <span class="ref-module-tag">Module 3</span>
-            <a href="Books and References/03 - Compulsory Education Child Rights and RTE/" class="ref-link">Compulsory Education Child Rights and RTE</a>
-          </div>
-          <span class="ref-count">23 files</span>
-        </div>
-        <div class="ref-card" data-module="4">
-          <div class="ref-meta">
-            <span class="ref-module-tag">Module 4</span>
-            <a href="Books and References/04 - School System Access and Private Schools/" class="ref-link">School System Access and Private Schools</a>
-          </div>
-          <span class="ref-count">14 files</span>
-        </div>
-        <div class="ref-card" data-module="5">
-          <div class="ref-meta">
-            <span class="ref-module-tag">Module 5</span>
-            <a href="Books and References/05 - Higher Education/" class="ref-link">Higher Education</a>
-          </div>
-          <span class="ref-count">19 files</span>
-        </div>
-        <div class="ref-card" data-module="6">
-          <div class="ref-meta">
-            <span class="ref-module-tag">Module 6</span>
-            <a href="Books and References/06 - Constitution Governance and National Policies/" class="ref-link">Constitution Governance and National Policies</a>
-          </div>
-          <span class="ref-count">33 files</span>
-        </div>
-        <div class="ref-card" data-module="7">
-          <div class="ref-meta">
-            <span class="ref-module-tag">Module 7</span>
-            <a href="Books and References/07 - Curriculum Learning Outcomes and Equity/" class="ref-link">Curriculum Learning Outcomes and Equity</a>
-          </div>
-          <span class="ref-count">35 files</span>
-        </div>
-        <div class="ref-card" data-module="8">
-          <div class="ref-meta">
-            <span class="ref-module-tag">Module 8</span>
-            <a href="Books and References/08 - Education Interventions and Reforms/" class="ref-link">Education Interventions and Reforms</a>
-          </div>
-          <span class="ref-count">8 files</span>
-        </div>
-        <div class="ref-card" data-module="0">
-          <div class="ref-meta">
-            <span class="ref-module-tag">General</span>
-            <a href="Books and References/General Reference/" class="ref-link">General Reference</a>
-          </div>
-          <span class="ref-count">6 files</span>
-        </div>
+        <details class="ref-card" data-module="1">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Module 1</span>
+              <span class="ref-link">Introduction and Education Philosophy</span>
+            </div>
+            <span class="ref-count">9 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/Besant - Principles of Education.pdf" target="_blank" rel="noopener">Besant - Principles of Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/Capability Approach - Introduction (OPHI).pdf" target="_blank" rel="noopener">Capability Approach - Introduction (OPHI)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/Dewey - Experience and Education.pdf" target="_blank" rel="noopener">Dewey - Experience and Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/Dewey - Experiential Learning and Reflective Thought.pdf" target="_blank" rel="noopener">Dewey - Experiential Learning and Reflective Thought<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/Education and Jholawala Economics.pdf" target="_blank" rel="noopener">Education and Jholawala Economics<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/Education Society and Science in India - HCSE.pdf" target="_blank" rel="noopener">Education Society and Science in India - HCSE<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/Foster - Capabilities Theory (2013).pptx" download>Foster - Capabilities Theory (2013)<span class="ref-file-ext">PPTX</span></a></li>
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/India Human Development Report 2011.pdf" target="_blank" rel="noopener">India Human Development Report 2011<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/01 - Introduction and Education Philosophy/Nussbaum - Liberal Education (2006).pdf" target="_blank" rel="noopener">Nussbaum - Liberal Education (2006)<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="2">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Module 2</span>
+              <span class="ref-link">History Pre-Colonial and Colonial Education</span>
+            </div>
+            <span class="ref-count">37 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Abbott Wood Report 1937 - Vocational Education in India.pdf" target="_blank" rel="noopener">Abbott Wood Report 1937 - Vocational Education in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Chaudhary - Caste Colonialism and Schooling in British India.pdf" target="_blank" rel="noopener">Chaudhary - Caste Colonialism and Schooling in British India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Chaudhary - Determinants of Primary Schooling in British India.pdf" target="_blank" rel="noopener">Chaudhary - Determinants of Primary Schooling in British India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Chaudhary - Land Revenues Schools and Literacy.pdf" target="_blank" rel="noopener">Chaudhary - Land Revenues Schools and Literacy<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Chaudhary - Primary Education in Colonial India.pdf" target="_blank" rel="noopener">Chaudhary - Primary Education in Colonial India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Chaudhary - Taxation and Educational Development in British India.pdf" target="_blank" rel="noopener">Chaudhary - Taxation and Educational Development in British India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/De-Subalternization of Knowledge in Education.pdf" target="_blank" rel="noopener">De-Subalternization of Knowledge in Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Does History Matter - Colonial Education Investments in India.pdf" target="_blank" rel="noopener">Does History Matter - Colonial Education Investments in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Education in Hyderabad State.pdf" target="_blank" rel="noopener">Education in Hyderabad State<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Gandhi - Education and Reconstruction.pdf" target="_blank" rel="noopener">Gandhi - Education and Reconstruction<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Hartog Committee Report 1929.pdf" target="_blank" rel="noopener">Hartog Committee Report 1929<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/India Schooling Access and Exclusion 1780-1947.pdf" target="_blank" rel="noopener">India Schooling Access and Exclusion 1780-1947<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Krishna Kumar - Political Agenda of Education.pdf" target="_blank" rel="noopener">Krishna Kumar - Political Agenda of Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Macaulay - Education History Notes.pdf" target="_blank" rel="noopener">Macaulay - Education History Notes<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Madras Government Records - Department of Public Instruction.pdf" target="_blank" rel="noopener">Madras Government Records - Department of Public Instruction<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Myth and Reality in the History of Indian Education.pdf" target="_blank" rel="noopener">Myth and Reality in the History of Indian Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik and Nurullah - Colonial Education in Retrospect.pdf" target="_blank" rel="noopener">Naik and Nurullah - Colonial Education in Retrospect<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik and Nurullah - History of Education in India.pdf" target="_blank" rel="noopener">Naik and Nurullah - History of Education in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik Nurullah - Ch1 Indigenous Education Early 19th Century.pdf" target="_blank" rel="noopener">Naik Nurullah - Ch1 Indigenous Education Early 19th Century<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik Nurullah - Ch2 East India and Education 1600-1813.pdf" target="_blank" rel="noopener">Naik Nurullah - Ch2 East India and Education 1600-1813<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik Nurullah - Ch3 Official Experiments in Education 1813-1853.pdf" target="_blank" rel="noopener">Naik Nurullah - Ch3 Official Experiments in Education 1813-1853<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik Nurullah - Ch4 Education Despatch 1813-1854.pdf" target="_blank" rel="noopener">Naik Nurullah - Ch4 Education Despatch 1813-1854<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik Nurullah - Ch5 Victorian Era and Education 1858-1902.pdf" target="_blank" rel="noopener">Naik Nurullah - Ch5 Victorian Era and Education 1858-1902<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik Nurullah - Ch6 Social Political Change and New Education.pdf" target="_blank" rel="noopener">Naik Nurullah - Ch6 Social Political Change and New Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik Nurullah - Ch6b Higher Education and Social Change 1854-1902.pdf" target="_blank" rel="noopener">Naik Nurullah - Ch6b Higher Education and Social Change 1854-1902<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Naik Nurullah - Retrospective Analysis of Colonial Education.pdf" target="_blank" rel="noopener">Naik Nurullah - Retrospective Analysis of Colonial Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Period of Transition in National Education.pdf" target="_blank" rel="noopener">Period of Transition in National Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Phule - Shetkaryacha Asud.pdf" target="_blank" rel="noopener">Phule - Shetkaryacha Asud<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Phule and Gokhale - Makers of Modern India.pdf" target="_blank" rel="noopener">Phule and Gokhale - Makers of Modern India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Radhakrishnan Commission 1948 - Review of Education History.pdf" target="_blank" rel="noopener">Radhakrishnan Commission 1948 - Review of Education History<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Rao - Access to Schools (Routledge Companion).pdf" target="_blank" rel="noopener">Rao - Access to Schools (Routledge Companion)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Rao - Analysing Macaulay Chapter.pdf" target="_blank" rel="noopener">Rao - Analysing Macaulay Chapter<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Rao - Indigenous Education Chapter.pdf" target="_blank" rel="noopener">Rao - Indigenous Education Chapter<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Tharakan - Socio-Economic Factors in Education Travancore (1984).pdf" target="_blank" rel="noopener">Tharakan - Socio-Economic Factors in Education Travancore (1984)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Transmission of Knowledge in South Asia.pdf" target="_blank" rel="noopener">Transmission of Knowledge in South Asia<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Wardha Scheme - Language Issue.pdf" target="_blank" rel="noopener">Wardha Scheme - Language Issue<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/02 - History Pre-Colonial and Colonial Education/Wardha Scheme of Education.pdf" target="_blank" rel="noopener">Wardha Scheme of Education<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="3">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Module 3</span>
+              <span class="ref-link">Compulsory Education Child Rights and RTE</span>
+            </div>
+            <span class="ref-count">22 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Child Labour Prohibition and Regulation Amendment Act 2016.pdf" target="_blank" rel="noopener">Child Labour Prohibition and Regulation Amendment Act 2016<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Compulsory Education in Baroda - Persistent Effects 1901-2011.pdf" target="_blank" rel="noopener">Compulsory Education in Baroda - Persistent Effects 1901-2011<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Institutional Framing of the Right to Education Act.pdf" target="_blank" rel="noopener">Institutional Framing of the Right to Education Act<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Mistree - Child and the State in India Review (2011).pdf" target="_blank" rel="noopener">Mistree - Child and the State in India Review (2011)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Mondal - Free and Compulsory Primary Education under British Raj (2017).pdf" target="_blank" rel="noopener">Mondal - Free and Compulsory Primary Education under British Raj (2017)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Nawani - Right to Education Analysis.pdf" target="_blank" rel="noopener">Nawani - Right to Education Analysis<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/NFHS3 - Factors Leading to School Dropout.pdf" target="_blank" rel="noopener">NFHS3 - Factors Leading to School Dropout<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Policy Brief - School Management Committees.pdf" target="_blank" rel="noopener">Policy Brief - School Management Committees<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Report - Out-of-School Children in India.pdf" target="_blank" rel="noopener">Report - Out-of-School Children in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Right to Education - History and Evolution.pdf" target="_blank" rel="noopener">Right to Education - History and Evolution<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Right to Education Legislation - A History.pdf" target="_blank" rel="noopener">Right to Education Legislation - A History<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Rights of the Child Poster.pdf" target="_blank" rel="noopener">Rights of the Child Poster<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/RTE - A Symbolic Gesture (Critical Analysis).pdf" target="_blank" rel="noopener">RTE - A Symbolic Gesture (Critical Analysis)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/RTE Act 2009 - Critical Gaps and Challenges.pdf" target="_blank" rel="noopener">RTE Act 2009 - Critical Gaps and Challenges<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/RTE Act 2009 - Full Text.pdf" target="_blank" rel="noopener">RTE Act 2009 - Full Text<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/RTE Implementation Article.pdf" target="_blank" rel="noopener">RTE Implementation Article<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/RTE Rules - Maharashtra.pdf" target="_blank" rel="noopener">RTE Rules - Maharashtra<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/RTE Status Report 2018.pdf" target="_blank" rel="noopener">RTE Status Report 2018<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Sekhar - Factors Impacting School Dropout in India.pdf" target="_blank" rel="noopener">Sekhar - Factors Impacting School Dropout in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Strategy to Deliver RTE.pdf" target="_blank" rel="noopener">Strategy to Deliver RTE<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/UN Convention on the Rights of the Child.pdf" target="_blank" rel="noopener">UN Convention on the Rights of the Child<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/03 - Compulsory Education Child Rights and RTE/Weiner - The Child and the State in India (1990).pdf" target="_blank" rel="noopener">Weiner - The Child and the State in India (1990)<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="4">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Module 4</span>
+              <span class="ref-link">School System Access and Private Schools</span>
+            </div>
+            <span class="ref-count">13 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/04 - School System Access and Private Schools/AISHE Report 2018-19.pdf" target="_blank" rel="noopener">AISHE Report 2018-19<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/Caste Class and the Indian School.pdf" target="_blank" rel="noopener">Caste Class and the Indian School<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/Dinne - Unpacking the Black Box of Indian School Education Reform.pdf" target="_blank" rel="noopener">Dinne - Unpacking the Black Box of Indian School Education Reform<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/Inequality in School Education in India.pdf" target="_blank" rel="noopener">Inequality in School Education in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/Jolad and Vaijayanti - Restructuring Government Schools.pdf" target="_blank" rel="noopener">Jolad and Vaijayanti - Restructuring Government Schools<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/Kingdon - Progress of Schooling in India.pdf" target="_blank" rel="noopener">Kingdon - Progress of Schooling in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/Little - Access to Elementary Education in India.pdf" target="_blank" rel="noopener">Little - Access to Elementary Education in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/Locked Out - Road Scholarz Report on School Education.pdf" target="_blank" rel="noopener">Locked Out - Road Scholarz Report on School Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/Ramachandran and Sharma - Elementary Education System in India (2008).pdf" target="_blank" rel="noopener">Ramachandran and Sharma - Elementary Education System in India (2008)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/School Consolidation in Rajasthan - Accountability Initiative.pdf" target="_blank" rel="noopener">School Consolidation in Rajasthan - Accountability Initiative<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/School Education in India - Data Trends and Policies.pdf" target="_blank" rel="noopener">School Education in India - Data Trends and Policies<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/State of the Sector Report - Private Schools in India.pdf" target="_blank" rel="noopener">State of the Sector Report - Private Schools in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/04 - School System Access and Private Schools/UDISE Report 2019-20.pdf" target="_blank" rel="noopener">UDISE Report 2019-20<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="5">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Module 5</span>
+              <span class="ref-link">Higher Education</span>
+            </div>
+            <span class="ref-count">16 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/05 - Higher Education/Bhushan - Future of Higher Education in India (2019).pdf" target="_blank" rel="noopener">Bhushan - Future of Higher Education in India (2019)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Caste and Class in Higher Education Enrolments.pdf" target="_blank" rel="noopener">Caste and Class in Higher Education Enrolments<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/CCS - Regulatory Structure of Higher Education in India.pdf" target="_blank" rel="noopener">CCS - Regulatory Structure of Higher Education in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/CPRHE - Higher Education Committees and Commissions.pdf" target="_blank" rel="noopener">CPRHE - Higher Education Committees and Commissions<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Demystifying Higher Education in India.pdf" target="_blank" rel="noopener">Demystifying Higher Education in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Emergence of Liberal Education in the World.pdf" target="_blank" rel="noopener">Emergence of Liberal Education in the World<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/FLAME University Act 2014.pdf" target="_blank" rel="noopener">FLAME University Act 2014<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Higher Education - The Problem of Access and Equity.pdf" target="_blank" rel="noopener">Higher Education - The Problem of Access and Equity<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Higher Education and Prosperity in India.pdf" target="_blank" rel="noopener">Higher Education and Prosperity in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Mortgaging the Future - Symposium on Higher Education Reform (Seminar 2008).pdf" target="_blank" rel="noopener">Mortgaging the Future - Symposium on Higher Education Reform (Seminar 2008)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/NPE 1986 - Higher Education Context.pdf" target="_blank" rel="noopener">NPE 1986 - Higher Education Context<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Regulatory Structure of Higher Education in India.pdf" target="_blank" rel="noopener">Regulatory Structure of Higher Education in India<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Sonawane - Governance and Management of Higher Education in Maharashtra.pdf" target="_blank" rel="noopener">Sonawane - Governance and Management of Higher Education in Maharashtra<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Sreenivasan - In Search of a Concept of Liberal Education.pdf" target="_blank" rel="noopener">Sreenivasan - In Search of a Concept of Liberal Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/UGC Act 1956 with Amendment 1985.pdf" target="_blank" rel="noopener">UGC Act 1956 with Amendment 1985<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/05 - Higher Education/Worldwide Emergence of Liberal Education.pdf" target="_blank" rel="noopener">Worldwide Emergence of Liberal Education<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="6">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Module 6</span>
+              <span class="ref-link">Constitution Governance and National Policies</span>
+            </div>
+            <span class="ref-count">30 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Acharya Ramamurti Committee Report 1990.pdf" target="_blank" rel="noopener">Acharya Ramamurti Committee Report 1990<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Analysis of Budget Expenditure on Education 2012-15.pdf" target="_blank" rel="noopener">Analysis of Budget Expenditure on Education 2012-15<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Challenge of Education 1985.pdf" target="_blank" rel="noopener">Challenge of Education 1985<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Constitution of India (2008).pdf" target="_blank" rel="noopener">Constitution of India (2008)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Constitution of India (2022).pdf" target="_blank" rel="noopener">Constitution of India (2022)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Draft National Education Policy 2019 (Revised).pdf" target="_blank" rel="noopener">Draft National Education Policy 2019 (Revised)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Draft NEP 2019 (Earlier Draft).pdf" target="_blank" rel="noopener">Draft NEP 2019 (Earlier Draft)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Draft NEP October 2019.pdf" target="_blank" rel="noopener">Draft NEP October 2019<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Education Administration - Unit 2.pdf" target="_blank" rel="noopener">Education Administration - Unit 2<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Education Finance Research Paper (MPRA).pdf" target="_blank" rel="noopener">Education Finance Research Paper (MPRA)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Education Policy Framework.pdf" target="_blank" rel="noopener">Education Policy Framework<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Khare - Financial Implications of NEP 2020.pdf" target="_blank" rel="noopener">Khare - Financial Implications of NEP 2020<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/MHRD Education Statistics at a Glance 2018.pdf" target="_blank" rel="noopener">MHRD Education Statistics at a Glance 2018<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Naik JP - Collected Works Vol 1 Chapters 1-3.pdf" target="_blank" rel="noopener">Naik JP - Collected Works Vol 1 Chapters 1-3<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Naik JP - Collected Works Vol 1 Introduction.pdf" target="_blank" rel="noopener">Naik JP - Collected Works Vol 1 Introduction<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/National Curriculum Framework Draft 2023.pdf" target="_blank" rel="noopener">National Curriculum Framework Draft 2023<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/National Curriculum Framework for Teacher Education 2009.pdf" target="_blank" rel="noopener">National Curriculum Framework for Teacher Education 2009<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/National Education Policy 2020.pdf" target="_blank" rel="noopener">National Education Policy 2020<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/NCF Foundational Stage 2022.pdf" target="_blank" rel="noopener">NCF Foundational Stage 2022<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/NCF School Education 2023.pdf" target="_blank" rel="noopener">NCF School Education 2023<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/New Features in NEP 2020.pdf" target="_blank" rel="noopener">New Features in NEP 2020<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Non-Formal Education - Chapter 6.pdf" target="_blank" rel="noopener">Non-Formal Education - Chapter 6<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/NPE 1986 - Indian Express Archive April 1986.webp" download>NPE 1986 - Indian Express Archive April 1986<span class="ref-file-ext">WEBP</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/NPE 1986 and Programme of Action 1992.pdf" target="_blank" rel="noopener">NPE 1986 and Programme of Action 1992<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Programme of Action 1992.pdf" target="_blank" rel="noopener">Programme of Action 1992<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Union Budget 2022 - Education.pdf" target="_blank" rel="noopener">Union Budget 2022 - Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Union Budget 2022 - Higher Education.pdf" target="_blank" rel="noopener">Union Budget 2022 - Higher Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Union Budget Insights 2026-27 - Education.pdf" target="_blank" rel="noopener">Union Budget Insights 2026-27 - Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Vaidyanathan - Making of NPE and Programme of Action.pdf" target="_blank" rel="noopener">Vaidyanathan - Making of NPE and Programme of Action<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/06 - Constitution Governance and National Policies/Viksit Bharat Shiksha Adhisthan Bill 2025.pdf" target="_blank" rel="noopener">Viksit Bharat Shiksha Adhisthan Bill 2025<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="7">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Module 7</span>
+              <span class="ref-link">Curriculum Learning Outcomes and Equity</span>
+            </div>
+            <span class="ref-count">33 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Aiyar et al - Education Reform Working Paper (2015).pdf" target="_blank" rel="noopener">Aiyar et al - Education Reform Working Paper (2015)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/ASER 2005 Full Report.pdf" target="_blank" rel="noopener">ASER 2005 Full Report<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/ASER 2014 Report.pdf" target="_blank" rel="noopener">ASER 2014 Report<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/ASER 2016 National Findings.pdf" target="_blank" rel="noopener">ASER 2016 National Findings<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Crisis of Learning - Seminar Articles Summaries.pdf" target="_blank" rel="noopener">Crisis of Learning - Seminar Articles Summaries<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Effect of School Choice on Student Outcomes (2005).pdf" target="_blank" rel="noopener">Effect of School Choice on Student Outcomes (2005)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Indices of Segregation in Education.pdf" target="_blank" rel="noopener">Indices of Segregation in Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/International Comparison of Equity in Education Systems.pdf" target="_blank" rel="noopener">International Comparison of Equity in Education Systems<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Jacob and Holsinger - Inequality in Education Chapter 1 (2009).pdf" target="_blank" rel="noopener">Jacob and Holsinger - Inequality in Education Chapter 1 (2009)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Krishna Kumar - Crisis of Learning Diagnostic Trouble.pdf" target="_blank" rel="noopener">Krishna Kumar - Crisis of Learning Diagnostic Trouble<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Life Skills Evaluation Tool.pdf" target="_blank" rel="noopener">Life Skills Evaluation Tool<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Mehr and Shiva - Covid and Education ORF Issue Brief.pdf" target="_blank" rel="noopener">Mehr and Shiva - Covid and Education ORF Issue Brief<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/NCERT MHRD - Learning Outcomes at Elementary Level.pdf" target="_blank" rel="noopener">NCERT MHRD - Learning Outcomes at Elementary Level<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Ramachandran - Crisis of Learning The Problem.pdf" target="_blank" rel="noopener">Ramachandran - Crisis of Learning The Problem<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Ramachandran - Teacher Functions Chapter 7.pdf" target="_blank" rel="noopener">Ramachandran - Teacher Functions Chapter 7<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Aiyar - Reforming Education Systems.pdf" target="_blank" rel="noopener">Seminar 706 - Aiyar - Reforming Education Systems<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Banerji - Betrayal or Benefit.pdf" target="_blank" rel="noopener">Seminar 706 - Banerji - Betrayal or Benefit<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Behar - Solutions Lie with Teachers.pdf" target="_blank" rel="noopener">Seminar 706 - Behar - Solutions Lie with Teachers<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Beteille - Are Indias Schoolteachers Prepared to Teach.pdf" target="_blank" rel="noopener">Seminar 706 - Beteille - Are Indias Schoolteachers Prepared to Teach<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Chavan - Learning to Learn.pdf" target="_blank" rel="noopener">Seminar 706 - Chavan - Learning to Learn<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Dewan - Inclusion and Equitable Education.pdf" target="_blank" rel="noopener">Seminar 706 - Dewan - Inclusion and Equitable Education<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Filmer and Rogers - Learning to Realize Educations Promise.pdf" target="_blank" rel="noopener">Seminar 706 - Filmer and Rogers - Learning to Realize Educations Promise<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Kaushik - Measuring Learning Outcomes.pdf" target="_blank" rel="noopener">Seminar 706 - Kaushik - Measuring Learning Outcomes<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Krishna Kumar - Diagnostic Trouble.pdf" target="_blank" rel="noopener">Seminar 706 - Krishna Kumar - Diagnostic Trouble<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Learning Crisis Combined Articles.pdf" target="_blank" rel="noopener">Seminar 706 - Learning Crisis Combined Articles<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Nawani - Is There a Learning Crisis in Our Schools.pdf" target="_blank" rel="noopener">Seminar 706 - Nawani - Is There a Learning Crisis in Our Schools<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Rajagopalan - Board Exams Rote Learning and Learning Crisis.pdf" target="_blank" rel="noopener">Seminar 706 - Rajagopalan - Board Exams Rote Learning and Learning Crisis<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Ramachandran and Rajagopalan - The Problem.pdf" target="_blank" rel="noopener">Seminar 706 - Ramachandran and Rajagopalan - The Problem<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Seminar 706 - Rampal - Manufacturing the Crisis of Learning.pdf" target="_blank" rel="noopener">Seminar 706 - Rampal - Manufacturing the Crisis of Learning<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/Shah - Education Working Paper (2015).pdf" target="_blank" rel="noopener">Shah - Education Working Paper (2015)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/UNESCO - Learning at the Bottom of the Pyramid.pdf" target="_blank" rel="noopener">UNESCO - Learning at the Bottom of the Pyramid<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/UNESCO Handbook for Measuring Equity in Education (2018).pdf" target="_blank" rel="noopener">UNESCO Handbook for Measuring Equity in Education (2018)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/07 - Curriculum Learning Outcomes and Equity/UNESCO UIS - Executive Summary on Equity in Education.pdf" target="_blank" rel="noopener">UNESCO UIS - Executive Summary on Equity in Education<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="8">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Module 8</span>
+              <span class="ref-link">Education Interventions and Reforms</span>
+            </div>
+            <span class="ref-count">7 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/08 - Education Interventions and Reforms/IECEI - Early Childhood Education Impact Study Policy Brief (2017).pdf" target="_blank" rel="noopener">IECEI - Early Childhood Education Impact Study Policy Brief (2017)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/08 - Education Interventions and Reforms/India Early Childhood Education Impact Study Report (2017).pdf" target="_blank" rel="noopener">India Early Childhood Education Impact Study Report (2017)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/08 - Education Interventions and Reforms/India ECCE Impact Study Report (2017).pdf" target="_blank" rel="noopener">India ECCE Impact Study Report (2017)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/08 - Education Interventions and Reforms/Mangla - Making Bureaucracy Work Chapter 2.pdf" target="_blank" rel="noopener">Mangla - Making Bureaucracy Work Chapter 2<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/08 - Education Interventions and Reforms/National ECCE Framework - Final.pdf" target="_blank" rel="noopener">National ECCE Framework - Final<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/08 - Education Interventions and Reforms/Role of Middle Managers in Education Policy Implementation.pdf" target="_blank" rel="noopener">Role of Middle Managers in Education Policy Implementation<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/08 - Education Interventions and Reforms/Teacher Education Research in India.pdf" target="_blank" rel="noopener">Teacher Education Research in India<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="0">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">General</span>
+              <span class="ref-link">General Reference</span>
+            </div>
+            <span class="ref-count">6 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="Books and References/General Reference/Chubb and Moe - Politics Markets and Americas Schools (1990).pdf" target="_blank" rel="noopener">Chubb and Moe - Politics Markets and Americas Schools (1990)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/General Reference/Cohen Manion Morrison - Research Methods in Education (2018).pdf" target="_blank" rel="noopener">Cohen Manion Morrison - Research Methods in Education (2018)<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/General Reference/Gross - Language and Language-in-Education Planning.pdf" target="_blank" rel="noopener">Gross - Language and Language-in-Education Planning<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/General Reference/Mohanty - Multilingualism Education English and Development.pdf" target="_blank" rel="noopener">Mohanty - Multilingualism Education English and Development<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/General Reference/UNESCO - State of Education Report for India 2021.pdf" target="_blank" rel="noopener">UNESCO - State of Education Report for India 2021<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="Books and References/General Reference/UNESCO - State of Education Report India 2025 - Mother Tongue and MLE.pdf" target="_blank" rel="noopener">UNESCO - State of Education Report India 2025 - Mother Tongue and MLE<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
       </div>
     </div>
 
