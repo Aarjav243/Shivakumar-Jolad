@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUBP 309 – Education Policy | FLAME University</title>
+<meta name="description" content="Course materials, lecture slides and references for PUBP 309: Education Policy at FLAME University, taught by Shivakumar Jolad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Design Tokens (matching main site) ── */
+:root {
+  --parchment: #F5EEE3;
+  --lapis: #0E0C1E;
+  --navy: #0E2340;
+  --ink: #0C1B2E;
+  --gold: #B8841A;
+  --gold-hover: #C9931F;
+  --gold-light: rgba(184,132,26,0.12);
+  --gold-border: rgba(184,132,26,0.30);
+  --slate: #4A5568;
+  --muted: #5A677D;
+  --border: #DDE3EC;
+  --cream-dark: #EDE5D8;
+  --on-dark: rgba(245,238,227,0.95);
+  --on-dark-dim: rgba(245,238,227,0.65);
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.563rem;
+  --text-3xl: 1.953rem;
+  --shadow-card: 0 2px 16px rgba(14,12,30,0.07);
+  --shadow-hover: 0 12px 40px rgba(14,12,30,0.15);
+  --radius: 10px;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--ink);
+  background: var(--parchment);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── Back Link ── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-dark-dim);
+  transition: color 200ms var(--ease);
+  margin-bottom: 2.5rem;
+}
+.back-link:hover { color: var(--gold); }
+.back-link svg { transition: transform 200ms var(--ease); }
+.back-link:hover svg { transform: translateX(-3px); }
+
+/* ── Hero Header ── */
+.page-hero {
+  background: var(--lapis);
+  padding: 4rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(184,132,26,0.08) 0%, transparent 65%),
+              radial-gradient(ellipse at 10% 80%, rgba(14,35,64,0.6) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.hero-eyebrow::before { content: '✦'; font-size: 0.55rem; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--on-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-subtitle {
+  font-size: var(--text-lg);
+  color: var(--on-dark-dim);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.stat-item {
+  padding: 0.6rem 1.5rem 0.6rem 0;
+  margin-right: 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-item .stat-val {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  color: var(--on-dark);
+  font-weight: 400;
+  display: block;
+  line-height: 1.2;
+}
+.stat-item .stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-dark-dim);
+}
+
+/* ── Overview Accordion ── */
+.overview-bar {
+  background: #13102a;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.overview-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+.overview-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--on-dark-dim);
+  padding: 1rem 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 200ms;
+}
+.overview-toggle:hover { color: var(--on-dark); }
+.overview-toggle .chevron {
+  display: inline-block;
+  transition: transform 250ms var(--ease);
+  font-size: 0.8rem;
+  color: var(--gold);
+}
+.overview-toggle.open .chevron { transform: rotate(90deg); }
+.overview-body {
+  display: none;
+  padding-bottom: 2rem;
+}
+.overview-body.show { display: block; }
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding-top: 1rem;
+}
+.overview-section h4 {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.overview-section p,
+.overview-section li {
+  font-size: var(--text-sm);
+  color: var(--on-dark-dim);
+  line-height: 1.7;
+}
+.overview-section ul { padding-left: 1rem; }
+.overview-section li { list-style: disc; margin-bottom: 0.2rem; }
+
+/* ── Page Body Layout ── */
+.page-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem clamp(1.25rem, 4vw, 3rem) 6rem;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+.sidebar-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.sidebar-label::before { content: '✦'; font-size: 0.55rem; }
+.sidebar-nav a {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  padding: 0.45rem 0.75rem;
+  border-left: 2px solid var(--border);
+  transition: color 180ms, border-color 180ms, background 180ms;
+  border-radius: 0 4px 4px 0;
+}
+.sidebar-nav a:hover {
+  color: var(--ink);
+  border-color: var(--gold);
+  background: var(--gold-light);
+}
+.sidebar-nav a.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: var(--gold-light);
+  font-weight: 500;
+}
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+/* ── Main Content ── */
+main { min-width: 0; }
+
+/* ── Filter Area ── */
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.section-eyebrow::before { content: '✦'; font-size: 0.55rem; }
+.section-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 200ms var(--ease);
+  white-space: nowrap;
+}
+.filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-light);
+}
+.filter-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+
+/* ── Module Section ── */
+.module-section { margin-bottom: 3.5rem; }
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.module-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  background: var(--gold-light);
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+  white-space: nowrap;
+}
+.module-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ── Card Grid ── */
+.module-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── Lecture Card ── */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 250ms var(--ease), transform 250ms var(--ease);
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--parchment);
+}
+.card-sub {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.card-slides {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+.card-body {
+  padding: 1rem 1rem 0.5rem;
+  flex: 1;
+}
+.card-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem 1rem;
+  flex-wrap: wrap;
+}
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border-radius: 100px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 200ms var(--ease);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+.btn-primary:hover {
+  background: var(--gold-hover);
+  border-color: var(--gold-hover);
+  box-shadow: 0 4px 16px rgba(184,132,26,0.35);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-light);
+}
+
+/* ── References Section ── */
+.references-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.ref-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 200ms var(--ease), transform 200ms var(--ease);
+}
+.ref-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.ref-card.hidden { display: none; }
+.ref-meta { flex: 1; min-width: 0; }
+.ref-module-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.ref-link {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.45;
+  display: block;
+  transition: color 180ms;
+}
+.ref-link:hover { color: var(--gold); }
+.ref-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  white-space: nowrap;
+  padding: 0.25rem 0.6rem;
+  background: var(--parchment);
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  margin-top: 0.15rem;
+}
+
+/* ── Footer ── */
+.page-footer {
+  background: var(--lapis);
+  color: var(--on-dark-dim);
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  border-top: 1px solid rgba(184,132,26,0.2);
+}
+.page-footer a {
+  color: var(--gold);
+  transition: opacity 180ms;
+}
+.page-footer a:hover { opacity: 0.8; }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .page-body { grid-template-columns: 1fr; gap: 2rem; }
+  .sidebar { position: static; display: none; }
+  .hero-stats { gap: 1rem; }
+  .stat-item { border-right: none; padding-right: 0; margin-right: 0; }
+}
+@media (max-width: 540px) {
+  .module-cards { grid-template-columns: 1fr; }
+  .ref-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Hero Header ── -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+      Back to Portfolio
+    </a>
+    <div class="hero-eyebrow">FLAME University &bull; School of Liberal Education</div>
+    <h1 class="hero-title">PUBP 309: <em>Education Policy</em></h1>
+    <p class="hero-subtitle">Education System, History and Policies in India</p>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-val">4</span><span class="stat-label">Credits</span></div>
+      <div class="stat-item"><span class="stat-val">8</span><span class="stat-label">Modules</span></div>
+      <div class="stat-item"><span class="stat-val">28</span><span class="stat-label">Submodules</span></div>
+      <div class="stat-item"><span class="stat-val">879</span><span class="stat-label">Total Slides</span></div>
+      <div class="stat-item"><span class="stat-val">197</span><span class="stat-label">References</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Course Overview Accordion ── -->
+<div class="overview-bar">
+  <div class="overview-inner">
+    <button class="overview-toggle" id="overviewToggle" onclick="toggleOverview()">
+      <span class="chevron">&#9658;</span>
+      Course Overview &amp; Reading List
+    </button>
+    <div class="overview-body" id="overviewBody">
+      <div class="overview-grid">
+        <div class="overview-section">
+          <h4>Course Description</h4>
+          <p>This course provides a comprehensive introduction to India's education system, its historical development from pre-colonial times through post-independence reforms, and the major policy frameworks that shape schooling and higher education today. Students engage with debates on access, equity, curriculum, governance, and evidence-based interventions.</p>
+        </div>
+        <div class="overview-section">
+          <h4>Course Structure</h4>
+          <ul>
+            <li>Part 1: Education System (Modules 1–4, ~20 hrs)</li>
+            <li>Part 2: Education Bureaucracy &amp; Finance (Module 6, ~10 hrs)</li>
+            <li>Part 3: Curriculum, Pedagogy &amp; Learning (Module 7, ~9 hrs)</li>
+            <li>Part 4: Education Interventions &amp; Reforms (Module 8, ~4 hrs)</li>
+          </ul>
+        </div>
+        <div class="overview-section">
+          <h4>Core Texts</h4>
+          <ul>
+            <li>Sarangapani – Constructing School Knowledge</li>
+            <li>Naik &amp; Nurullah – History of Education in India</li>
+            <li>Ghosh – Development of Education in India</li>
+            <li>Kothari Commission Report (1964–66)</li>
+            <li>Mangla – Education in India</li>
+            <li>NPE 1986 &amp; POA 1992</li>
+            <li>Draft NEP 2019</li>
+            <li>Muralidharan – Accelerating India's Development</li>
+          </ul>
+        </div>
+        <div class="overview-section">
+          <h4>Assessment</h4>
+          <p>As per course outline shared separately. Students are expected to complete assigned readings before each session and participate actively in seminars.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Page Body ── -->
+<div class="page-body">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Modules</div>
+    <nav class="sidebar-nav">
+      <a href="#m1">M1: Introduction to Education</a>
+      <a href="#m2">M2: Pre-Colonial &amp; Colonial</a>
+      <a href="#m3">M3: Compulsory Education &amp; RTE</a>
+      <a href="#m4">M4: Post-Colonial School System</a>
+      <a href="#m5">M5: Higher Education</a>
+      <a href="#m6">M6: National Education Policies</a>
+      <a href="#m7">M7: Learning Crisis &amp; Equity</a>
+      <a href="#m8">M8: Interventions &amp; Reforms</a>
+    </nav>
+    <div class="sidebar-divider"></div>
+    <nav class="sidebar-nav">
+      <a href="#references">Books &amp; References</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main>
+    <div class="section-eyebrow">Course Material</div>
+    <h2 class="section-title">Lecture Slides</h2>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">All Modules</button>
+      <button class="filter-btn" data-filter="1">Module 1</button>
+      <button class="filter-btn" data-filter="2">Module 2</button>
+      <button class="filter-btn" data-filter="3">Module 3</button>
+      <button class="filter-btn" data-filter="4">Module 4</button>
+      <button class="filter-btn" data-filter="5">Module 5</button>
+      <button class="filter-btn" data-filter="6">Module 6</button>
+      <button class="filter-btn" data-filter="7">Module 7</button>
+      <button class="filter-btn" data-filter="8">Module 8</button>
+    </div>
+
+    <div id="cards-container">
+
+      <!-- Module 1 -->
+      <div class="module-section" id="m1" data-module="1">
+        <div class="module-header">
+          <span class="module-pill">Module 1</span>
+          <span class="module-title">Introduction to Education</span>
+        </div>
+        <div class="module-cards">
+          <div class="card" data-module="1">
+            <div class="card-top"><span class="card-sub">1.1</span><span class="card-slides">18 slides</span></div>
+            <div class="card-body"><div class="card-title">Course Introduction</div></div>
+            <div class="card-actions">
+              <a href="html-slides/1.1 - Course Introduction_Redesigned.html" class="btn btn-primary" title="View slides in browser">&#9654; View Slides</a>
+              <a href="pdf/1.1 - Course Introduction_Redesigned.pdf" class="btn btn-ghost" download title="Download PDF">&#8615; PDF</a>
+              <a href="slides/1.1 - Course Introduction_Redesigned.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="1">
+            <div class="card-top"><span class="card-sub">1.2</span><span class="card-slides">23 slides</span></div>
+            <div class="card-body"><div class="card-title">Education Philosophy and Indian Thinkers</div></div>
+            <div class="card-actions">
+              <a href="html-slides/1.2 - Education Philosophy and Indian Thinkers-Redesigned.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/1.2 - Education Philosophy and Indian Thinkers-Redesigned.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/1.2 - Education Philosophy and Indian Thinkers-Redesigned.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="module-section" id="m2" data-module="2">
+        <div class="module-header">
+          <span class="module-pill">Module 2</span>
+          <span class="module-title">History: Pre-Colonial &amp; Colonial Education</span>
+        </div>
+        <div class="module-cards">
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.1</span><span class="card-slides">28 slides</span></div>
+            <div class="card-body"><div class="card-title">Indigenous Education in Pre-Colonial India</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.1 - Indigenous Education in Pre-Colonial India.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.1 - Indigenous Education in Pre-Colonial India.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.1 - Indigenous Education in Pre-Colonial India.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.2</span><span class="card-slides">27 slides</span></div>
+            <div class="card-body"><div class="card-title">British Surveys of Indigenous Schools</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.2 - British Surveys of Indigenous Schools – Parimala Rao.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.2 - British Surveys of Indigenous Schools – Parimala Rao.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.2 - British Surveys of Indigenous Schools – Parimala Rao.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.3</span><span class="card-slides">33 slides</span></div>
+            <div class="card-body"><div class="card-title">Colonial Education 1757–1835</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.3 - Education in Colonial India 1757-1835.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.3 - Education in Colonial India 1757-1835.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.3 - Education in Colonial India 1757-1835.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.4</span><span class="card-slides">22 slides</span></div>
+            <div class="card-body"><div class="card-title">Colonial Education 1835–1854</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.4 - Education in Colonial India 1835-1854.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.4 - Education in Colonial India 1835-1854.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.4 - Education in Colonial India 1835-1854.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.5</span><span class="card-slides">25 slides</span></div>
+            <div class="card-body"><div class="card-title">Policies 1854–1882: Woods Despatch to Hunter Commission</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.5 - Colonial Education Policies – 1854-1882-Woods Despatch to Hunter Commission.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.5 - Colonial Education Policies – 1854-1882-Woods Despatch to Hunter Commission.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.5 - Colonial Education Policies – 1854-1882-Woods Despatch to Hunter Commission.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.6</span><span class="card-slides">33 slides</span></div>
+            <div class="card-body"><div class="card-title">Policies 1882–1930: Nationalism to Dyarchy</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.6 - Colonial Education Policies – 1882–1930-Nationalism to Dyarchy.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.6 - Colonial Education Policies – 1882–1930-Nationalism to Dyarchy.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.6 - Colonial Education Policies – 1882–1930-Nationalism to Dyarchy.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.7</span><span class="card-slides">38 slides</span></div>
+            <div class="card-body"><div class="card-title">Policies 1930–1947: Compulsory Education to Independence</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.7 - Colonial Education Policies – 1930-1947-Era of Compulsory Education to Independence .html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.7 - Colonial Education Policies – 1930-1947-Era of Compulsory Education to Independence .pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.7 - Colonial Education Policies – 1930-1947-Era of Compulsory Education to Independence .pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.8</span><span class="card-slides">45 slides</span></div>
+            <div class="card-body"><div class="card-title">Compulsory Education Debates 1792–1920</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.8 - Compulsory Education Debates in Colonial India 1792-1920– Parimala Rao.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.8 - Compulsory Education Debates in Colonial India 1792-1920– Parimala Rao.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.8 - Compulsory Education Debates in Colonial India 1792-1920– Parimala Rao.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="2">
+            <div class="card-top"><span class="card-sub">2.9</span><span class="card-slides">33 slides</span></div>
+            <div class="card-body"><div class="card-title">Impact of British Education on Indian Society</div></div>
+            <div class="card-actions">
+              <a href="html-slides/2.9 - Impact of British Education on Indian Society.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/2.9 - Impact of British Education on Indian Society.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/2.9 - Impact of British Education on Indian Society.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="module-section" id="m3" data-module="3">
+        <div class="module-header">
+          <span class="module-pill">Module 3</span>
+          <span class="module-title">Compulsory Education, Child Rights &amp; RTE</span>
+        </div>
+        <div class="module-cards">
+          <div class="card" data-module="3">
+            <div class="card-top"><span class="card-sub">3.1</span><span class="card-slides">24 slides</span></div>
+            <div class="card-body"><div class="card-title">Education and the Constitution</div></div>
+            <div class="card-actions">
+              <a href="html-slides/3.1 - Education and Constitution.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/3.1 - Education and Constitution.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/3.1 - Education and Constitution.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="3">
+            <div class="card-top"><span class="card-sub">3.2</span><span class="card-slides">30 slides</span></div>
+            <div class="card-body"><div class="card-title">Journey to the Right to Education Act 2009</div></div>
+            <div class="card-actions">
+              <a href="html-slides/3.2 - Journey to the Right to Education Act 2009.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/3.2 - Journey to the Right to Education Act 2009.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/3.2 - Journey to the Right to Education Act 2009.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="3">
+            <div class="card-top"><span class="card-sub">3.3</span><span class="card-slides">32 slides</span></div>
+            <div class="card-body"><div class="card-title">Child Labour in India: Problem and Legislation</div></div>
+            <div class="card-actions">
+              <a href="html-slides/3.3 - Child Labour in India – Problem and Legislation.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/3.3 - Child Labour in India – Problem and Legislation.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/3.3 - Child Labour in India – Problem and Legislation.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="3">
+            <div class="card-top"><span class="card-sub">3.4</span><span class="card-slides">30 slides</span></div>
+            <div class="card-body"><div class="card-title">Child Labour Debates and Policy</div></div>
+            <div class="card-actions">
+              <a href="html-slides/3.4 - Child Labour Debates and Policy.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/3.4 - Child Labour Debates and Policy.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/3.4 - Child Labour Debates and Policy.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="module-section" id="m4" data-module="4">
+        <div class="module-header">
+          <span class="module-pill">Module 4</span>
+          <span class="module-title">School System in Post-Colonial India</span>
+        </div>
+        <div class="module-cards">
+          <div class="card" data-module="4">
+            <div class="card-top"><span class="card-sub">4.1</span><span class="card-slides">55 slides</span></div>
+            <div class="card-body"><div class="card-title">School System in Post-Colonial India</div></div>
+            <div class="card-actions">
+              <a href="html-slides/4.1 - School System in Post colonial India.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/4.1 - School System in Post colonial India.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/4.1 - School System in Post colonial India.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="4">
+            <div class="card-top"><span class="card-sub">4.2</span><span class="card-slides">39 slides</span></div>
+            <div class="card-body"><div class="card-title">Private Schools: Growth, Types and Regulation</div></div>
+            <div class="card-actions">
+              <a href="html-slides/4.2 - Private Schools in India- Growth Types and Regulation.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/4.2 - Private Schools in India- Growth Types and Regulation.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/4.2 - Private Schools in India- Growth Types and Regulation.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="4">
+            <div class="card-top"><span class="card-sub">4.3</span><span class="card-slides">45 slides</span></div>
+            <div class="card-body"><div class="card-title">Access, Enrolment and Universal Elementary Education</div></div>
+            <div class="card-actions">
+              <a href="html-slides/4.3 - Access and Enrollement and Universal Elementary Education.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/4.3 - Access and Enrollement and Universal Elementary Education.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/4.3 - Access and Enrollement and Universal Elementary Education.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="module-section" id="m5" data-module="5">
+        <div class="module-header">
+          <span class="module-pill">Module 5</span>
+          <span class="module-title">Higher Education</span>
+        </div>
+        <div class="module-cards">
+          <div class="card" data-module="5">
+            <div class="card-top"><span class="card-sub">5.1</span><span class="card-slides">41 slides</span></div>
+            <div class="card-body"><div class="card-title">Higher Education Structure</div></div>
+            <div class="card-actions">
+              <a href="html-slides/5.1 - Higher Education Structure.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/5.1 - Higher Education Structure.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/5.1 - Higher Education Structure.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="5">
+            <div class="card-top"><span class="card-sub">5.2</span><span class="card-slides">26 slides</span></div>
+            <div class="card-body"><div class="card-title">Higher Education Governance and Regulation</div></div>
+            <div class="card-actions">
+              <a href="html-slides/5.2 - Higher Education Governance and Regulation.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/5.2 - Higher Education Governance and Regulation.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/5.2 - Higher Education Governance and Regulation.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="5">
+            <div class="card-top"><span class="card-sub">5.3</span><span class="card-slides">29 slides</span></div>
+            <div class="card-body"><div class="card-title">Higher Education Systemic Issues</div></div>
+            <div class="card-actions">
+              <a href="html-slides/5.3 - Higher Education Systemic Issues.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/5.3 - Higher Education Systemic Issues.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/5.3 - Higher Education Systemic Issues.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 6 -->
+      <div class="module-section" id="m6" data-module="6">
+        <div class="module-header">
+          <span class="module-pill">Module 6</span>
+          <span class="module-title">National Education Policies</span>
+        </div>
+        <div class="module-cards">
+          <div class="card" data-module="6">
+            <div class="card-top"><span class="card-sub">6.1</span><span class="card-slides">28 slides</span></div>
+            <div class="card-body"><div class="card-title">Kothari Commission and NPE 1968</div></div>
+            <div class="card-actions">
+              <a href="html-slides/6.1 - Kothari Commission and National Policy on Education 1968.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/6.1 - Kothari Commission and National Policy on Education 1968.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/6.1 - Kothari Commission and National Policy on Education 1968.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="6">
+            <div class="card-top"><span class="card-sub">6.2</span><span class="card-slides">30 slides</span></div>
+            <div class="card-body"><div class="card-title">National Policy on Education 1986 and POA 1992</div></div>
+            <div class="card-actions">
+              <a href="html-slides/6.2 - National Policy on Education 1986 and Programme of Action 1992.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/6.2 - National Policy on Education 1986 and Programme of Action 1992.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/6.2 - National Policy on Education 1986 and Programme of Action 1992.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 7 -->
+      <div class="module-section" id="m7" data-module="7">
+        <div class="module-header">
+          <span class="module-pill">Module 7</span>
+          <span class="module-title">Learning Crisis and Equity</span>
+        </div>
+        <div class="module-cards">
+          <div class="card" data-module="7">
+            <div class="card-top"><span class="card-sub">7.1</span><span class="card-slides">38 slides</span></div>
+            <div class="card-body"><div class="card-title">The Learning Level Crisis: Evidence and Data</div></div>
+            <div class="card-actions">
+              <a href="html-slides/7.1 - The Learning Level Crisis Evidence and Data_mod.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/7.1 - The Learning Level Crisis Evidence and Data_mod.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/7.1 - The Learning Level Crisis Evidence and Data_mod.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="7">
+            <div class="card-top"><span class="card-sub">7.2</span><span class="card-slides">48 slides</span></div>
+            <div class="card-body"><div class="card-title">The Learning Level Crisis: Debates and Perspectives</div></div>
+            <div class="card-actions">
+              <a href="html-slides/7.2 - The Learning Level Crisis Debates and Perspectives.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/7.2 - The Learning Level Crisis Debates and Perspectives.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/7.2 - The Learning Level Crisis Debates and Perspectives.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="7">
+            <div class="card-top"><span class="card-sub">7.3</span><span class="card-slides">31 slides</span></div>
+            <div class="card-body"><div class="card-title">Education Equity: Theory and Measurement</div></div>
+            <div class="card-actions">
+              <a href="html-slides/7.3 - Education Equity Theory and Measurement_mod.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/7.3 - Education Equity Theory and Measurement_mod.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/7.3 - Education Equity Theory and Measurement_mod.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 8 -->
+      <div class="module-section" id="m8" data-module="8">
+        <div class="module-header">
+          <span class="module-pill">Module 8</span>
+          <span class="module-title">Education Interventions and Reforms</span>
+        </div>
+        <div class="module-cards">
+          <div class="card" data-module="8">
+            <div class="card-top"><span class="card-sub">8.1</span><span class="card-slides">21 slides</span></div>
+            <div class="card-body"><div class="card-title">Teaching at the Right Level and Incentive Programs</div></div>
+            <div class="card-actions">
+              <a href="html-slides/8.1 - Edu Interventions-Teaching at the Right Level and Incentive Programs.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/8.1 - Edu Interventions-Teaching at the Right Level and Incentive Programs.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/8.1 - Edu Interventions-Teaching at the Right Level and Incentive Programs.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+          <div class="card" data-module="8">
+            <div class="card-top"><span class="card-sub">8.2</span><span class="card-slides">25 slides</span></div>
+            <div class="card-body"><div class="card-title">School Choice, Vouchers and Pragmatic Policies</div></div>
+            <div class="card-actions">
+              <a href="html-slides/8.2 - Edu Interventions-School Choice- Vouchers and Pragmatic Policies.html" class="btn btn-primary">&#9654; View Slides</a>
+              <a href="pdf/8.2 - Edu Interventions-School Choice- Vouchers and Pragmatic Policies.pdf" class="btn btn-ghost" download>&#8615; PDF</a>
+              <a href="slides/8.2 - Edu Interventions-School Choice- Vouchers and Pragmatic Policies.pptx" class="btn btn-ghost" download>&#8615; PPTX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cards-container -->
+
+    <!-- ── References ── -->
+    <div class="references-section" id="references">
+      <div class="section-eyebrow">Reading Material</div>
+      <h2 class="section-title">Books &amp; References</h2>
+      <p style="color:var(--muted); font-size:var(--text-sm); margin-top:-0.75rem; margin-bottom:1.5rem;">197 files organised by module theme — click a folder to browse</p>
+
+      <div class="filter-bar" id="refFilterBar">
+        <button class="ref-btn filter-btn active" data-filter="all">All</button>
+        <button class="ref-btn filter-btn" data-filter="1">Module 1</button>
+        <button class="ref-btn filter-btn" data-filter="2">Module 2</button>
+        <button class="ref-btn filter-btn" data-filter="3">Module 3</button>
+        <button class="ref-btn filter-btn" data-filter="4">Module 4</button>
+        <button class="ref-btn filter-btn" data-filter="5">Module 5</button>
+        <button class="ref-btn filter-btn" data-filter="6">Module 6</button>
+        <button class="ref-btn filter-btn" data-filter="7">Module 7</button>
+        <button class="ref-btn filter-btn" data-filter="8">Module 8</button>
+        <button class="ref-btn filter-btn" data-filter="0">General</button>
+      </div>
+
+      <div class="ref-grid" id="refGrid">
+        <div class="ref-card" data-module="1">
+          <div class="ref-meta">
+            <span class="ref-module-tag">Module 1</span>
+            <a href="Books and References/01 - Introduction and Education Philosophy/" class="ref-link">Introduction and Education Philosophy</a>
+          </div>
+          <span class="ref-count">10 files</span>
+        </div>
+        <div class="ref-card" data-module="2">
+          <div class="ref-meta">
+            <span class="ref-module-tag">Module 2</span>
+            <a href="Books and References/02 - History Pre-Colonial and Colonial Education/" class="ref-link">History Pre-Colonial and Colonial Education</a>
+          </div>
+          <span class="ref-count">49 files</span>
+        </div>
+        <div class="ref-card" data-module="3">
+          <div class="ref-meta">
+            <span class="ref-module-tag">Module 3</span>
+            <a href="Books and References/03 - Compulsory Education Child Rights and RTE/" class="ref-link">Compulsory Education Child Rights and RTE</a>
+          </div>
+          <span class="ref-count">23 files</span>
+        </div>
+        <div class="ref-card" data-module="4">
+          <div class="ref-meta">
+            <span class="ref-module-tag">Module 4</span>
+            <a href="Books and References/04 - School System Access and Private Schools/" class="ref-link">School System Access and Private Schools</a>
+          </div>
+          <span class="ref-count">14 files</span>
+        </div>
+        <div class="ref-card" data-module="5">
+          <div class="ref-meta">
+            <span class="ref-module-tag">Module 5</span>
+            <a href="Books and References/05 - Higher Education/" class="ref-link">Higher Education</a>
+          </div>
+          <span class="ref-count">19 files</span>
+        </div>
+        <div class="ref-card" data-module="6">
+          <div class="ref-meta">
+            <span class="ref-module-tag">Module 6</span>
+            <a href="Books and References/06 - Constitution Governance and National Policies/" class="ref-link">Constitution Governance and National Policies</a>
+          </div>
+          <span class="ref-count">33 files</span>
+        </div>
+        <div class="ref-card" data-module="7">
+          <div class="ref-meta">
+            <span class="ref-module-tag">Module 7</span>
+            <a href="Books and References/07 - Curriculum Learning Outcomes and Equity/" class="ref-link">Curriculum Learning Outcomes and Equity</a>
+          </div>
+          <span class="ref-count">35 files</span>
+        </div>
+        <div class="ref-card" data-module="8">
+          <div class="ref-meta">
+            <span class="ref-module-tag">Module 8</span>
+            <a href="Books and References/08 - Education Interventions and Reforms/" class="ref-link">Education Interventions and Reforms</a>
+          </div>
+          <span class="ref-count">8 files</span>
+        </div>
+        <div class="ref-card" data-module="0">
+          <div class="ref-meta">
+            <span class="ref-module-tag">General</span>
+            <a href="Books and References/General Reference/" class="ref-link">General Reference</a>
+          </div>
+          <span class="ref-count">6 files</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ── Footer ── -->
+<footer class="page-footer">
+  PUBP 309: Education Policy &bull; FLAME University &bull; 2025&ndash;26 &bull;
+  <a href="mailto:shivakumar.jolad@flame.edu.in">Shivakumar Jolad</a>
+</footer>
+
+<script>
+// ── Overview toggle
+function toggleOverview() {
+  const btn = document.getElementById('overviewToggle');
+  const body = document.getElementById('overviewBody');
+  btn.classList.toggle('open');
+  body.classList.toggle('show');
+}
+
+// ── Module filter
+document.querySelectorAll('#filterBar .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#filterBar .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.module-section').forEach(sec => {
+      sec.style.display = (f === 'all' || sec.dataset.module === f) ? '' : 'none';
+    });
+  });
+});
+
+// ── Reference filter
+document.querySelectorAll('#refFilterBar .ref-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#refFilterBar .ref-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('#refGrid .ref-card').forEach(card => {
+      card.classList.toggle('hidden', !(f === 'all' || card.dataset.module === f));
+    });
+  });
+});
+
+// ── Sidebar active link on scroll
+const sections = document.querySelectorAll('[id^="m"], #references');
+const sideLinks = document.querySelectorAll('.sidebar-nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      sideLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar-nav a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
