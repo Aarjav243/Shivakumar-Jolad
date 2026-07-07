@@ -537,8 +537,11 @@ main { min-width: 0; }
 .img-card img {
   display: block;
   width: 100%;
+  box-sizing: border-box;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
+  background: #fff;
+  padding: 0.5rem;
 }
 .img-card .cap {
   padding: 0.6rem 0.9rem;
