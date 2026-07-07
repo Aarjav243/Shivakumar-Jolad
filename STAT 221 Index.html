@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT 221 &ndash; Statistical Data Analysis | FLAME University</title>
+<meta name="description" content="Course materials, lecture slides, datasets and references for STAT 221: Fundamentals of Statistical Data Analysis at FLAME University, taught by Shivakumar Jolad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── Design Tokens (matching main site) ── */
+:root {
+  --parchment: #F5EEE3;
+  --lapis: #0E0C1E;
+  --navy: #0E2340;
+  --ink: #0C1B2E;
+  --gold: #B8841A;
+  --gold-hover: #C9931F;
+  --gold-light: rgba(184,132,26,0.12);
+  --gold-border: rgba(184,132,26,0.30);
+  --slate: #4A5568;
+  --muted: #5A677D;
+  --border: #DDE3EC;
+  --cream-dark: #EDE5D8;
+  --on-dark: rgba(245,238,227,0.95);
+  --on-dark-dim: rgba(245,238,227,0.65);
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.563rem;
+  --text-3xl: 1.953rem;
+  --shadow-card: 0 2px 16px rgba(14,12,30,0.07);
+  --shadow-hover: 0 12px 40px rgba(14,12,30,0.15);
+  --radius: 10px;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--ink);
+  background: var(--parchment);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-dark-dim);
+  transition: color 200ms var(--ease);
+  margin-bottom: 2.5rem;
+}
+.back-link:hover { color: var(--gold); }
+.back-link svg { transition: transform 200ms var(--ease); }
+.back-link:hover svg { transform: translateX(-3px); }
+
+.page-hero {
+  background: var(--lapis);
+  padding: 4rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(184,132,26,0.08) 0%, transparent 65%),
+              radial-gradient(ellipse at 10% 80%, rgba(14,35,64,0.6) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.hero-eyebrow::before { content: '✦'; font-size: 0.55rem; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--on-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-subtitle {
+  font-size: var(--text-lg);
+  color: var(--on-dark-dim);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.stat-item {
+  padding: 0.6rem 1.5rem 0.6rem 0;
+  margin-right: 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-item .stat-val {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  color: var(--on-dark);
+  font-weight: 400;
+  display: block;
+  line-height: 1.2;
+}
+.stat-item .stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-dark-dim);
+}
+
+.overview-bar {
+  background: #13102a;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.overview-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+.overview-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--on-dark-dim);
+  padding: 1rem 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 200ms;
+}
+.overview-toggle:hover { color: var(--on-dark); }
+.overview-toggle .chevron {
+  display: inline-block;
+  transition: transform 250ms var(--ease);
+  font-size: 0.8rem;
+  color: var(--gold);
+}
+.overview-toggle.open .chevron { transform: rotate(90deg); }
+.overview-body {
+  display: none;
+  padding-bottom: 2rem;
+}
+.overview-body.show { display: block; }
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding-top: 1rem;
+}
+.overview-section h4 {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.overview-section p,
+.overview-section li {
+  font-size: var(--text-sm);
+  color: var(--on-dark-dim);
+  line-height: 1.7;
+}
+.overview-section ul { padding-left: 1rem; }
+.overview-section li { list-style: disc; margin-bottom: 0.2rem; }
+
+.page-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem clamp(1.25rem, 4vw, 3rem) 6rem;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+.sidebar-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.sidebar-label::before { content: '✦'; font-size: 0.55rem; }
+.sidebar-nav a {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  padding: 0.45rem 0.75rem;
+  border-left: 2px solid var(--border);
+  transition: color 180ms, border-color 180ms, background 180ms;
+  border-radius: 0 4px 4px 0;
+}
+.sidebar-nav a:hover {
+  color: var(--ink);
+  border-color: var(--gold);
+  background: var(--gold-light);
+}
+.sidebar-nav a.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: var(--gold-light);
+  font-weight: 500;
+}
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+main { min-width: 0; }
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.section-eyebrow::before { content: '✦'; font-size: 0.55rem; }
+.section-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.section-note {
+  color: var(--muted);
+  font-size: var(--text-sm);
+  margin-top: -0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.module-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 250ms var(--ease), transform 250ms var(--ease);
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--parchment);
+}
+.card-sub {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.card-body {
+  padding: 1rem 1rem 0.5rem;
+  flex: 1;
+}
+.card-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem 1rem;
+  flex-wrap: wrap;
+}
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border-radius: 100px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 200ms var(--ease);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+.btn-primary:hover {
+  background: var(--gold-hover);
+  border-color: var(--gold-hover);
+  box-shadow: 0 4px 16px rgba(184,132,26,0.35);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-light);
+}
+
+.references-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+.ref-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.ref-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 200ms var(--ease);
+}
+.ref-card:hover { box-shadow: var(--shadow-hover); }
+.ref-summary {
+  padding: 1.25rem 1.25rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+.ref-summary::-webkit-details-marker { display: none; }
+.ref-chevron {
+  display: inline-block;
+  font-size: 0.65rem;
+  color: var(--gold);
+  transition: transform 200ms var(--ease);
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+.ref-card[open] .ref-chevron { transform: rotate(90deg); }
+.ref-meta { flex: 1; min-width: 0; }
+.ref-module-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.ref-link {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.45;
+  display: block;
+  transition: color 180ms;
+}
+.ref-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  white-space: nowrap;
+  padding: 0.25rem 0.6rem;
+  background: var(--parchment);
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  margin-top: 0.15rem;
+}
+.ref-file-list {
+  list-style: none;
+  padding: 0 1.25rem 0.5rem;
+  border-top: 1px solid var(--border);
+}
+.ref-file-list li { border-bottom: 1px solid var(--border); }
+.ref-file-list li:last-child { border-bottom: none; }
+.ref-file-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  font-size: var(--text-sm);
+  color: var(--slate);
+  transition: color 180ms;
+}
+.ref-file-list a:hover { color: var(--gold); }
+.ref-file-ext {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.1rem 0.5rem;
+  flex-shrink: 0;
+}
+
+.page-footer {
+  background: var(--lapis);
+  color: var(--on-dark-dim);
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  border-top: 1px solid rgba(184,132,26,0.2);
+}
+.page-footer a {
+  color: var(--gold);
+  transition: opacity 180ms;
+}
+.page-footer a:hover { opacity: 0.8; }
+
+@media (max-width: 860px) {
+  .page-body { grid-template-columns: 1fr; gap: 2rem; }
+  .sidebar { position: static; display: none; }
+  .hero-stats { gap: 1rem; }
+  .stat-item { border-right: none; padding-right: 0; margin-right: 0; }
+}
+@media (max-width: 540px) {
+  .module-cards { grid-template-columns: 1fr; }
+}
+
+/* ── Illustrative Image Banners ── */
+.img-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0 1rem;
+}
+.img-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 250ms var(--ease), transform 250ms var(--ease);
+}
+.img-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.img-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.img-card .cap {
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--parchment);
+}
+.img-banner--dark {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  max-width: 560px;
+  margin: 2rem 0 0;
+}
+.img-banner--dark .img-card {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: none;
+}
+.img-banner--dark .img-card:hover { transform: none; box-shadow: none; }
+.img-banner--dark .img-card .cap {
+  background: transparent;
+  color: var(--on-dark-dim);
+  border-top-color: rgba(255,255,255,0.12);
+}
+
+</style>
+</head>
+<body>
+
+<!-- Hero Header -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+      Back to Portfolio
+    </a>
+    <div class="hero-eyebrow">FLAME University &bull; School of Liberal Education</div>
+    <h1 class="hero-title">STAT 221: <em>Statistical Data Analysis</em></h1>
+    <p class="hero-subtitle">Fundamentals of Statistical Data Analysis for Social Science</p>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-val">3</span><span class="stat-label">Credits</span></div>
+      <div class="stat-item"><span class="stat-val">15</span><span class="stat-label">Lectures</span></div>
+      <div class="stat-item"><span class="stat-val">8</span><span class="stat-label">Dataset Topics</span></div>
+      <div class="stat-item"><span class="stat-val">23</span><span class="stat-label">References</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Course Overview Accordion -->
+<div class="overview-bar">
+  <div class="overview-inner">
+    <button class="overview-toggle" id="overviewToggle" onclick="toggleOverview()">
+      <span class="chevron">&#9658;</span>
+      Course Overview &amp; Reading List
+    </button>
+    <div class="overview-body" id="overviewBody">
+      <div class="overview-grid">
+        <div class="overview-section">
+          <h4>Course Description</h4>
+          <p>This course introduces the rudiments of data analysis for students of social science. It incorporates elementary but important methods for gathering and analysing data to answer questions of social, economic, cultural, political, and policy interest, giving students the skills to readily understand and analyse quantitative data.</p>
+        </div>
+        <div class="overview-section">
+          <h4>Learning Objectives</h4>
+          <ul>
+            <li>Develop an intuition for data and extract meaning from it</li>
+            <li>Analyse and visualise data and make meaningful inferences</li>
+            <li>Learn probability, descriptive statistics, and statistical inference</li>
+            <li>Work with sampling distributions, estimation and hypothesis testing</li>
+            <li>Critically examine statistical results through case studies</li>
+            <li>Gain hands-on skills with statistical software</li>
+          </ul>
+        </div>
+        <div class="overview-section">
+          <h4>Core Books &amp; Reading</h4>
+          <ul>
+            <li>Krieg &ndash; Statistics and Data Analysis for Social Science</li>
+            <li>Hesse &amp; Ofosu &ndash; Statistical Methods for the Social Sciences</li>
+            <li>Hans Rosling &ndash; Factfulness</li>
+            <li>Rukmini S. &ndash; Whole Numbers and Half Truths</li>
+            <li>Edward Tufte &ndash; The Visual Display of Quantitative Information</li>
+            <li>DeVeaux &amp; Velleman &ndash; Introduction to Stats, 3rd ed.</li>
+            <li>M. Triola &ndash; Elementary Statistics, 11th ed.</li>
+          </ul>
+        </div>
+        <div class="overview-section">
+          <h4>Assessment</h4>
+          <p>As per the course outline and evaluation plan shared under Course Info below. Students are expected to complete assigned readings and class exercises before each session.</p>
+        </div>
+      </div>
+      <div class="img-banner img-banner--dark">
+        <div class="img-card">
+          <img src="STAT221 images/STATS-Social Science-Im1.jpg" alt="Statistics meets social science" loading="lazy">
+          <div class="cap">Statistics meets social science</div>
+        </div>
+        <div class="img-card">
+          <img src="STAT221 images/Without Data- you are just an opinion.webp" alt="Without data you are just another person with an opinion" loading="lazy">
+          <div class="cap">Why this course matters</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Body -->
+<div class="page-body">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Course Material</div>
+    <nav class="sidebar-nav">
+      <a href="#lectures">Lecture Slides</a>
+      <a href="#datasets">Datasets &amp; Workbooks</a>
+      <a href="#resources">Resources &amp; Readings</a>
+      <a href="#courseinfo">Course Info</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main>
+    <div id="lectures">
+      <div class="section-eyebrow">Course Material</div>
+      <h2 class="section-title">Lecture Slides</h2>
+      <div class="module-cards">
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 1</span></div>
+        <div class="card-body"><div class="card-title">Introduction — Data and Social Science</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week01-Introduction-Data-and-Social-Science.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 1- Introduction- Data and Social Science-Science and social Science.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 2</span></div>
+        <div class="card-body"><div class="card-title">Scientific Method; Concepts, Variables &amp; Measurement</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week02-Scientific-Method-Concepts-Variables-Measurement.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 2- Scientific method_ Concepts Variables and Measurement.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 3</span></div>
+        <div class="card-body"><div class="card-title">Exercises — Data Collection &amp; Analysis</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week03-Exercises-Data-Collection-and-Analysis.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 3- Exercises-Data Collection and analysis and Concepts Variables and Measurement.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 4</span></div>
+        <div class="card-body"><div class="card-title">Frequency Distributions, Cross-Tabulation, Data Visualization</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week04-Frequency-Distributions-CrossTabs-Visualization.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 4- Frequency Distributions, Cross Tabulation, Data Visualization.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 5</span></div>
+        <div class="card-body"><div class="card-title">Measures of Central Tendency</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week05-Central-Tendency.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 5- Representatiion of data-Measures of Central Tendency.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 6</span></div>
+        <div class="card-body"><div class="card-title">Measures of Dispersion — Distributions</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week06-Dispersion-Distributions.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 6- Measures of Dispersion- Distributions.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 7</span></div>
+        <div class="card-body"><div class="card-title">Factfulness — Class Presentations</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week07-Factfulness-Class-Presentations.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 7- Factfullnees- Class presentations.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 8</span></div>
+        <div class="card-body"><div class="card-title">Whole Numbers and Half Truths</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week08-Whole-Numbers-Half-Truths.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 8- Whole numbers and Half Truths.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 9</span></div>
+        <div class="card-body"><div class="card-title">Qualitative Data Analysis by Quantitative Methods — Constitution</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week09-Qualitative-Data-Quant-Methods-Constitution.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 9- Qualitative Data Analysis by Quant methods-Constitution.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 10</span></div>
+        <div class="card-body"><div class="card-title">Probability for Social Science — Introduction</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week10-Probability-Introduction.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 10- Probability for social science-1- Introduction.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 11</span></div>
+        <div class="card-body"><div class="card-title">Normal Distribution &amp; Central Limit Theorem</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week11-Normal-Distribution-CLT.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 11- Normal Distribution Central limit Theorem.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 12</span></div>
+        <div class="card-body"><div class="card-title">Sampling and Statistical Inference</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week12-Sampling-Statistical-Inference.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 12- Sampling and Statistical Inference-1.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 13</span></div>
+        <div class="card-body"><div class="card-title">Hypothesis Testing</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week13-Hypothesis-Testing.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 13- Hypothesis Testing.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 14</span></div>
+        <div class="card-body"><div class="card-title">Correlation and Regression</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Week14-Correlation-Regression.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Week 14-Correlation and Regression.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Workshop</span></div>
+        <div class="card-body"><div class="card-title">Data Visualization — Concepts, Techniques and Tools</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Lecture PDF/STAT221-Workshop-Data-Visualization.pdf" class="btn btn-primary" target="_blank" rel="noopener" title="View PDF in browser">&#9654; View PDF</a>
+          <a href="STAT221 Lecture PPTX/STAT 221-2026-Workshop- Data Visualization- Concepts, Techniques and Tools.pptx" class="btn btn-ghost" download title="Download PPTX">&#8615; PPTX</a>
+        </div>
+      </div>
+      </div>
+      <div class="img-banner">
+        <div class="img-card"><img src="STAT221 images/10-types-of-data-visualization-1.jpg" alt="Types of data visualization" loading="lazy"><div class="cap">Ten types of data visualization</div></div>
+        <div class="img-card"><img src="STAT221 images/Data-Sorted- Analysed-Story.jpg" alt="From data to story" loading="lazy"><div class="cap">Data &rarr; Sorted &rarr; Analysed &rarr; Story</div></div>
+        <div class="img-card"><img src="STAT221 images/Extrapolation.jpg" alt="Extrapolation cartoon" loading="lazy"><div class="cap">The dangers of extrapolation</div></div>
+      </div>
+    </div>
+
+    <div class="references-section" id="datasets">
+      <div class="section-eyebrow">Course Material</div>
+      <h2 class="section-title">Datasets &amp; Class Workbooks</h2>
+      <p class="section-note">33 files across 8 topics &mdash; click a topic to expand</p>
+      <div class="ref-grid" id="dataGrid">
+        <details class="ref-card" data-module="1">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Topic 1</span>
+              <span class="ref-link">Data Visualization</span>
+            </div>
+            <span class="ref-count">10 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Data/01-Data-Visualization/Anscombe-Quartet-Data.csv" download>Anscombe-Quartet-Data<span class="ref-file-ext">CSV</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Class-Data-Visualization-2022-Oct31.xlsx" download>Class-Data-Visualization-2022-Oct31<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Class-Data-Visualization-2023-Nov03.xlsx" download>Class-Data-Visualization-2023-Nov03<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Class-Data-Visualization-Nov11.xlsx" download>Class-Data-Visualization-Nov11<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Iris-Boxplot.png" download>Iris-Boxplot<span class="ref-file-ext">PNG</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Iris-Dataset.csv" download>Iris-Dataset<span class="ref-file-ext">CSV</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Iris-Dataset.xlsx" download>Iris-Dataset<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Life-Expectancy-vs-GDP-OWID-Readme.md" download>Life-Expectancy-vs-GDP-OWID-Readme<span class="ref-file-ext">MD</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Life-Expectancy-vs-GDP-per-Capita-OWID.csv" download>Life-Expectancy-vs-GDP-per-Capita-OWID<span class="ref-file-ext">CSV</span></a></li>
+          <li><a href="STAT221 Data/01-Data-Visualization/Life-Expectancy-vs-GDP-per-Capita-OWID.metadata.json" download>Life-Expectancy-vs-GDP-per-Capita-OWID.metadata<span class="ref-file-ext">JSON</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="2">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Topic 2</span>
+              <span class="ref-link">Central Tendency</span>
+            </div>
+            <span class="ref-count">3 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Data/02-Central-Tendency/Central-Tendency-Distributions.xlsx" download>Central-Tendency-Distributions<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/02-Central-Tendency/Krieg-Central-Tendency-Tables.xlsx" download>Krieg-Central-Tendency-Tables<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/02-Central-Tendency/Students-Central-Tendency-Exercise.xlsx" download>Students-Central-Tendency-Exercise<span class="ref-file-ext">XLSX</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="3">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Topic 3</span>
+              <span class="ref-link">Dispersion</span>
+            </div>
+            <span class="ref-count">3 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Data/03-Dispersion/Krieg-Ch4-Dispersion-Workbook.xlsx" download>Krieg-Ch4-Dispersion-Workbook<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/03-Dispersion/Measures-of-Dispersion.xlsx" download>Measures-of-Dispersion<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/03-Dispersion/Students-Dispersion-Exercise.xlsx" download>Students-Dispersion-Exercise<span class="ref-file-ext">XLSX</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="4">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Topic 4</span>
+              <span class="ref-link">Probability &amp; Normal Distribution</span>
+            </div>
+            <span class="ref-count">1 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Data/04-Probability-Normal/Normal-Distribution-Intro-KhanAcademy.xls" download>Normal-Distribution-Intro-KhanAcademy<span class="ref-file-ext">XLS</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="5">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Topic 5</span>
+              <span class="ref-link">Hypothesis Testing</span>
+            </div>
+            <span class="ref-count">1 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Data/05-Hypothesis-Testing/Hypothesis-Testing-Z-and-T-Tests.xlsx" download>Hypothesis-Testing-Z-and-T-Tests<span class="ref-file-ext">XLSX</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="6">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Topic 6</span>
+              <span class="ref-link">Income Inequality</span>
+            </div>
+            <span class="ref-count">3 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Data/06-Income-Inequality/Income-Data-Low-Med-High-Inequality.csv" download>Income-Data-Low-Med-High-Inequality<span class="ref-file-ext">CSV</span></a></li>
+          <li><a href="STAT221 Data/06-Income-Inequality/Income-Data-Simulated-50-People.csv" download>Income-Data-Simulated-50-People<span class="ref-file-ext">CSV</span></a></li>
+          <li><a href="STAT221 Data/06-Income-Inequality/Income-Inequality-Dummy-Chart.png" download>Income-Inequality-Dummy-Chart<span class="ref-file-ext">PNG</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="7">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Topic 7</span>
+              <span class="ref-link">Surveys, Census &amp; NFHS</span>
+            </div>
+            <span class="ref-count">7 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Data/07-Surveys-Census-NFHS/Census-2011-Household-Questionnaire.pdf" target="_blank" rel="noopener">Census-2011-Household-Questionnaire<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Data/07-Surveys-Census-NFHS/Census-2011-Houselist.pdf" target="_blank" rel="noopener">Census-2011-Houselist<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Data/07-Surveys-Census-NFHS/NFHS5-Death-Registrations-Sample-Table.xlsx" download>NFHS5-Death-Registrations-Sample-Table<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/07-Surveys-Census-NFHS/NFHS5-Report-Table-List-PdfToExcel.xlsx" download>NFHS5-Report-Table-List-PdfToExcel<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/07-Surveys-Census-NFHS/NFHS5-Report-Table-List.xlsx" download>NFHS5-Report-Table-List<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/07-Surveys-Census-NFHS/Survey-Table16-Liberal-Conservative.csv" download>Survey-Table16-Liberal-Conservative<span class="ref-file-ext">CSV</span></a></li>
+          <li><a href="STAT221 Data/07-Surveys-Census-NFHS/Survey-Table3-Environment-Opinion.csv" download>Survey-Table3-Environment-Opinion<span class="ref-file-ext">CSV</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="8">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Topic 8</span>
+              <span class="ref-link">Class Exercises</span>
+            </div>
+            <span class="ref-count">5 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Data/08-Class-Exercises/Calendar-2022-Landscape.xlsx" download>Calendar-2022-Landscape<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/08-Class-Exercises/Calendar-2022-September.xlsx" download>Calendar-2022-September<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/08-Class-Exercises/Pivot-Tables-Class-2022-Sept.xlsx" download>Pivot-Tables-Class-2022-Sept<span class="ref-file-ext">XLSX</span></a></li>
+          <li><a href="STAT221 Data/08-Class-Exercises/Trading-Data-London-Shradha.csv" download>Trading-Data-London-Shradha<span class="ref-file-ext">CSV</span></a></li>
+          <li><a href="STAT221 Data/08-Class-Exercises/Trading-Data.csv" download>Trading-Data<span class="ref-file-ext">CSV</span></a></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="references-section" id="resources">
+      <div class="section-eyebrow">Reading Material</div>
+      <h2 class="section-title">Resources &amp; Readings</h2>
+      <p class="section-note">23 files organised by category &mdash; click a category to expand</p>
+      <div class="ref-grid" id="refGrid">
+        <details class="ref-card" data-module="1">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Category 1</span>
+              <span class="ref-link">Textbook — Krieg, Statistics and Data Analysis for Social Science</span>
+            </div>
+            <span class="ref-count">5 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Resources/Textbook-Krieg/Krieg-Ch1-Introduction.pdf" target="_blank" rel="noopener">Krieg-Ch1-Introduction<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Textbook-Krieg/Krieg-Ch2.pdf" target="_blank" rel="noopener">Krieg-Ch2<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Textbook-Krieg/Krieg-Ch3-Central-Tendency.pdf" target="_blank" rel="noopener">Krieg-Ch3-Central-Tendency<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Textbook-Krieg/Krieg-Ch4-Dispersion.pdf" target="_blank" rel="noopener">Krieg-Ch4-Dispersion<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Textbook-Krieg/Krieg-Probability-Normal-Distribution.pdf" target="_blank" rel="noopener">Krieg-Probability-Normal-Distribution<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="2">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Category 2</span>
+              <span class="ref-link">Textbook — Applied Statistics with Data Analytics (R)</span>
+            </div>
+            <span class="ref-count">3 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Resources/Textbook-Applied-Statistics-R/AppliedStats-R-Ch1-Data-Visualization.pdf" target="_blank" rel="noopener">AppliedStats-R-Ch1-Data-Visualization<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Textbook-Applied-Statistics-R/AppliedStats-R-Ch2-Descriptive-Statistics.pdf" target="_blank" rel="noopener">AppliedStats-R-Ch2-Descriptive-Statistics<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Textbook-Applied-Statistics-R/AppliedStats-R-Ch3-Probability.pdf" target="_blank" rel="noopener">AppliedStats-R-Ch3-Probability<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="3">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Category 3</span>
+              <span class="ref-link">Other Textbooks</span>
+            </div>
+            <span class="ref-count">3 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Resources/Other-Textbooks/Social-Science-Research-Principles-Methods-Practices.pdf" target="_blank" rel="noopener">Social-Science-Research-Principles-Methods-Practices<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Other-Textbooks/Statistical-Methods-for-Social-Sciences.pdf" target="_blank" rel="noopener">Statistical-Methods-for-Social-Sciences<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Other-Textbooks/Whole-Numbers-Half-Truths-Ch1-5.pdf" target="_blank" rel="noopener">Whole-Numbers-Half-Truths-Ch1-5<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="4">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Category 4</span>
+              <span class="ref-link">Data Visualization Classics</span>
+            </div>
+            <span class="ref-count">4 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Resources/Data-Visualization/Anscombe-1973-Graphs-in-Statistical-Analysis.pdf" target="_blank" rel="noopener">Anscombe-1973-Graphs-in-Statistical-Analysis<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Data-Visualization/Factfulness-Posters.pdf" target="_blank" rel="noopener">Factfulness-Posters<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Data-Visualization/Factfulness-Ten-Dramatic-Instincts.pptx" download>Factfulness-Ten-Dramatic-Instincts<span class="ref-file-ext">PPTX</span></a></li>
+          <li><a href="STAT221 Resources/Data-Visualization/Normal-Histogram.pdf" target="_blank" rel="noopener">Normal-Histogram<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="5">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Category 5</span>
+              <span class="ref-link">Surveys — NFHS, ASER &amp; Census</span>
+            </div>
+            <span class="ref-count">5 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Resources/Surveys-NFHS-ASER-Census/ASER-2014-Instruction-Manual.pdf" target="_blank" rel="noopener">ASER-2014-Instruction-Manual<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Surveys-NFHS-ASER-Census/ASER-Rural-Sample-Design.pdf" target="_blank" rel="noopener">ASER-Rural-Sample-Design<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Surveys-NFHS-ASER-Census/NFHS4-India-Report.pdf" target="_blank" rel="noopener">NFHS4-India-Report<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Surveys-NFHS-ASER-Census/NFHS5-India-Report.pdf" target="_blank" rel="noopener">NFHS5-India-Report<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Surveys-NFHS-ASER-Census/NFHS5-Report-Table-List.pdf" target="_blank" rel="noopener">NFHS5-Report-Table-List<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+        <details class="ref-card" data-module="6">
+          <summary class="ref-summary">
+            <span class="ref-chevron">&#10148;</span>
+            <div class="ref-meta">
+              <span class="ref-module-tag">Category 6</span>
+              <span class="ref-link">Research Methods</span>
+            </div>
+            <span class="ref-count">3 files</span>
+          </summary>
+          <ul class="ref-file-list">
+          <li><a href="STAT221 Resources/Research-Methods/Gassets-Papers.pdf" target="_blank" rel="noopener">Gassets-Papers<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Research-Methods/Qualitative-Research-Methods-Overview.pdf" target="_blank" rel="noopener">Qualitative-Research-Methods-Overview<span class="ref-file-ext">PDF</span></a></li>
+          <li><a href="STAT221 Resources/Research-Methods/Scales-of-Measurement-eGyanKosh.pdf" target="_blank" rel="noopener">Scales-of-Measurement-eGyanKosh<span class="ref-file-ext">PDF</span></a></li>
+          </ul>
+        </details>
+      </div>
+      <div class="img-banner">
+        <div class="img-card"><img src="STAT221 images/XKCD- statistically significant other.webp" alt="XKCD statistically significant other" loading="lazy"><div class="cap">XKCD: Statistically significant other</div></div>
+        <div class="img-card"><img src="STAT221 images/Null hypothesis - marriage.jpg" alt="Null hypothesis cartoon" loading="lazy"><div class="cap">The null hypothesis, illustrated</div></div>
+        <div class="img-card"><img src="STAT221 images/funny-math-math-humor.jpg" alt="Statistics humor" loading="lazy"><div class="cap">A little statistics humour</div></div>
+      </div>
+    </div>
+
+    <div class="references-section" id="courseinfo">
+      <div class="section-eyebrow">Administration</div>
+      <h2 class="section-title">Course Info</h2>
+      <div class="module-cards">
+      <div class="card">
+        <div class="card-top"><span class="card-sub">DOCX</span></div>
+        <div class="card-body"><div class="card-title">Course Outline (2026)</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Course Info/STAT 221- Course outline-2026.docx" class="btn btn-primary" download>&#8615; Download</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">DOCX</span></div>
+        <div class="card-body"><div class="card-title">Evaluation Plan</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Course Info/STAT 221-Evaluation Plan-University-2026.docx" class="btn btn-primary" download>&#8615; Download</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">XLSX</span></div>
+        <div class="card-body"><div class="card-title">Course Schedule</div></div>
+        <div class="card-actions">
+          <a href="STAT221 Course Info/STAT 221- Statistical Data Analysis - 2026.xlsx" class="btn btn-primary" download>&#8615; Download</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+  STAT 221: Statistical Data Analysis &bull; FLAME University &bull; 2025&ndash;26 &bull;
+  <a href="mailto:shivakumar.jolad@flame.edu.in">Shivakumar Jolad</a>
+</footer>
+
+<script>
+function toggleOverview() {
+  const btn = document.getElementById('overviewToggle');
+  const body = document.getElementById('overviewBody');
+  btn.classList.toggle('open');
+  body.classList.toggle('show');
+}
+
+const sections = document.querySelectorAll('#lectures, #datasets, #resources, #courseinfo');
+const sideLinks = document.querySelectorAll('.sidebar-nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      sideLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar-nav a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

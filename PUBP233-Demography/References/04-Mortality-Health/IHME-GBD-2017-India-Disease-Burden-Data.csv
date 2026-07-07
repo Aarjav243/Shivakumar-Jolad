@@ -1,0 +1,20 @@
+measure_id,measure_name,location_id,location_name,sex_id,sex_name,age_id,age_name,cause_id,cause_name,metric_id,metric_name,year,val,upper,lower
+1,Deaths,163,India,3,Both,22,All Ages,294,All causes,1,Number,2017,"99,09,501",10093179.27,9731577.81
+1,Deaths,163,India,3,Both,22,All Ages,345,Malaria,1,Number,2017,"49,712",69177.51107,25049.78498
+1,Deaths,163,India,3,Both,22,All Ages,346,Chagas disease,1,Number,2017,0,0,0
+1,Deaths,163,India,3,Both,22,All Ages,295,"Communicable, maternal, neonatal, and nutritional diseases",1,Number,2017,"26,42,617",2997322.003,2443591.599
+1,Deaths,163,India,3,Both,22,All Ages,297,Tuberculosis,1,Number,2017,"4,49,794",487149.2886,416766.21
+1,Deaths,163,India,3,Both,22,All Ages,302,Diarrheal diseases,1,Number,2017,"7,19,083",1089886.861,482353.7033
+1,Deaths,163,India,3,Both,22,All Ages,958,Typhoid and paratyphoid,1,Number,2017,"72,400",117033.1765,41824.56482
+4,YLLs (Years of Life Lost),163,India,3,Both,22,All Ages,345,Malaria,1,Number,2017,"34,50,243",5039995.554,1663437.89
+4,YLLs (Years of Life Lost),163,India,3,Both,22,All Ages,346,Chagas disease,1,Number,2017,0,0,0
+4,YLLs (Years of Life Lost),163,India,3,Both,22,All Ages,294,All causes,1,Number,2017,"32,54,69,243",332474963.3,318677074.9
+4,YLLs (Years of Life Lost),163,India,3,Both,22,All Ages,295,"Communicable, maternal, neonatal, and nutritional diseases",1,Number,2017,"12,87,67,892",137696834.5,122780088.9
+4,YLLs (Years of Life Lost),163,India,3,Both,22,All Ages,297,Tuberculosis,1,Number,2017,"1,48,85,656",16005213.44,13824367.65
+4,YLLs (Years of Life Lost),163,India,3,Both,22,All Ages,302,Diarrheal diseases,1,Number,2017,"2,16,27,203",29911406.44,16808579.25
+4,YLLs (Years of Life Lost),163,India,3,Both,22,All Ages,958,Typhoid and paratyphoid,1,Number,2017,"51,13,164",8232804.918,2934073.178
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,Communicable,48.72741758,,
+,,,,,,,,,,,,Tuberculosis,33.09435731,,

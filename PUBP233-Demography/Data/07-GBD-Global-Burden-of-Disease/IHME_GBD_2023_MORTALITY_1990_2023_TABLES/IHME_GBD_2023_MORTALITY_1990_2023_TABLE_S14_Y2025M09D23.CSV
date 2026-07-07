@@ -1,0 +1,493 @@
+Appendix Table S14. Mean age of death correlation with SDI by Cause-Sex,,,,,,,,
+cause_name,level,sex,r2 Observed,slope Observed,p Observed,r2 Observed vs Expected,slope Observed vs Expected,p Observed vs Expected
+All causes,0,Male,0.8,75.3,<.0001,0.36,16.51,<.0001
+All causes,0,Both,0.8,79.36,<.0001,0.32,16.12,<.0001
+All causes,0,Female,0.81,83.94,<.0001,0.28,16.78,<.0001
+"Communicable, maternal, neonatal, and nutritional diseases",1,Male,0.74,107.08,<.0001,0.24,23.27,<.0001
+"Communicable, maternal, neonatal, and nutritional diseases",1,Female,0.72,113.59,<.0001,0.24,25.57,<.0001
+"Communicable, maternal, neonatal, and nutritional diseases",1,Both,0.73,110.25,<.0001,0.23,23.81,<.0001
+HIV/AIDS and sexually transmitted infections,2,Female,0.36,40.91,<.0001,0.023,8.26,0.018
+HIV/AIDS and sexually transmitted infections,2,Both,0.39,37.5,<.0001,0.0052,3.34,0.27
+HIV/AIDS and sexually transmitted infections,2,Male,0.38,35.48,<.0001,<.0001,0.07,0.98
+HIV/AIDS,3,Female,0.25,15.14,<.0001,0.1,-8.66,<.0001
+HIV/AIDS,3,Male,0.38,19.38,<.0001,0.038,-4.77,0.0026
+HIV/AIDS,3,Both,0.36,18.42,<.0001,0.053,-5.68,0.00034
+Sexually transmitted infections excluding HIV,3,Both,0.55,124.6,<.0001,0.46,94.09,<.0001
+Sexually transmitted infections excluding HIV,3,Male,0.48,114.8,<.0001,0.41,95.52,<.0001
+Sexually transmitted infections excluding HIV,3,Female,0.56,125.87,<.0001,0.44,85.78,<.0001
+Respiratory infections and tuberculosis,2,Female,0.72,98.2,<.0001,0.037,8.61,0.0028
+Respiratory infections and tuberculosis,2,Both,0.73,92.09,<.0001,0.047,8.72,0.00075
+Respiratory infections and tuberculosis,2,Male,0.73,86.78,<.0001,0.068,9.75,<.0001
+Tuberculosis,3,Both,0.63,52.18,<.0001,0.028,5.96,0.0094
+Tuberculosis,3,Female,0.66,60.92,<.0001,0.03,6.97,0.0075
+Tuberculosis,3,Male,0.6,46.96,<.0001,0.046,6.83,0.00088
+Lower respiratory infections,3,Male,0.69,98.96,<.0001,0.022,7.23,0.021
+Lower respiratory infections,3,Both,0.68,101.56,<.0001,0.0085,4.84,0.16
+Lower respiratory infections,3,Female,0.67,104.75,<.0001,0.0048,3.96,0.29
+Upper respiratory infections,3,Male,0.51,81.62,<.0001,0.016,9.6,0.048
+Upper respiratory infections,3,Female,0.54,93.5,<.0001,0.0086,7.62,0.15
+Upper respiratory infections,3,Both,0.51,85.93,<.0001,0.0057,6.14,0.24
+Otitis media,3,Both,0.47,64.43,<.0001,0.042,-14.4,0.0015
+Otitis media,3,Female,0.36,49.9,<.0001,0.19,-33.62,<.0001
+Otitis media,3,Male,0.47,64.71,<.0001,0.013,-7.6,0.079
+COVID-19,3,Both,0.76,88.38,<.0001,0.36,32.14,<.0001
+COVID-19,3,Male,0.74,82.18,<.0001,0.32,28.57,<.0001
+COVID-19,3,Female,0.77,96.85,<.0001,0.42,39.48,<.0001
+Enteric infections,2,Male,0.61,107.36,<.0001,0.094,20.81,<.0001
+Enteric infections,2,Female,0.57,105.67,<.0001,0.026,12.13,0.013
+Enteric infections,2,Both,0.6,107.62,<.0001,0.049,15.89,0.00056
+Diarrheal diseases,3,Male,0.58,103.78,<.0001,0.035,13.18,0.0038
+Diarrheal diseases,3,Both,0.56,103.48,<.0001,0.016,9.38,0.053
+Diarrheal diseases,3,Female,0.53,100.97,<.0001,0.0071,6.66,0.19
+Typhoid and paratyphoid,3,Both,0.5,110.96,<.0001,0.4,86.32,<.0001
+Typhoid and paratyphoid,3,Female,0.47,112.97,<.0001,0.38,88.21,<.0001
+Typhoid and paratyphoid,3,Male,0.52,107.54,<.0001,0.41,83.18,<.0001
+Invasive Non-typhoidal Salmonella (iNTS),3,Female,0.66,115.96,<.0001,0.59,82.13,<.0001
+Invasive Non-typhoidal Salmonella (iNTS),3,Male,0.65,108.71,<.0001,0.54,76.53,<.0001
+Invasive Non-typhoidal Salmonella (iNTS),3,Both,0.66,112.38,<.0001,0.57,79.37,<.0001
+Other intestinal infectious diseases,3,Female,0.8,113.42,<.0001,0.48,33.48,<.0001
+Other intestinal infectious diseases,3,Male,0.81,99.73,<.0001,0.53,32.56,<.0001
+Other intestinal infectious diseases,3,Both,0.81,106.79,<.0001,0.51,32.61,<.0001
+Neglected tropical diseases and malaria,2,Both,0.68,103.15,<.0001,0.39,52.51,<.0001
+Neglected tropical diseases and malaria,2,Female,0.68,109.58,<.0001,0.42,58.1,<.0001
+Neglected tropical diseases and malaria,2,Male,0.66,96.79,<.0001,0.35,47.29,<.0001
+Malaria,3,Female,0.16,-38.44,<.0001,0.43,-81.58,<.0001
+Malaria,3,Both,0.17,-40.22,<.0001,0.43,-83.48,<.0001
+Malaria,3,Male,0.17,-41.85,<.0001,0.43,-85.01,<.0001
+Chagas disease,3,Female,0.00021,2.2,0.82,0.0081,-13.58,0.17
+Chagas disease,3,Both,0.00017,1.9,0.84,0.008,-13.12,0.17
+Chagas disease,3,Male,0.00013,1.66,0.86,0.0069,-11.87,0.2
+Leishmaniasis,3,Male,0.01,10.3,0.12,0.03,-17.69,0.0073
+Leishmaniasis,3,Female,0.013,12.72,0.081,0.034,-20.5,0.0043
+Leishmaniasis,3,Both,0.011,11.2,0.1,0.031,-18.41,0.0068
+African trypanosomiasis,3,Both,0.12,-18.58,<.0001,0.39,-43.51,<.0001
+African trypanosomiasis,3,Female,0.12,-18.67,<.0001,0.39,-43.79,<.0001
+African trypanosomiasis,3,Male,0.12,-18.49,<.0001,0.39,-43.03,<.0001
+Schistosomiasis,3,Both,0.2,-73.21,<.0001,0.37,-117.06,<.0001
+Schistosomiasis,3,Male,0.21,-73.59,<.0001,0.37,-115.67,<.0001
+Schistosomiasis,3,Female,0.19,-72.76,<.0001,0.36,-118.18,<.0001
+Cysticercosis,3,Male,0.0073,-10.52,0.19,0.11,-42.44,<.0001
+Cysticercosis,3,Female,0.00053,-3.13,0.72,0.075,-37.36,<.0001
+Cysticercosis,3,Both,0.0031,-7.17,0.39,0.094,-40.4,<.0001
+Cystic echinococcosis,3,Male,0.79,82.17,<.0001,0.4,25.57,<.0001
+Cystic echinococcosis,3,Both,0.8,87.05,<.0001,0.41,27.24,<.0001
+Cystic echinococcosis,3,Female,0.81,93.7,<.0001,0.44,31.53,<.0001
+Dengue,3,Both,0.00055,-3.75,0.72,0.14,-66.48,<.0001
+Dengue,3,Male,0.00043,3.41,0.75,0.1,-56.45,<.0001
+Dengue,3,Female,0.0006,-3.94,0.71,0.14,-68.4,<.0001
+Yellow fever,3,Female,0.15,-26.85,<.0001,0.32,-46.44,<.0001
+Yellow fever,3,Male,0.15,-26.29,<.0001,0.34,-46.63,<.0001
+Yellow fever,3,Both,0.15,-26.46,<.0001,0.33,-46.48,<.0001
+Rabies,3,Both,0.5,102.08,<.0001,0.22,50.9,<.0001
+Rabies,3,Female,0.47,97.91,<.0001,0.21,51.51,<.0001
+Rabies,3,Male,0.51,101.82,<.0001,0.21,47.51,<.0001
+Intestinal nematode infections,3,Female,0.0062,7.83,0.23,0.021,-15.17,0.024
+Intestinal nematode infections,3,Both,0.0062,7.4,0.23,0.019,-13.5,0.033
+Intestinal nematode infections,3,Male,0.006,7.01,0.23,0.016,-11.72,0.052
+Ebola,3,Both,<.0001,0,1,<.0001,0,1
+Ebola,3,Female,<.0001,0,1,<.0001,0,1
+Ebola,3,Male,<.0001,0,1,<.0001,0,1
+Zika virus,3,Female,0.008,7.87,0.17,0.071,-24.08,<.0001
+Zika virus,3,Both,0.0086,8.44,0.15,0.081,-26.77,<.0001
+Zika virus,3,Male,0.009,9.07,0.14,0.089,-29.38,<.0001
+Other neglected tropical diseases,3,Male,0.66,104.45,<.0001,0.28,42.66,<.0001
+Other neglected tropical diseases,3,Female,0.55,96.21,<.0001,0.078,24.16,<.0001
+Other neglected tropical diseases,3,Both,0.64,103.48,<.0001,0.2,36.69,<.0001
+Other infectious diseases,2,Both,0.74,102.81,<.0001,0.51,43.25,<.0001
+Other infectious diseases,2,Male,0.75,98.88,<.0001,0.52,41,<.0001
+Other infectious diseases,2,Female,0.71,107.06,<.0001,0.49,46.32,<.0001
+Meningitis,3,Both,0.68,80.26,<.0001,0.31,25.2,<.0001
+Meningitis,3,Male,0.68,77.53,<.0001,0.3,24.56,<.0001
+Meningitis,3,Female,0.66,83.42,<.0001,0.31,27.07,<.0001
+Encephalitis,3,Female,0.48,85.84,<.0001,0.0092,8.25,0.14
+Encephalitis,3,Both,0.51,84.52,<.0001,0.015,9.84,0.058
+Encephalitis,3,Male,0.54,84.3,<.0001,0.031,13.27,0.0063
+Diphtheria,3,Male,0.54,60.66,<.0001,0.46,49.45,<.0001
+Diphtheria,3,Female,0.51,55.17,<.0001,0.42,44.44,<.0001
+Diphtheria,3,Both,0.54,57.09,<.0001,0.45,46.09,<.0001
+Pertussis,3,Both,0.18,27.92,<.0001,0.15,24.84,<.0001
+Pertussis,3,Female,0.17,31.37,<.0001,0.15,28.63,<.0001
+Pertussis,3,Male,0.17,26.43,<.0001,0.13,22.97,<.0001
+Tetanus,3,Male,0.59,99.97,<.0001,0.2,39.86,<.0001
+Tetanus,3,Female,0.63,118.23,<.0001,0.32,58.37,<.0001
+Tetanus,3,Both,0.63,107.89,<.0001,0.27,47.32,<.0001
+Measles,3,Female,0.13,31.3,<.0001,0.12,29.38,<.0001
+Measles,3,Both,0.14,29.29,<.0001,0.12,27.44,<.0001
+Measles,3,Male,0.13,28.78,<.0001,0.12,27.01,<.0001
+Varicella and herpes zoster,3,Male,0.56,94.3,<.0001,0.0021,-2.68,0.48
+Varicella and herpes zoster,3,Female,0.44,85.36,<.0001,0.067,-21.41,<.0001
+Varicella and herpes zoster,3,Both,0.52,91.17,<.0001,0.033,-12.57,0.0048
+Acute hepatitis,3,Female,0.6,67.72,<.0001,0.055,13.41,0.00027
+Acute hepatitis,3,Male,0.57,53.4,<.0001,<.0001,0.01,1
+Acute hepatitis,3,Both,0.59,59.16,<.0001,0.0075,4.29,0.18
+Other unspecified infectious diseases,3,Female,0.65,96.19,<.0001,0.044,13.93,0.0012
+Other unspecified infectious diseases,3,Both,0.63,91.85,<.0001,0.045,13.74,0.001
+Other unspecified infectious diseases,3,Male,0.6,88.5,<.0001,0.055,14.69,0.00028
+Maternal and neonatal disorders,2,Female,0.18,-12.05,<.0001,0.47,-26.47,<.0001
+Maternal and neonatal disorders,2,Both,0.14,-6.86,<.0001,0.43,-15.74,<.0001
+Maternal and neonatal disorders,2,Male,0.00081,0.01,0.66,0.00044,0,0.75
+Maternal disorders,3,Both,0.42,7.21,<.0001,<.0001,0,0.99
+Maternal disorders,3,Female,0.42,7.21,<.0001,0.00034,0.17,0.78
+Neonatal disorders,3,Male,0.00081,0.01,0.66,0.00044,0,0.75
+Neonatal disorders,3,Female,0.038,-0.04,0.0026,0.062,-0.05,0.0001
+Neonatal disorders,3,Both,0.0048,-0.01,0.29,0.015,-0.02,0.057
+Nutritional deficiencies,2,Male,0.72,119.25,<.0001,0.13,23.12,<.0001
+Nutritional deficiencies,2,Female,0.73,126.42,<.0001,0.098,23.83,<.0001
+Nutritional deficiencies,2,Both,0.74,124.14,<.0001,0.11,23.62,<.0001
+Protein-energy malnutrition,3,Male,0.71,120.05,<.0001,0.14,23.93,<.0001
+Protein-energy malnutrition,3,Both,0.72,125.67,<.0001,0.1,23.52,<.0001
+Protein-energy malnutrition,3,Female,0.72,128.9,<.0001,0.085,23.37,<.0001
+Other nutritional deficiencies,3,Female,0.68,82,<.0001,0.088,16.44,<.0001
+Other nutritional deficiencies,3,Male,0.43,72.71,<.0001,0.0044,5.45,0.31
+Other nutritional deficiencies,3,Both,0.65,78.92,<.0001,0.052,12.87,0.00038
+Non-communicable diseases,1,Female,0.77,47.75,<.0001,0.4,13.24,<.0001
+Non-communicable diseases,1,Male,0.71,38.72,<.0001,0.42,10.65,<.0001
+Non-communicable diseases,1,Both,0.74,43,<.0001,0.41,11.54,<.0001
+Neoplasms,2,Both,0.75,40.45,<.0001,0.59,17.58,<.0001
+Neoplasms,2,Female,0.77,46.94,<.0001,0.59,19.75,<.0001
+Neoplasms,2,Male,0.68,32.75,<.0001,0.5,13.77,<.0001
+Lip and oral cavity cancer,3,Male,0.44,19.5,<.0001,0.12,5.54,<.0001
+Lip and oral cavity cancer,3,Female,0.66,36.43,<.0001,0.33,13.17,<.0001
+Lip and oral cavity cancer,3,Both,0.55,25.52,<.0001,0.17,7.89,<.0001
+Nasopharynx cancer,3,Male,0.62,29.51,<.0001,0.38,12.9,<.0001
+Nasopharynx cancer,3,Female,0.72,47,<.0001,0.46,20.26,<.0001
+Nasopharynx cancer,3,Both,0.68,36.09,<.0001,0.42,15.83,<.0001
+Other pharynx cancer,3,Both,0.51,19.52,<.0001,0.17,7.08,<.0001
+Other pharynx cancer,3,Female,0.63,32.24,<.0001,0.3,12.9,<.0001
+Other pharynx cancer,3,Male,0.42,15.45,<.0001,0.12,5.24,<.0001
+Esophageal cancer,3,Both,0.49,18.13,<.0001,0.13,5.83,<.0001
+Esophageal cancer,3,Male,0.41,15.14,<.0001,0.12,5.13,<.0001
+Esophageal cancer,3,Female,0.64,27.95,<.0001,0.41,11.82,<.0001
+Stomach cancer,3,Both,0.62,29.1,<.0001,0.46,14.2,<.0001
+Stomach cancer,3,Male,0.5,21.84,<.0001,0.39,10.36,<.0001
+Stomach cancer,3,Female,0.69,39.35,<.0001,0.47,19.02,<.0001
+Colon and rectum cancer,3,Both,0.58,28.47,<.0001,0.44,12.81,<.0001
+Colon and rectum cancer,3,Male,0.48,22.08,<.0001,0.36,9.21,<.0001
+Colon and rectum cancer,3,Female,0.65,35.7,<.0001,0.49,17.13,<.0001
+Liver cancer,3,Female,0.74,41.52,<.0001,0.44,16.83,<.0001
+Liver cancer,3,Male,0.66,31.23,<.0001,0.4,13.36,<.0001
+Liver cancer,3,Both,0.7,34.69,<.0001,0.4,13.98,<.0001
+Gallbladder and biliary tract cancer,3,Male,0.46,18.28,<.0001,0.34,8.06,<.0001
+Gallbladder and biliary tract cancer,3,Both,0.57,23.2,<.0001,0.43,10.87,<.0001
+Gallbladder and biliary tract cancer,3,Female,0.63,27.18,<.0001,0.46,12.99,<.0001
+Pancreatic cancer,3,Female,0.65,26.33,<.0001,0.54,13.88,<.0001
+Pancreatic cancer,3,Male,0.47,17.41,<.0001,0.31,7.34,<.0001
+Pancreatic cancer,3,Both,0.57,21.55,<.0001,0.42,9.98,<.0001
+Larynx cancer,3,Female,0.62,31.19,<.0001,0.31,13.3,<.0001
+Larynx cancer,3,Male,0.45,16.96,<.0001,0.2,7.01,<.0001
+Larynx cancer,3,Both,0.51,19.16,<.0001,0.19,7.37,<.0001
+"Tracheal, bronchus, and lung cancer",3,Both,0.53,19.13,<.0001,0.32,8.51,<.0001
+"Tracheal, bronchus, and lung cancer",3,Female,0.64,25.28,<.0001,0.41,12.16,<.0001
+"Tracheal, bronchus, and lung cancer",3,Male,0.45,16.47,<.0001,0.31,7.68,<.0001
+Malignant skin melanoma,3,Female,0.66,48.81,<.0001,0.28,20.48,<.0001
+Malignant skin melanoma,3,Both,0.66,40.87,<.0001,0.33,18.27,<.0001
+Malignant skin melanoma,3,Male,0.59,30.13,<.0001,0.28,12.54,<.0001
+Non-melanoma skin cancer,3,Both,0.52,35.48,<.0001,0.37,19.45,<.0001
+Non-melanoma skin cancer,3,Male,0.46,31.16,<.0001,0.36,18.39,<.0001
+Non-melanoma skin cancer,3,Female,0.58,41.65,<.0001,0.41,22.48,<.0001
+Soft tissue and other extraosseous sarcomas,3,Male,0.75,61.32,<.0001,0.33,13.77,<.0001
+Soft tissue and other extraosseous sarcomas,3,Female,0.76,66.95,<.0001,0.28,14.5,<.0001
+Soft tissue and other extraosseous sarcomas,3,Both,0.76,63.98,<.0001,0.31,13.87,<.0001
+Malignant neoplasm of bone and articular cartilage,3,Female,0.76,74.45,<.0001,0.39,21.89,<.0001
+Malignant neoplasm of bone and articular cartilage,3,Both,0.75,67.75,<.0001,0.34,18.28,<.0001
+Malignant neoplasm of bone and articular cartilage,3,Male,0.73,62.82,<.0001,0.29,16.37,<.0001
+Breast cancer,3,Both,0.67,38.48,<.0001,0.55,17.23,<.0001
+Breast cancer,3,Male,0.51,23.72,<.0001,0.34,8.98,<.0001
+Breast cancer,3,Female,0.68,38.99,<.0001,0.51,16.03,<.0001
+Cervical cancer,3,Both,0.74,37.11,<.0001,0.53,16.44,<.0001
+Cervical cancer,3,Female,0.74,37.12,<.0001,0.48,15.23,<.0001
+Uterine cancer,3,Female,0.61,27.69,<.0001,0.42,12.52,<.0001
+Uterine cancer,3,Both,0.61,27.68,<.0001,0.48,13.83,<.0001
+Ovarian cancer,3,Female,0.72,36.13,<.0001,0.51,15.22,<.0001
+Ovarian cancer,3,Both,0.72,36.12,<.0001,0.57,16.6,<.0001
+Prostate cancer,3,Both,0.36,12.09,<.0001,0.19,5.56,<.0001
+Prostate cancer,3,Male,0.36,12.07,<.0001,0.33,7.13,<.0001
+Testicular cancer,3,Both,0.51,36.87,<.0001,0.014,3.69,0.073
+Testicular cancer,3,Male,0.51,36.86,<.0001,0.028,5.43,0.0098
+Kidney cancer,3,Both,0.77,49.89,<.0001,0.65,25.62,<.0001
+Kidney cancer,3,Male,0.75,43.94,<.0001,0.66,24.25,<.0001
+Kidney cancer,3,Female,0.79,60.85,<.0001,0.63,29.56,<.0001
+Bladder cancer,3,Both,0.47,20.92,<.0001,0.37,10.64,<.0001
+Bladder cancer,3,Female,0.58,27.49,<.0001,0.43,13.88,<.0001
+Bladder cancer,3,Male,0.39,18.01,<.0001,0.39,10.1,<.0001
+Brain and central nervous system cancer,3,Both,0.79,70.58,<.0001,0.54,28.22,<.0001
+Brain and central nervous system cancer,3,Female,0.79,74.39,<.0001,0.52,29.02,<.0001
+Brain and central nervous system cancer,3,Male,0.78,67.56,<.0001,0.54,28.09,<.0001
+Eye cancer,3,Male,0.58,99.51,<.0001,0.084,21.99,<.0001
+Eye cancer,3,Female,0.68,98.74,<.0001,0.094,18.65,<.0001
+Eye cancer,3,Both,0.68,99.29,<.0001,0.12,20.13,<.0001
+Neuroblastoma and other peripheral nervous cell tumors,3,Male,0.66,77.51,<.0001,0.051,10.44,0.00047
+Neuroblastoma and other peripheral nervous cell tumors,3,Female,0.65,73.62,<.0001,0.023,5.53,0.02
+Neuroblastoma and other peripheral nervous cell tumors,3,Both,0.67,75.57,<.0001,0.039,7.7,0.0023
+Thyroid cancer,3,Male,0.67,37.45,<.0001,0.44,15.91,<.0001
+Thyroid cancer,3,Female,0.74,55.09,<.0001,0.41,23.96,<.0001
+Thyroid cancer,3,Both,0.73,48.78,<.0001,0.44,21.75,<.0001
+Mesothelioma,3,Male,0.47,31.82,<.0001,0.33,19.93,<.0001
+Mesothelioma,3,Female,0.67,46.14,<.0001,0.46,26.61,<.0001
+Mesothelioma,3,Both,0.58,38,<.0001,0.42,23.25,<.0001
+Hodgkin lymphoma,3,Male,0.75,60.4,<.0001,0.35,16.78,<.0001
+Hodgkin lymphoma,3,Female,0.77,67.74,<.0001,0.32,19.46,<.0001
+Hodgkin lymphoma,3,Both,0.76,63.1,<.0001,0.33,17.26,<.0001
+Non-Hodgkin lymphoma,3,Male,0.74,59.77,<.0001,0.44,22.01,<.0001
+Non-Hodgkin lymphoma,3,Both,0.75,61.34,<.0001,0.42,21.23,<.0001
+Non-Hodgkin lymphoma,3,Female,0.76,63.11,<.0001,0.39,21.11,<.0001
+Multiple myeloma,3,Female,0.58,28.02,<.0001,0.45,14.02,<.0001
+Multiple myeloma,3,Male,0.45,20.59,<.0001,0.35,10.14,<.0001
+Multiple myeloma,3,Both,0.52,24.07,<.0001,0.4,11.78,<.0001
+Leukemia,3,Both,0.81,87.66,<.0001,0.56,30.36,<.0001
+Leukemia,3,Male,0.8,86.93,<.0001,0.58,32.08,<.0001
+Leukemia,3,Female,0.81,89.04,<.0001,0.54,29.74,<.0001
+Other malignant neoplasms,3,Both,0.79,68.7,<.0001,0.52,25.05,<.0001
+Other malignant neoplasms,3,Female,0.78,70.66,<.0001,0.45,23.62,<.0001
+Other malignant neoplasms,3,Male,0.79,67.1,<.0001,0.58,27.15,<.0001
+Other neoplasms,3,Both,0.67,57.29,<.0001,0.35,20.3,<.0001
+Other neoplasms,3,Male,0.66,63.71,<.0001,0.46,31.55,<.0001
+Other neoplasms,3,Female,0.67,57.47,<.0001,0.26,16.07,<.0001
+Cardiovascular diseases,2,Female,0.68,36.02,<.0001,0.54,16.56,<.0001
+Cardiovascular diseases,2,Male,0.47,24.93,<.0001,0.26,8.42,<.0001
+Cardiovascular diseases,2,Both,0.56,30.09,<.0001,0.39,11.57,<.0001
+Rheumatic heart disease,3,Both,0.5,55.08,<.0001,0.16,19.39,<.0001
+Rheumatic heart disease,3,Female,0.54,59.51,<.0001,0.2,22.74,<.0001
+Rheumatic heart disease,3,Male,0.43,47.82,<.0001,0.086,13.5,<.0001
+Ischemic heart disease,3,Female,0.62,32.01,<.0001,0.51,16.34,<.0001
+Ischemic heart disease,3,Both,0.46,25.3,<.0001,0.29,9.75,<.0001
+Ischemic heart disease,3,Male,0.38,20.89,<.0001,0.19,7.14,<.0001
+Stroke,3,Male,0.49,25.22,<.0001,0.31,9.58,<.0001
+Stroke,3,Both,0.59,30.1,<.0001,0.45,12.99,<.0001
+Stroke,3,Female,0.68,34.54,<.0001,0.57,16.72,<.0001
+Hypertensive heart disease,3,Male,0.4,24.12,<.0001,0.26,11.95,<.0001
+Hypertensive heart disease,3,Female,0.54,29.64,<.0001,0.41,15.8,<.0001
+Hypertensive heart disease,3,Both,0.47,27.74,<.0001,0.34,14.31,<.0001
+Non-rheumatic valvular heart disease,3,Both,0.46,36.42,<.0001,0.38,20.02,<.0001
+Non-rheumatic valvular heart disease,3,Female,0.49,38.99,<.0001,0.42,22.72,<.0001
+Non-rheumatic valvular heart disease,3,Male,0.41,32.42,<.0001,0.32,16.75,<.0001
+Cardiomyopathy and myocarditis,3,Male,0.52,42.28,<.0001,0.043,6.39,0.0012
+Cardiomyopathy and myocarditis,3,Female,0.64,65.97,<.0001,0.16,15.97,<.0001
+Cardiomyopathy and myocarditis,3,Both,0.57,51.49,<.0001,0.07,9,<.0001
+Pulmonary Arterial Hypertension,3,Female,0.67,72.44,<.0001,0.11,11.58,<.0001
+Pulmonary Arterial Hypertension,3,Male,0.53,58.95,<.0001,0.03,-6.44,0.0074
+Pulmonary Arterial Hypertension,3,Both,0.62,66.26,<.0001,0.0084,2.98,0.16
+Atrial fibrillation and flutter,3,Both,0.15,8.64,<.0001,0.076,3.68,<.0001
+Atrial fibrillation and flutter,3,Female,0.19,9.7,<.0001,0.11,4.33,<.0001
+Atrial fibrillation and flutter,3,Male,0.088,6.9,<.0001,0.045,2.94,0.00093
+Aortic aneurysm,3,Both,0.37,21.22,<.0001,0.11,5.44,<.0001
+Aortic aneurysm,3,Male,0.31,18.81,<.0001,0.099,4.87,<.0001
+Aortic aneurysm,3,Female,0.48,25.83,<.0001,0.29,9.93,<.0001
+Lower extremity peripheral arterial disease,3,Both,0.19,14.92,<.0001,0.1,7.24,<.0001
+Lower extremity peripheral arterial disease,3,Male,0.11,10.1,<.0001,0.043,3.95,0.0013
+Lower extremity peripheral arterial disease,3,Female,0.17,18.59,<.0001,0.094,10.67,<.0001
+Endocarditis,3,Both,0.58,58.99,<.0001,0.11,14.2,<.0001
+Endocarditis,3,Female,0.63,67.1,<.0001,0.16,18.53,<.0001
+Endocarditis,3,Male,0.54,52.54,<.0001,0.12,12.84,<.0001
+Other cardiovascular and circulatory diseases,3,Male,0.53,42.45,<.0001,0.0036,-1.59,0.36
+Other cardiovascular and circulatory diseases,3,Female,0.68,53.74,<.0001,0.035,4.83,0.004
+Other cardiovascular and circulatory diseases,3,Both,0.61,48.55,<.0001,0.0043,1.66,0.31
+Chronic respiratory diseases,2,Female,0.67,38.12,<.0001,0.43,17.67,<.0001
+Chronic respiratory diseases,2,Both,0.63,32.49,<.0001,0.41,14.86,<.0001
+Chronic respiratory diseases,2,Male,0.59,28.88,<.0001,0.45,14.15,<.0001
+Chronic obstructive pulmonary disease,3,Male,0.36,15.41,<.0001,0.28,8,<.0001
+Chronic obstructive pulmonary disease,3,Both,0.41,16.68,<.0001,0.23,7.59,<.0001
+Chronic obstructive pulmonary disease,3,Female,0.46,19.23,<.0001,0.27,8.85,<.0001
+Pneumoconiosis,3,Female,0.23,15.03,<.0001,0.036,-3.67,0.0034
+Pneumoconiosis,3,Male,0.19,16.07,<.0001,0.031,3.95,0.0064
+Pneumoconiosis,3,Both,0.22,15.23,<.0001,0.0017,0.87,0.53
+Asthma,3,Male,0.5,35.32,<.0001,0.0013,1.19,0.58
+Asthma,3,Female,0.62,41.52,<.0001,0.018,4.08,0.037
+Asthma,3,Both,0.59,39.61,<.0001,0.014,3.67,0.067
+Interstitial lung disease and pulmonary sarcoidosis,3,Both,0.34,25.91,<.0001,0.14,11.19,<.0001
+Interstitial lung disease and pulmonary sarcoidosis,3,Female,0.41,31.04,<.0001,0.18,13.19,<.0001
+Interstitial lung disease and pulmonary sarcoidosis,3,Male,0.24,21.72,<.0001,0.1,10.11,<.0001
+Other chronic respiratory diseases,3,Male,0.68,92.58,<.0001,0.16,22.17,<.0001
+Other chronic respiratory diseases,3,Female,0.61,91.96,<.0001,0.076,14.95,<.0001
+Other chronic respiratory diseases,3,Both,0.65,89.28,<.0001,0.086,15.1,<.0001
+Digestive diseases,2,Female,0.74,47.93,<.0001,0.11,9.1,<.0001
+Digestive diseases,2,Male,0.69,39.35,<.0001,0.19,10.51,<.0001
+Digestive diseases,2,Both,0.72,43.77,<.0001,0.14,9.89,<.0001
+Cirrhosis and other chronic liver diseases,3,Both,0.6,28.9,<.0001,0.015,3.17,0.058
+Cirrhosis and other chronic liver diseases,3,Female,0.57,32.91,<.0001,0.00077,0.88,0.67
+Cirrhosis and other chronic liver diseases,3,Male,0.6,27.29,<.0001,0.062,5.66,0.00011
+Upper digestive system diseases,3,Both,0.68,45.76,<.0001,0.2,13.74,<.0001
+Upper digestive system diseases,3,Male,0.65,45.85,<.0001,0.27,17.56,<.0001
+Upper digestive system diseases,3,Female,0.7,44.9,<.0001,0.14,10.28,<.0001
+Appendicitis,3,Male,0.65,60.18,<.0001,0.21,14.96,<.0001
+Appendicitis,3,Both,0.64,61.82,<.0001,0.11,11.51,<.0001
+Appendicitis,3,Female,0.61,64.35,<.0001,0.052,9.17,0.0004
+Paralytic ileus and intestinal obstruction,3,Male,0.66,66.14,<.0001,0.03,6.85,0.0069
+Paralytic ileus and intestinal obstruction,3,Both,0.7,71.38,<.0001,0.04,8.13,0.0019
+Paralytic ileus and intestinal obstruction,3,Female,0.73,75.26,<.0001,0.05,9.78,0.00048
+"Inguinal, femoral, and abdominal hernia",3,Male,0.51,48.18,<.0001,<.0001,-0.06,0.98
+"Inguinal, femoral, and abdominal hernia",3,Female,0.42,54.02,<.0001,0.011,5.65,0.1
+"Inguinal, femoral, and abdominal hernia",3,Both,0.6,51.38,<.0001,0.0017,1.33,0.53
+Inflammatory bowel disease,3,Female,0.57,58.58,<.0001,0.22,24.76,<.0001
+Inflammatory bowel disease,3,Both,0.6,50.26,<.0001,0.25,18.48,<.0001
+Inflammatory bowel disease,3,Male,0.52,38.57,<.0001,0.14,9.6,<.0001
+Vascular intestinal disorders,3,Both,0.41,33.29,<.0001,0.24,18.86,<.0001
+Vascular intestinal disorders,3,Female,0.38,26.83,<.0001,0.2,14,<.0001
+Vascular intestinal disorders,3,Male,0.47,37.59,<.0001,0.34,22.69,<.0001
+Gallbladder and biliary diseases,3,Female,0.43,27.45,<.0001,0.075,7.36,<.0001
+Gallbladder and biliary diseases,3,Both,0.47,28.14,<.0001,0.13,9.45,<.0001
+Gallbladder and biliary diseases,3,Male,0.49,28.67,<.0001,0.19,11.85,<.0001
+Pancreatitis,3,Male,0.51,33.14,<.0001,0.085,8.49,<.0001
+Pancreatitis,3,Both,0.54,36.67,<.0001,0.061,7.87,0.00012
+Pancreatitis,3,Female,0.47,30.27,<.0001,0.001,0.97,0.62
+Diverticular disease of intestines,3,Both,0.062,9.8,0.00011,0.00028,-0.48,0.8
+Diverticular disease of intestines,3,Female,0.1,10.87,<.0001,0.0022,1.07,0.47
+Diverticular disease of intestines,3,Male,0.058,9.36,0.00018,0.0016,-1.16,0.54
+Other digestive diseases (internal),3,Male,0.63,49.78,<.0001,0.25,16.59,<.0001
+Other digestive diseases (internal),3,Female,0.5,41.78,<.0001,0.038,7.32,0.0025
+Other digestive diseases (internal),3,Both,0.56,45.13,<.0001,0.088,10.12,<.0001
+Neurological disorders,2,Female,0.59,31.95,<.0001,0.27,11.25,<.0001
+Neurological disorders,2,Male,0.65,50.28,<.0001,0.42,23.04,<.0001
+Neurological disorders,2,Both,0.64,40.92,<.0001,0.37,17.17,<.0001
+Alzheimer's disease and other dementias,3,Female,0.091,4.9,<.0001,0.0057,0.37,0.25
+Alzheimer's disease and other dementias,3,Both,0.07,4.24,<.0001,0.014,0.57,0.065
+Alzheimer's disease and other dementias,3,Male,0.041,3.27,0.0017,0.033,0.85,0.0048
+Parkinson's disease,3,Female,0.22,7.15,<.0001,0.05,1.61,0.00053
+Parkinson's disease,3,Both,0.24,6.98,<.0001,0.096,2.28,<.0001
+Parkinson's disease,3,Male,0.25,7.13,<.0001,0.19,3.62,<.0001
+Idiopathic epilepsy,3,Both,0.67,62.96,<.0001,0.13,10.65,<.0001
+Idiopathic epilepsy,3,Male,0.67,57.21,<.0001,0.088,7.99,<.0001
+Idiopathic epilepsy,3,Female,0.67,70.55,<.0001,0.19,15,<.0001
+Multiple sclerosis,3,Both,0.28,24.12,<.0001,0.032,6.26,0.0059
+Multiple sclerosis,3,Female,0.32,28.87,<.0001,0.062,9.62,0.00011
+Multiple sclerosis,3,Male,0.35,21.21,<.0001,0.038,4.95,0.0024
+Motor neuron disease,3,Female,0.55,56.92,<.0001,0.27,26.46,<.0001
+Motor neuron disease,3,Both,0.56,55.59,<.0001,0.29,26.85,<.0001
+Motor neuron disease,3,Male,0.56,54.64,<.0001,0.31,27.69,<.0001
+Other neurological disorders,3,Female,0.63,77.03,<.0001,0.31,34.76,<.0001
+Other neurological disorders,3,Both,0.61,70.47,<.0001,0.25,27.94,<.0001
+Other neurological disorders,3,Male,0.61,69.5,<.0001,0.26,28.53,<.0001
+Mental disorders,2,Both,0.4,10.9,<.0001,0.019,1.84,0.032
+Mental disorders,2,Male,0.51,10.53,<.0001,0.03,1.44,0.0078
+Mental disorders,2,Female,0.37,11.43,<.0001,0.027,2.39,0.011
+Eating disorders,3,Male,0.51,10.53,<.0001,0.03,1.44,0.0078
+Eating disorders,3,Female,0.37,11.43,<.0001,0.027,2.39,0.011
+Eating disorders,3,Both,0.4,10.9,<.0001,0.019,1.84,0.032
+Substance use disorders,2,Male,0.088,8.98,<.0001,0.14,-9.35,<.0001
+Substance use disorders,2,Both,0.14,11.08,<.0001,0.15,-9.3,<.0001
+Substance use disorders,2,Female,0.24,18.89,<.0001,0.042,-6.16,0.0014
+Alcohol use disorders,3,Both,0.3,17.55,<.0001,0.00012,0.22,0.87
+Alcohol use disorders,3,Male,0.26,16.62,<.0001,0.0019,0.92,0.5
+Alcohol use disorders,3,Female,0.35,20.41,<.0001,0.0025,-1.13,0.44
+Drug use disorders,3,Male,0.019,4.02,0.031,0.19,-13.26,<.0001
+Drug use disorders,3,Female,0.37,33.2,<.0001,0.042,8.45,0.0015
+Drug use disorders,3,Both,0.099,9.48,<.0001,0.13,-10.4,<.0001
+Diabetes and kidney diseases,2,Female,0.69,42.07,<.0001,0.44,17.2,<.0001
+Diabetes and kidney diseases,2,Male,0.61,33.9,<.0001,0.36,13.15,<.0001
+Diabetes and kidney diseases,2,Both,0.66,38.14,<.0001,0.4,15.09,<.0001
+Diabetes mellitus,3,Male,0.54,23.88,<.0001,0.28,8.73,<.0001
+Diabetes mellitus,3,Both,0.59,27.23,<.0001,0.35,10.55,<.0001
+Diabetes mellitus,3,Female,0.61,30.42,<.0001,0.4,12.71,<.0001
+Chronic kidney disease,3,Male,0.65,43.62,<.0001,0.33,16.02,<.0001
+Chronic kidney disease,3,Both,0.69,47.97,<.0001,0.33,17.35,<.0001
+Chronic kidney disease,3,Female,0.71,51.84,<.0001,0.33,18.76,<.0001
+Acute glomerulonephritis,3,Both,0.53,58.58,<.0001,0.031,8.83,0.0066
+Acute glomerulonephritis,3,Male,0.57,55.73,<.0001,0.085,11.62,<.0001
+Acute glomerulonephritis,3,Female,0.53,61.32,<.0001,0.013,6.29,0.077
+Skin and subcutaneous diseases,2,Male,0.69,62.84,<.0001,0.16,17.53,<.0001
+Skin and subcutaneous diseases,2,Female,0.69,53.21,<.0001,0.0044,2.47,0.31
+Skin and subcutaneous diseases,2,Both,0.7,57.06,<.0001,0.051,8.51,0.00046
+Bacterial skin diseases,3,Female,0.69,59.16,<.0001,0.006,3.19,0.23
+Bacterial skin diseases,3,Male,0.73,79.52,<.0001,0.3,29.48,<.0001
+Bacterial skin diseases,3,Both,0.74,66.26,<.0001,0.095,12.62,<.0001
+Decubitus ulcer,3,Male,0.43,34.19,<.0001,0.027,6.21,0.011
+Decubitus ulcer,3,Female,0.38,30.49,<.0001,0.0024,1.78,0.45
+Decubitus ulcer,3,Both,0.49,35.77,<.0001,0.041,7.21,0.0018
+Other skin and subcutaneous diseases,3,Female,0.47,63.73,<.0001,0.00013,-0.7,0.86
+Other skin and subcutaneous diseases,3,Both,0.48,59.33,<.0001,0.0025,2.83,0.45
+Other skin and subcutaneous diseases,3,Male,0.63,104.85,<.0001,0.42,60.58,<.0001
+Musculoskeletal disorders,2,Male,0.32,31.03,<.0001,0.018,4.38,0.04
+Musculoskeletal disorders,2,Both,0.42,46.23,<.0001,0.086,13.68,<.0001
+Musculoskeletal disorders,2,Female,0.41,49.43,<.0001,0.065,13.24,<.0001
+Rheumatoid arthritis,3,Female,0.52,29.16,<.0001,0.24,11.47,<.0001
+Rheumatoid arthritis,3,Male,0.082,12.42,<.0001,0.00055,0.76,0.72
+Rheumatoid arthritis,3,Both,0.41,26.19,<.0001,0.19,10.86,<.0001
+Other musculoskeletal disorders,3,Male,0.44,41.53,<.0001,0.064,9.47,<.0001
+Other musculoskeletal disorders,3,Female,0.64,77.36,<.0001,0.33,34.46,<.0001
+Other musculoskeletal disorders,3,Both,0.54,61.29,<.0001,0.18,22.38,<.0001
+Other non-communicable diseases,2,Both,0.66,104.75,<.0001,0.055,11.83,0.00027
+Other non-communicable diseases,2,Male,0.64,98.83,<.0001,0.051,11.22,0.00045
+Other non-communicable diseases,2,Female,0.67,109.32,<.0001,0.059,12.87,0.00015
+Congenital birth defects,3,Male,0.54,33.58,<.0001,0.32,19.59,<.0001
+Congenital birth defects,3,Both,0.54,31.79,<.0001,0.32,18.14,<.0001
+Congenital birth defects,3,Female,0.53,29.84,<.0001,0.32,16.57,<.0001
+Urinary diseases and male infertility,3,Male,0.69,43.67,<.0001,0.25,13.85,<.0001
+Urinary diseases and male infertility,3,Female,0.76,54.2,<.0001,0.3,18.58,<.0001
+Urinary diseases and male infertility,3,Both,0.73,48.47,<.0001,0.25,15.42,<.0001
+Gynecological diseases,3,Female,0.6,52.9,<.0001,0.25,19.2,<.0001
+Gynecological diseases,3,Both,0.6,52.89,<.0001,0.29,20.9,<.0001
+Hemoglobinopathies and hemolytic anemias,3,Male,0.62,77.11,<.0001,0.042,9.2,0.0014
+Hemoglobinopathies and hemolytic anemias,3,Female,0.59,75.29,<.0001,0.00015,0.54,0.85
+Hemoglobinopathies and hemolytic anemias,3,Both,0.61,76.42,<.0001,0.0099,4.39,0.12
+"Endocrine, metabolic, blood, and immune disorders",3,Male,0.56,57.23,<.0001,0.0012,1.3,0.6
+"Endocrine, metabolic, blood, and immune disorders",3,Both,0.58,59.14,<.0001,0.001,1.22,0.62
+"Endocrine, metabolic, blood, and immune disorders",3,Female,0.59,61.87,<.0001,0.0064,3.07,0.22
+Sudden infant death syndrome,3,Female,0.0093,0.03,0.14,0.0073,0.02,0.19
+Sudden infant death syndrome,3,Male,0.026,-0.02,0.013,0.036,-0.02,0.0033
+Sudden infant death syndrome,3,Both,0.0042,-0.01,0.32,0.0096,-0.01,0.13
+Injuries,1,Male,0.64,53.15,<.0001,0.12,9.57,<.0001
+Injuries,1,Female,0.67,79.2,<.0001,0.15,14.01,<.0001
+Injuries,1,Both,0.65,61.68,<.0001,0.1,9.96,<.0001
+Transport injuries,2,Both,0.62,37.7,<.0001,0.00045,0.41,0.74
+Transport injuries,2,Male,0.62,34.11,<.0001,0.00054,0.42,0.72
+Transport injuries,2,Female,0.61,48.6,<.0001,0.013,2.99,0.076
+Road injuries,3,Male,0.61,34.01,<.0001,<.0001,0.12,0.92
+Road injuries,3,Both,0.62,37.8,<.0001,0.00027,0.33,0.8
+Road injuries,3,Female,0.61,48.88,<.0001,0.016,3.32,0.051
+Other transport injuries,3,Male,0.6,33.34,<.0001,0.027,3,0.012
+Other transport injuries,3,Both,0.63,36.88,<.0001,0.024,2.88,0.018
+Other transport injuries,3,Female,0.6,53.77,<.0001,0.053,7.61,0.00036
+Unintentional injuries,2,Female,0.68,95.28,<.0001,0.15,17.86,<.0001
+Unintentional injuries,2,Male,0.7,73.3,<.0001,0.16,13.27,<.0001
+Unintentional injuries,2,Both,0.69,81.94,<.0001,0.13,13.53,<.0001
+Falls,3,Both,0.5,55.02,<.0001,0.055,9,0.00027
+Falls,3,Male,0.52,54.03,<.0001,0.08,9.69,<.0001
+Falls,3,Female,0.5,54.53,<.0001,0.088,12.93,<.0001
+Drowning,3,Both,0.64,61.69,<.0001,0.045,6.72,0.001
+Drowning,3,Male,0.64,56.56,<.0001,0.064,8.06,<.0001
+Drowning,3,Female,0.59,76.56,<.0001,0.045,8.91,0.00097
+"Fire, heat, and hot substances",3,Male,0.7,67.69,<.0001,0.099,7.39,<.0001
+"Fire, heat, and hot substances",3,Female,0.65,83.15,<.0001,0.25,18.26,<.0001
+"Fire, heat, and hot substances",3,Both,0.69,73.26,<.0001,0.15,10.31,<.0001
+Poisonings,3,Both,0.64,56.5,<.0001,0.024,4.2,0.018
+Poisonings,3,Male,0.62,47.25,<.0001,<.0001,-0.08,0.97
+Poisonings,3,Female,0.63,74,<.0001,0.12,13.58,<.0001
+Exposure to mechanical forces,3,Male,0.69,43.85,<.0001,0.17,9.63,<.0001
+Exposure to mechanical forces,3,Female,0.54,66.05,<.0001,0.038,8.65,0.0025
+Exposure to mechanical forces,3,Both,0.66,47.55,<.0001,0.1,7.53,<.0001
+Adverse effects of medical treatment,3,Both,0.69,74.44,<.0001,0.024,4.93,0.016
+Adverse effects of medical treatment,3,Male,0.62,68.09,<.0001,0.00067,-0.95,0.69
+Adverse effects of medical treatment,3,Female,0.75,81.28,<.0001,0.17,12.22,<.0001
+Animal contact,3,Both,0.53,60.79,<.0001,0.035,8.18,0.0039
+Animal contact,3,Male,0.58,52.11,<.0001,0.00089,0.95,0.65
+Animal contact,3,Female,0.48,75.54,<.0001,0.11,21.8,<.0001
+Foreign body,3,Both,0.71,102.58,<.0001,0.098,15.23,<.0001
+Foreign body,3,Female,0.64,108.88,<.0001,0.025,9.46,0.014
+Foreign body,3,Male,0.74,98.8,<.0001,0.2,20.97,<.0001
+Electrocution,3,Both,0.66,49.63,<.0001,0.25,18.53,<.0001
+Electrocution,3,Male,0.64,39.42,<.0001,0.17,11.74,<.0001
+Electrocution,3,Female,0.49,69,<.0001,0.28,42.31,<.0001
+Environmental heat and cold exposure,3,Male,0.55,44.48,<.0001,0.24,16.66,<.0001
+Environmental heat and cold exposure,3,Female,0.53,64,<.0001,0.18,23.74,<.0001
+Environmental heat and cold exposure,3,Both,0.53,50.39,<.0001,0.17,16.92,<.0001
+Exposure to forces of nature,3,Both,0.049,33.01,0.00057,0.078,-39.74,<.0001
+Exposure to forces of nature,3,Male,0.053,36.19,0.00035,0.085,-43.98,<.0001
+Exposure to forces of nature,3,Female,0.046,30.5,0.00089,0.068,-35.32,<.0001
+Other unintentional injuries,3,Both,0.69,58.64,<.0001,0.3,17.55,<.0001
+Other unintentional injuries,3,Female,0.66,78.78,<.0001,0.28,22.78,<.0001
+Other unintentional injuries,3,Male,0.7,52.66,<.0001,0.31,16.67,<.0001
+Self-harm and interpersonal violence,2,Female,0.52,43.41,<.0001,0.012,3.03,0.089
+Self-harm and interpersonal violence,2,Male,0.49,35.31,<.0001,0.037,5.54,0.0027
+Self-harm and interpersonal violence,2,Both,0.5,37.18,<.0001,0.023,4.16,0.019
+Self-harm,3,Male,0.32,23.67,<.0001,0.082,-7.31,<.0001
+Self-harm,3,Both,0.33,25.5,<.0001,0.11,-8.87,<.0001
+Self-harm,3,Female,0.32,31.26,<.0001,0.072,-8.57,<.0001
+Interpersonal violence,3,Both,0.57,34.1,<.0001,0.16,10.06,<.0001
+Interpersonal violence,3,Female,0.58,43.26,<.0001,0.13,10.04,<.0001
+Interpersonal violence,3,Male,0.55,30.98,<.0001,0.15,9.56,<.0001
+Conflict and terrorism,3,Male,0.043,-15.86,0.0012,0.17,-33.48,<.0001
+Conflict and terrorism,3,Both,0.032,-14.42,0.0056,0.17,-36.11,<.0001
+Conflict and terrorism,3,Female,0.01,-9.9,0.12,0.2,-47.53,<.0001
+Police conflict and executions,3,Female,0.33,44.66,<.0001,0.033,10.87,0.005
+Police conflict and executions,3,Male,0.11,23.11,<.0001,0.012,7.18,0.088
+Police conflict and executions,3,Both,0.19,29.14,<.0001,0.038,11.36,0.0027

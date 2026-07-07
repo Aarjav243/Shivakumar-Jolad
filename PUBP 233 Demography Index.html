@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUBP 233 – Introduction to Demography | FLAME University</title>
+<meta name="description" content="Course materials, lecture slides, datasets, and references for PUBP 233: Introduction to Demography at FLAME University, taught by Shivakumar Jolad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Design Tokens (matching main site) ── */
+:root {
+  --parchment: #F5EEE3;
+  --lapis: #0E0C1E;
+  --navy: #0E2340;
+  --ink: #0C1B2E;
+  --gold: #B8841A;
+  --gold-hover: #C9931F;
+  --gold-light: rgba(184,132,26,0.12);
+  --gold-border: rgba(184,132,26,0.30);
+  --slate: #4A5568;
+  --muted: #5A677D;
+  --border: #DDE3EC;
+  --cream-dark: #EDE5D8;
+  --on-dark: rgba(245,238,227,0.95);
+  --on-dark-dim: rgba(245,238,227,0.65);
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.563rem;
+  --text-3xl: 1.953rem;
+  --shadow-card: 0 2px 16px rgba(14,12,30,0.07);
+  --shadow-hover: 0 12px 40px rgba(14,12,30,0.15);
+  --radius: 10px;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--ink);
+  background: var(--parchment);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── Back Link ── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-dark-dim);
+  transition: color 200ms var(--ease);
+  margin-bottom: 2.5rem;
+}
+.back-link:hover { color: var(--gold); }
+.back-link svg { transition: transform 200ms var(--ease); }
+.back-link:hover svg { transform: translateX(-3px); }
+
+/* ── Hero Header ── */
+.page-hero {
+  background: var(--lapis);
+  padding: 4rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(184,132,26,0.08) 0%, transparent 65%),
+              radial-gradient(ellipse at 10% 80%, rgba(14,35,64,0.6) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.hero-eyebrow::before { content: '✦'; font-size: 0.55rem; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--on-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-subtitle {
+  font-size: var(--text-lg);
+  color: var(--on-dark-dim);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.stat-item {
+  padding: 0.6rem 1.5rem 0.6rem 0;
+  margin-right: 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-item .stat-val {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  color: var(--on-dark);
+  font-weight: 400;
+  display: block;
+  line-height: 1.2;
+}
+.stat-item .stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-dark-dim);
+}
+
+/* ── Overview Accordion ── */
+.overview-bar {
+  background: #13102a;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.overview-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+.overview-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--on-dark-dim);
+  padding: 1rem 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 200ms;
+}
+.overview-toggle:hover { color: var(--on-dark); }
+.overview-toggle .chevron {
+  display: inline-block;
+  transition: transform 250ms var(--ease);
+  font-size: 0.8rem;
+  color: var(--gold);
+}
+.overview-toggle.open .chevron { transform: rotate(90deg); }
+.overview-body {
+  display: none;
+  padding-bottom: 2rem;
+}
+.overview-body.show { display: block; }
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding-top: 1rem;
+}
+.overview-section h4 {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.overview-section p,
+.overview-section li {
+  font-size: var(--text-sm);
+  color: var(--on-dark-dim);
+  line-height: 1.7;
+}
+.overview-section ul { padding-left: 1rem; }
+.overview-section li { list-style: disc; margin-bottom: 0.2rem; }
+
+/* ── Page Body Layout ── */
+.page-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem clamp(1.25rem, 4vw, 3rem) 6rem;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+.sidebar-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.sidebar-label::before { content: '✦'; font-size: 0.55rem; }
+.sidebar-nav a {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  padding: 0.45rem 0.75rem;
+  border-left: 2px solid var(--border);
+  transition: color 180ms, border-color 180ms, background 180ms;
+  border-radius: 0 4px 4px 0;
+}
+.sidebar-nav a:hover {
+  color: var(--ink);
+  border-color: var(--gold);
+  background: var(--gold-light);
+}
+.sidebar-nav a.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: var(--gold-light);
+  font-weight: 500;
+}
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+/* ── Main Content ── */
+main { min-width: 0; }
+
+/* ── Filter Area ── */
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.section-eyebrow::before { content: '✦'; font-size: 0.55rem; }
+.section-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 200ms var(--ease);
+  white-space: nowrap;
+}
+.filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-light);
+}
+.filter-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+
+/* ── Module Section ── */
+.module-section { margin-bottom: 3.5rem; }
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.module-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  background: var(--gold-light);
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+  white-space: nowrap;
+}
+.module-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ── Card Grid ── */
+.module-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── Lecture Card ── */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 250ms var(--ease), transform 250ms var(--ease);
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--parchment);
+}
+.card-sub {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.card-slides {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+.card-body {
+  padding: 1rem 1rem 0.5rem;
+  flex: 1;
+}
+.card-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem 1rem;
+  flex-wrap: wrap;
+}
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border-radius: 100px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 200ms var(--ease);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+.btn-primary:hover {
+  background: var(--gold-hover);
+  border-color: var(--gold-hover);
+  box-shadow: 0 4px 16px rgba(184,132,26,0.35);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-light);
+}
+
+/* ── Folders Section ── */
+.references-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.ref-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 200ms var(--ease), transform 200ms var(--ease);
+}
+.ref-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.ref-card.hidden { display: none; }
+.ref-meta { flex: 1; min-width: 0; }
+.ref-module-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.ref-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+  display: block;
+}
+.ref-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  white-space: nowrap;
+  padding: 0.25rem 0.6rem;
+  background: var(--parchment);
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+.ref-links {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.ref-links a {
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: color 180ms;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 2px;
+}
+.ref-links a:hover {
+  color: var(--gold);
+  text-decoration-color: var(--gold-border);
+}
+
+/* ── Themes Banner ── */
+.themes-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 760px) {
+  .themes-banner { grid-template-columns: repeat(2, 1fr); }
+}
+.theme-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+.theme-card svg {
+  margin: 0 auto 0.75rem;
+  display: block;
+  height: 48px;
+}
+.theme-card h5 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+.theme-card p {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── Footer ── */
+.page-footer {
+  background: var(--lapis);
+  color: var(--on-dark-dim);
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  border-top: 1px solid rgba(184,132,26,0.2);
+}
+.page-footer a {
+  color: var(--gold);
+  transition: opacity 180ms;
+}
+.page-footer a:hover { opacity: 0.8; }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .page-body { grid-template-columns: 1fr; gap: 2rem; }
+  .sidebar { position: static; display: none; }
+  .hero-stats { gap: 1rem; }
+  .stat-item { border-right: none; padding-right: 0; margin-right: 0; }
+}
+@media (max-width: 540px) {
+  .module-cards { grid-template-columns: 1fr; }
+  .ref-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Accordion References ── */
+.accordion-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+.accordion-item { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-card); transition: box-shadow 200ms; }
+.accordion-item:hover { box-shadow: var(--shadow-hover); }
+.accordion-header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; }
+.accordion-header::before { content: '▼'; font-size: 0.7rem; color: var(--gold); margin-right: 1rem; transition: transform 200ms; }
+.accordion-header.collapsed::before { transform: rotate(-90deg); }
+.acc-content-wrapper { flex: 1; display: flex; align-items: center; }
+.acc-meta { flex: 1; }
+.acc-eyebrow { font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.2rem; }
+.acc-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin: 0; }
+.acc-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); background: var(--parchment); padding: 0.3rem 0.8rem; border-radius: 100px; border: 1px solid var(--border); margin-left: 1rem;}
+.accordion-body { border-top: 1px solid var(--border); display: block; }
+.accordion-body.collapsed { display: none; }
+.acc-link { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; text-decoration: none; border-bottom: 1px solid var(--border); transition: background 150ms; }
+.acc-link:last-child { border-bottom: none; }
+.acc-link:hover { background: var(--parchment); }
+.link-name { font-size: 0.9rem; color: var(--slate); font-weight: 500; }
+.link-badge { font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--muted); background: #fff; border: 1px solid var(--border); padding: 0.2rem 0.5rem; border-radius: 4px; }
+.acc-link:hover .link-name { color: var(--ink); }
+
+</style>
+</head>
+<body>
+
+<!-- ── Hero Header ── -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+      Back to Portfolio
+    </a>
+    <div class="hero-eyebrow">FLAME University &bull; Department of Social Sciences</div>
+    <h1 class="hero-title">PUBP 233: <em>Introduction to Demography</em></h1>
+    <p class="hero-subtitle">Population Structure, Growth, Mortality, Fertility, and Migration</p>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-val">3</span><span class="stat-label">Credits</span></div>
+      <div class="stat-item"><span class="stat-val">15</span><span class="stat-label">Lectures</span></div>
+      <div class="stat-item"><span class="stat-val">9</span><span class="stat-label">Dataset Folders</span></div>
+      <div class="stat-item"><span class="stat-val">183</span><span class="stat-label">Readings</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Course Overview Accordion ── -->
+<div class="overview-bar">
+  <div class="overview-inner">
+    <button class="overview-toggle" id="overviewToggle" onclick="toggleOverview()">
+      <span class="chevron">&#9658;</span>
+      Course Overview &amp; Objectives
+    </button>
+    <div class="overview-body" id="overviewBody">
+      <div class="overview-grid">
+        <div class="overview-section">
+          <h4>Course Description</h4>
+          <p>This introductory course on demography focuses on measures of population, theories of population change, and the social and economic processes that influence it. The formal demography component introduces measures of mortality, fertility, and migration, and examines how these shape population size, composition, and distribution.</p>
+        </div>
+        <div class="overview-section">
+          <h4>Course at a Glance</h4>
+          <ul>
+            <li><strong>Code:</strong> PUBP 233</li>
+            <li><strong>Level:</strong> 200 (Undergraduate)</li>
+            <li><strong>Area:</strong> Public Policy</li>
+            <li><strong>L:T:P:</strong> 3:0:0 (45 Contact hrs)</li>
+          </ul>
+        </div>
+        <div class="overview-section" style="grid-column: span 2;">
+          <h4>Objectives</h4>
+          <ul style="column-count: 2; column-gap: 2rem;">
+            <li>Introduce the scientific study of human populations</li>
+            <li>Study population size, age structure, and spatial distribution</li>
+            <li>Understand and measure mortality, fertility, and migration</li>
+            <li>Compute demographic measures and project population change</li>
+            <li>Apply demographic methods to mortality and disease morbidity</li>
+            <li>Critically examine the consequences of population change</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Themes Banner -->
+      <div class="themes-banner">
+        <div class="theme-card">
+          <svg viewBox="0 0 66 60" xmlns="http://www.w3.org/2000/svg" aria-label="Population structure">
+            <line x1="33" y1="6" x2="33" y2="50" stroke="#DDE3EC" stroke-width="1"/>
+            <g fill="#4A5568"><rect x="12" y="44" width="21" height="6"/><rect x="16" y="36" width="17" height="6"/><rect x="19" y="28" width="14" height="6"/><rect x="23" y="20" width="10" height="6"/><rect x="27" y="12" width="6" height="6"/></g>
+            <g fill="#B8841A"><rect x="33" y="44" width="20" height="6"/><rect x="33" y="36" width="16" height="6"/><rect x="33" y="28" width="13" height="6"/><rect x="33" y="20" width="9" height="6"/><rect x="33" y="12" width="6" height="6"/></g>
+          </svg>
+          <h5>Population Structure</h5>
+          <p>Age–sex pyramids &amp; growth</p>
+        </div>
+        <div class="theme-card">
+          <svg viewBox="0 0 66 60" xmlns="http://www.w3.org/2000/svg" aria-label="Mortality and life expectancy">
+            <polyline points="6,50 6,10" stroke="#DDE3EC" stroke-width="1" fill="none"/>
+            <polyline points="6,50 60,50" stroke="#DDE3EC" stroke-width="1" fill="none"/>
+            <path d="M8,44 C20,42 28,30 36,22 C44,14 52,11 58,10" stroke="#4A5568" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="58" cy="10" r="3" fill="#B8841A"/>
+          </svg>
+          <h5>Mortality &amp; Longevity</h5>
+          <p>Life tables, the Great Escape</p>
+        </div>
+        <div class="theme-card">
+          <svg viewBox="0 0 66 60" xmlns="http://www.w3.org/2000/svg" aria-label="Fertility transition">
+            <polyline points="6,50 60,50" stroke="#DDE3EC" stroke-width="1" fill="none"/>
+            <path d="M8,14 C18,15 24,26 33,34 C42,42 50,44 58,45" stroke="#B8841A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="12" cy="16" r="4" fill="#4A5568"/><circle cx="24" cy="14" r="3.2" fill="#4A5568"/><circle cx="35" cy="18" r="2.6" fill="#4A5568"/><circle cx="47" cy="24" r="2" fill="#4A5568"/>
+          </svg>
+          <h5>Fertility Change</h5>
+          <p>TFR decline &amp; determinants</p>
+        </div>
+        <div class="theme-card">
+          <svg viewBox="0 0 66 60" xmlns="http://www.w3.org/2000/svg" aria-label="Migration and urbanization">
+            <rect x="40" y="24" width="7" height="24" fill="#4A5568"/><rect x="49" y="16" width="7" height="32" fill="#4A5568"/><rect x="31" y="32" width="7" height="16" fill="#4A5568"/>
+            <path d="M6,22 H28" stroke="#B8841A" stroke-width="2.5" fill="none"/>
+            <path d="M22,16 L30,22 L22,28" stroke="#B8841A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h5>Migration &amp; Cities</h5>
+          <p>Internal migration, urbanization</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Page Body ── -->
+<div class="page-body">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Course Contents</div>
+    <nav class="sidebar-nav">
+      <a href="#slides">Lecture Slides</a>
+      <a href="#data">Datasets</a>
+      <a href="#references">Readings &amp; References</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main>
+    <div class="section-eyebrow">Lectures</div>
+    <h2 class="section-title" id="slides">Lecture Slides</h2>
+    
+    <div class="module-cards" style="margin-bottom: 4rem;">
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 1</span></div>
+        <div class="card-body"><div class="card-title">Introduction and Population Change in the World</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week01-Introduction-and-Population-Change.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 2</span></div>
+        <div class="card-body"><div class="card-title">Population History — Human Migration, Genetics &amp; Language</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week02-Population-History-Migration-Genetics-Language.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 3</span></div>
+        <div class="card-body"><div class="card-title">Mortality — Famines, Pandemics &amp; the Evolution of Demography</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week03-Mortality-Famines-Pandemics-Evolution-of-Demography.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 4</span></div>
+        <div class="card-body"><div class="card-title">Formal Demography</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week04-Formal-Demography.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 5</span></div>
+        <div class="card-body"><div class="card-title">Mortality Rates, ASFR &amp; Age Standardization</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week05-Mortality-Rates-ASFR-Age-Standardization.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 6</span></div>
+        <div class="card-body"><div class="card-title">Life Table</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week06-Life-Table.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 7</span></div>
+        <div class="card-body"><div class="card-title">The Great Escape — Mortality &amp; Life Expectancy Change</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week07-The-Great-Escape-Mortality-and-Life-Expectancy.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 8</span></div>
+        <div class="card-body"><div class="card-title">Demography and Public Health</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week08-Demography-and-Public-Health.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 9</span></div>
+        <div class="card-body"><div class="card-title">Fertility</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week09-Fertility.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 10</span></div>
+        <div class="card-body"><div class="card-title">Proximate and Social Determinants of Fertility</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week10-Proximate-and-Social-Determinants-of-Fertility.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 11</span></div>
+        <div class="card-body"><div class="card-title">Population Theories</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week11-Population-Theories.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 12</span></div>
+        <div class="card-body"><div class="card-title">Migration</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week12-Migration.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 13</span></div>
+        <div class="card-body"><div class="card-title">Internal Migration and Labour in India</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week13-Internal-Migration-and-Labour-in-India.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 14</span></div>
+        <div class="card-body"><div class="card-title">Population Projection</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week14-Population-Projection.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-sub">Week 15</span></div>
+        <div class="card-body"><div class="card-title">Future of Population</div></div>
+        <div class="card-actions"><a href="PUBP233-Demography/Slides-Pdf/PUBP233-Week15-Future-of-Population.pdf" class="btn btn-primary" target="_blank">📄 View PDF</a></div>
+      </div>
+    </div>
+
+    <!-- ── Datasets ── -->
+    <div class="references-section" id="data">
+      <div class="section-eyebrow">Workbooks</div>
+      <h2 class="section-title">Datasets &amp; Exercises</h2>
+      <p style="color:var(--muted); font-size:var(--text-sm); margin-top:-0.75rem; margin-bottom:1.5rem;">Datasets used in lectures and exercises, organised by topic.</p>
+
+      <div class="ref-grid" style="grid-template-columns: 1fr;">
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">01</span>
+            <span class="ref-title">Population Structure &amp; Growth</span>
+            <div class="ref-links">
+              <a href="PUBP233-Demography/Data/01-Population-Structure-Growth/Population-Pyramid-and-Structure.xlsx">Population Pyramid &amp; Structure</a>
+              <a href="PUBP233-Demography/Data/01-Population-Structure-Growth/Decadal-Population-1971-2011-MF.csv">Decadal Population 1971–2011</a>
+              <a href="PUBP233-Demography/Data/01-Population-Structure-Growth/India-Population-by-Sex-1970-2020.csv">India Population by Sex</a>
+              <a href="PUBP233-Demography/Data/01-Population-Structure-Growth/Japan-Population-by-Sex-1970-2020.csv">Japan Population by Sex</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">02</span>
+            <span class="ref-title">Fertility &amp; Nuptiality</span>
+            <div class="ref-links">
+              <a href="PUBP233-Demography/Data/02-Fertility-Nuptiality/Fertility-Data-Students.xlsx">Fertility Data (Students)</a>
+              <a href="PUBP233-Demography/Data/02-Fertility-Nuptiality/Cohort-Marriage-LifeTable-Bangladesh.xlsx">Cohort Marriage Life Table — Bangladesh</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">03</span>
+            <span class="ref-title">Mortality</span>
+            <div class="ref-links">
+              <a href="PUBP233-Demography/Data/03-Mortality/Age-Specific-Death-Rates-and-Population-Proportions.csv">Age-Specific Death Rates</a>
+              <a href="PUBP233-Demography/Data/03-Mortality/Infant-Mortality-Rate-Indian-States-DataForIndia.csv">IMR by Indian State</a>
+              <a href="PUBP233-Demography/Data/03-Mortality/WHO-Mortality-Database-Deaths-All-Causes-Feb2024.csv">WHO Mortality Database</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">04</span>
+            <span class="ref-title">Life Tables</span>
+            <div class="ref-links">
+              <a href="PUBP233-Demography/Data/04-Life-Tables/LifeTable-India.csv">India</a>
+              <a href="PUBP233-Demography/Data/04-Life-Tables/LifeTable-All-Countries-Complete.csv">All Countries (complete)</a>
+              <a href="PUBP233-Demography/Data/04-Life-Tables/WHO-LifeTable-Mortality-Selected-Countries.xlsx">WHO Life Tables — Selected Countries</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">05</span>
+            <span class="ref-title">Migration — Census 2011</span>
+            <div class="ref-links">
+              <a href="PUBP233-Demography/Data/05-Migration-Census2011/Census2011-D01-India-Population-by-Birthplace-Sex.xlsx">D01 · India by Birthplace</a>
+              <a href="PUBP233-Demography/Data/05-Migration-Census2011/Census2011-D04-India-Migrants-Age-Sex-Education-Duration.xlsx">D04 · India Migrants (age/sex/education)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">06</span>
+            <span class="ref-title">World Population Prospects</span>
+            <div class="ref-links">
+              <a href="PUBP233-Demography/Data/06-World-Population-Prospects/WPP2022-Population-5yr-AgeGroups-BothSexes.xlsx">WPP 2022 — Both Sexes</a>
+              <a href="PUBP233-Demography/Data/06-World-Population-Prospects/WPP2024-Population-5yr-AgeGroups-Male.xlsx">WPP 2024 — Male</a>
+              <a href="PUBP233-Demography/Data/06-World-Population-Prospects/WPP2024-Population-5yr-AgeGroups-Female.xlsx">WPP 2024 — Female</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">07</span>
+            <span class="ref-title">Global Burden of Disease</span>
+            <div class="ref-links">
+              <a href="PUBP233-Demography/Data/07-GBD-Global-Burden-of-Disease/GBD2023-Mortality-Paper-Lancet-2025.pdf">GBD 2023 Mortality Paper (Lancet 2025)</a>
+              <a href="PUBP233-Demography/Data/07-GBD-Global-Burden-of-Disease/IHME_GBD_2023_MORTALITY_1990_2023_TABLE_INDEX_Y2025M09D26.XLSX">IHME GBD 2023 Table Index</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">08</span>
+            <span class="ref-title">NFHS STATA Replication</span>
+            <p style="font-size: var(--text-xs); color: var(--muted); margin-top: 0.5rem;">STATA .do replication scripts and data — mortality &amp; life-table analysis of NFHS data.</p>
+          </div>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-meta">
+            <span class="ref-module-tag">09</span>
+            <span class="ref-title">Class Exercises &amp; Misc</span>
+            <div class="ref-links">
+              <a href="PUBP233-Demography/Data/09-Class-Exercises-Misc/Demography-Class-Survey.xlsx">Demography Class Survey</a>
+              <a href="PUBP233-Demography/Data/09-Class-Exercises-Misc/Poston-Population-and-Society-Extracted-Tables.xlsx">Poston — Extracted Tables</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── References ── -->
+    <div class="references-section" id="references">
+      <div class="section-eyebrow">Reading Material</div>
+      <h2 class="section-title">Books &amp; References</h2>
+      <p style="color:var(--muted); font-size:var(--text-sm); margin-top:-0.75rem; margin-bottom:1.5rem;">A curated library of 183 readings organised into 14 topic folders.</p>
+
+      <div class="accordion-list">
+
+        <div class="accordion-item">
+          <button class="accordion-header " onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 01</span>
+                  <h3 class="acc-title">Textbooks and Chapters</h3>
+                </div>
+                <span class="acc-count">4 files</span>
+            </div>
+          </button>
+          <div class="accordion-body ">
+    
+            <a href="PUBP233-Demography/References/01-Textbooks-and-Chapters/Deaton-GreatEscape-Ch1-Wellbeing-of-the-World.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Deaton-GreatEscape-Ch1-Wellbeing-of-the-World</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/01-Textbooks-and-Chapters/Deaton-GreatEscape-Ch2-Life-and-Death.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Deaton-GreatEscape-Ch2-Life-and-Death</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/01-Textbooks-and-Chapters/Poston-Population-and-Society-Fertility.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Poston-Population-and-Society-Fertility</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/01-Textbooks-and-Chapters/Reich-WhoWeAre-Collision-that-Formed-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Reich-WhoWeAre-Collision-that-Formed-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 02</span>
+                  <h3 class="acc-title">Population Data Reports</h3>
+                </div>
+                <span class="acc-count">20 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/CRS-Report-2023.pdf" target="_blank" class="acc-link">
+              <span class="link-name">CRS-Report-2023</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/India-UN-Population-Prospects-2019.pdf" target="_blank" class="acc-link">
+              <span class="link-name">India-UN-Population-Prospects-2019</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/LASI-India-Report-2020-compressed.pdf" target="_blank" class="acc-link">
+              <span class="link-name">LASI-India-Report-2020-compressed</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/NFHS-5-State-Factsheet-Compendium-Phase-I.pdf" target="_blank" class="acc-link">
+              <span class="link-name">NFHS-5-State-Factsheet-Compendium-Phase-I</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/NFHS-India-FullReport.pdf" target="_blank" class="acc-link">
+              <span class="link-name">NFHS-India-FullReport</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/NFHS4-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">NFHS4-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/NFHS5-Report-Maharashtra.docx" target="_blank" class="acc-link">
+              <span class="link-name">NFHS5-Report-Maharashtra</span>
+              <span class="link-badge">DOCX</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/NFHS5-Report-Maharashtra.pdf" target="_blank" class="acc-link">
+              <span class="link-name">NFHS5-Report-Maharashtra</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/PRB-2022-World-Population-Data-Sheet.pdf" target="_blank" class="acc-link">
+              <span class="link-name">PRB-2022-World-Population-Data-Sheet</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/SRS-Bulletin-2023-Vol58-No1.pdf" target="_blank" class="acc-link">
+              <span class="link-name">SRS-Bulletin-2023-Vol58-No1</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/WPP2019-10KeyFindings.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WPP2019-10KeyFindings</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/WPP2019-Highlights.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WPP2019-Highlights</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/WPP2019-Volume-I-Comprehensive-Tables.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WPP2019-Volume-I-Comprehensive-Tables</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/WPP2022-Summary-of-Results.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WPP2022-Summary-of-Results</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/WPP2024-Key-Messages.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WPP2024-Key-Messages</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/WPP2024-Summary-of-Results.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WPP2024-Summary-of-Results</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/crs-report-2016-21062018.pdf" target="_blank" class="acc-link">
+              <span class="link-name">crs-report-2016-21062018</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/letter-booklet-2020-world-population.pdf" target="_blank" class="acc-link">
+              <span class="link-name">letter-booklet-2020-world-population</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/prb-population-bulletin-71.1-complex-families-2016.pdf" target="_blank" class="acc-link">
+              <span class="link-name">prb-population-bulletin-71.1-complex-families-2016</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/02-Population-Data-Reports/wpp2022-summary-of-results-v2.pdf" target="_blank" class="acc-link">
+              <span class="link-name">wpp2022-summary-of-results-v2</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 03</span>
+                  <h3 class="acc-title">Migration Genetics History</h3>
+                </div>
+                <span class="acc-count">9 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/Child-migration-India2020-policy-brief.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Child-migration-India2020-policy-brief</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/Early-Human-Migration-Map.png" target="_blank" class="acc-link">
+              <span class="link-name">Early-Human-Migration-Map</span>
+              <span class="link-badge">PNG</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/Impact-of-Migration-on-Net-Reproduction.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Impact-of-Migration-on-Net-Reproduction</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/India-Migration-Bibliography-Chinmay-Tumbe.pdf" target="_blank" class="acc-link">
+              <span class="link-name">India-Migration-Bibliography-Chinmay-Tumbe</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/Linguistic-Map.png" target="_blank" class="acc-link">
+              <span class="link-name">Linguistic-Map</span>
+              <span class="link-badge">PNG</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/Oppenheimer-Out-of-Africa-Peopling-of-Continents.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Oppenheimer-Out-of-Africa-Peopling-of-Continents</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/OutOfAfricaMigrations-Paper.pdf" target="_blank" class="acc-link">
+              <span class="link-name">OutOfAfricaMigrations-Paper</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/ScientificReports-HumanHeadLiceDiversity.pdf" target="_blank" class="acc-link">
+              <span class="link-name">ScientificReports-HumanHeadLiceDiversity</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/03-Migration-Genetics-History/The-Long-Walk-Aryan-Migration-Genetics-Debate.pdf" target="_blank" class="acc-link">
+              <span class="link-name">The-Long-Walk-Aryan-Migration-Genetics-Debate</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 04</span>
+                  <h3 class="acc-title">Mortality Health</h3>
+                </div>
+                <span class="acc-count">26 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/04-Mortality-Health/2020-Tumbe-IIMA-WP-Pandemics-and-Historical-Mortality-in-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">2020-Tumbe-IIMA-WP-Pandemics-and-Historical-Mortality-in-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/COVID-YLL-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">COVID-YLL-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Census-2011-LifeExpectancy2.Analysis-2010-14.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Census-2011-LifeExpectancy2.Analysis-2010-14</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Completeness-of-death-registration-in-the-Civil-Re.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Completeness-of-death-registration-in-the-Civil-Re</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/DALY-COVID19-Kerala.pdf" target="_blank" class="acc-link">
+              <span class="link-name">DALY-COVID19-Kerala</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/DECODING-INDIA_S-LOW-COVID-19-CASE-FATALITY-RATE.pdf" target="_blank" class="acc-link">
+              <span class="link-name">DECODING-INDIA_S-LOW-COVID-19-CASE-FATALITY-RATE</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/IHME-GBD-2017-Citation.txt" target="_blank" class="acc-link">
+              <span class="link-name">IHME-GBD-2017-Citation</span>
+              <span class="link-badge">TXT</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/IHME-GBD-2017-India-Disease-Burden-Data.csv" target="_blank" class="acc-link">
+              <span class="link-name">IHME-GBD-2017-India-Disease-Burden-Data</span>
+              <span class="link-badge">CSV</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/India-Disease-Burden-Study.pdf" target="_blank" class="acc-link">
+              <span class="link-name">India-Disease-Burden-Study</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/India-DiseaseBurden-Deaths.csv" target="_blank" class="acc-link">
+              <span class="link-name">India-DiseaseBurden-Deaths</span>
+              <span class="link-badge">CSV</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/India-DiseaseBurden-YLD.csv" target="_blank" class="acc-link">
+              <span class="link-name">India-DiseaseBurden-YLD</span>
+              <span class="link-badge">CSV</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/India-National-Level-Burden-of-Disease.pdf" target="_blank" class="acc-link">
+              <span class="link-name">India-National-Level-Burden-of-Disease</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/IndiaBurdenOfDisease-Deaths-Lancet.png" target="_blank" class="acc-link">
+              <span class="link-name">IndiaBurdenOfDisease-Deaths-Lancet</span>
+              <span class="link-badge">PNG</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/InfantMortalityRate.pdf" target="_blank" class="acc-link">
+              <span class="link-name">InfantMortalityRate</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Influenza-Mortality-Paper.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Influenza-Mortality-Paper</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Kunjika-Questions-on-Mortality.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Kunjika-Questions-on-Mortality</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Lancet-DeathsDALY-IndriectMethods.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Lancet-DeathsDALY-IndriectMethods</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Levin-2020-Age-Specificity-of-Infection-Fatality.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Levin-2020-Age-Specificity-of-Infection-Fatality</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/SRS-Bulletin-Rate-2017-May-2019.pdf" target="_blank" class="acc-link">
+              <span class="link-name">SRS-Bulletin-Rate-2017-May-2019</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/SRS-based-Abridged-Life-Tables-2013-17.pdf" target="_blank" class="acc-link">
+              <span class="link-name">SRS-based-Abridged-Life-Tables-2013-17</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Saikia-2019-Mortality-India-Genus.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Saikia-2019-Mortality-India-Genus</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Trend-Infant-Mortality-bmjopen-2018-023875.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Trend-Infant-Mortality-bmjopen-2018-023875</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Under5-Child-Mortality-Rate-MDG4.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Under5-Child-Mortality-Rate-MDG4</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Universal-Health-Coverage-India-Progress.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Universal-Health-Coverage-India-Progress</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/WHO-LifeTable-Data-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WHO-LifeTable-Data-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/04-Mortality-Health/Why-Women-Live-Longer-ThanMen-Thomas-Perls-and-Ruth-Fretts.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Why-Women-Live-Longer-ThanMen-Thomas-Perls-and-Ruth-Fretts</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 05</span>
+                  <h3 class="acc-title">Fertility Population Policy Law</h3>
+                </div>
+                <span class="acc-count">11 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/ART-Act-2021.pdf" target="_blank" class="acc-link">
+              <span class="link-name">ART-Act-2021</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/Age-of-Consent-Act-1891-Reconsidered.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Age-of-Consent-Act-1891-Reconsidered</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/Child-Marriage-Why-Legal-Action-Insufficient-PFI.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Child-Marriage-Why-Legal-Action-Insufficient-PFI</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/MTP-Act-1971.pdf" target="_blank" class="acc-link">
+              <span class="link-name">MTP-Act-1971</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/MTP-Amendment-Act-Factsheet-2022.pdf" target="_blank" class="acc-link">
+              <span class="link-name">MTP-Amendment-Act-Factsheet-2022</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/National-Population-Policy-2000.pdf" target="_blank" class="acc-link">
+              <span class="link-name">National-Population-Policy-2000</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/PCPNDT-Act-1994.pdf" target="_blank" class="acc-link">
+              <span class="link-name">PCPNDT-Act-1994</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/PCPNDT-Act-Amendment-2002.pdf" target="_blank" class="acc-link">
+              <span class="link-name">PCPNDT-Act-Amendment-2002</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/Prohibition-of-Child-Marriage-Act-2006.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Prohibition-of-Child-Marriage-Act-2006</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/Surrogacy-Regulation-Rules-2022.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Surrogacy-Regulation-Rules-2022</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/05-Fertility-Population-Policy-Law/Surrogacy-Rules-March-2022.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Surrogacy-Rules-March-2022</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 06</span>
+                  <h3 class="acc-title">Census Schedules</h3>
+                </div>
+                <span class="acc-count">5 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/06-Census-Schedules/Census2011-Household-Schedule-English.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Census2011-Household-Schedule-English</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/06-Census-Schedules/Census2011-Household-Schedule-Gujarati.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Census2011-Household-Schedule-Gujarati</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/06-Census-Schedules/Census2011-Household-Schedule-Hindi.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Census2011-Household-Schedule-Hindi</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/06-Census-Schedules/Census2011-Household-Schedule.docx" target="_blank" class="acc-link">
+              <span class="link-name">Census2011-Household-Schedule</span>
+              <span class="link-badge">DOCX</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/06-Census-Schedules/Census2011-Houselist-English.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Census2011-Houselist-English</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 07</span>
+                  <h3 class="acc-title">Student Presentations India Moving</h3>
+                </div>
+                <span class="acc-count">10 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Ch1-Diversity-and-Migration-KarthikEashwer.pptx" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Ch1-Diversity-and-Migration-KarthikEashwer</span>
+              <span class="link-badge">PPTX</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Diaspora-and-Dreams-Nandhini.pdf" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Diaspora-and-Dreams-Nandhini</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Diaspora-and-Dreams-SaiMadhuri.pptx" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Diaspora-and-Dreams-SaiMadhuri</span>
+              <span class="link-badge">PPTX</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Great-Indian-Migration-Wave-Ira-Ram.pdf" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Great-Indian-Migration-Wave-Ira-Ram</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Merchants-and-Capital-Vrinda.pdf" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Merchants-and-Capital-Vrinda</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Migration-and-Development-Lakshya.pdf" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Migration-and-Development-Lakshya</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Migration-and-Development-MimansaKriti.pdf" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Migration-and-Development-MimansaKriti</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Partition-and-Displacement.pdf" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Partition-and-Displacement</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Partitions-and-Displacements-Nritu-Kashvi.pdf" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Partitions-and-Displacements-Nritu-Kashvi</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/07-Student-Presentations-India-Moving/IndiaMoving-Review-Ch1-2-Abhishek.pptx" target="_blank" class="acc-link">
+              <span class="link-name">IndiaMoving-Review-Ch1-2-Abhishek</span>
+              <span class="link-badge">PPTX</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 08</span>
+                  <h3 class="acc-title">Fertility Sociology and Determinants</h3>
+                </div>
+                <span class="acc-count">29 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/A-Population-Out-of-Control-Myths-about-Muslim-Fertility-in-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">A-Population-Out-of-Control-Myths-about-Muslim-Fertility-in-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/A-Theory-of-Value-of-Children-Debra-Friedman-1994.pdf" target="_blank" class="acc-link">
+              <span class="link-name">A-Theory-of-Value-of-Children-Debra-Friedman-1994</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Allendorf-Developmental-Idealism-Nepal-2016.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Allendorf-Developmental-Idealism-Nepal-2016</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Bongaarts-PDR-ProximateDeterminants-Of-fertility.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Bongaarts-PDR-ProximateDeterminants-Of-fertility</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/FERTILITY-DECLINE-AND-MISSING-WOMEN-Seema-Jayachandran-MAIN.pdf" target="_blank" class="acc-link">
+              <span class="link-name">FERTILITY-DECLINE-AND-MISSING-WOMEN-Seema-Jayachandran-MAIN</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/FERTILITY-DECLINE-AND-MISSING-WOMEN-Seema-Jayachandran.pdf" target="_blank" class="acc-link">
+              <span class="link-name">FERTILITY-DECLINE-AND-MISSING-WOMEN-Seema-Jayachandran</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Fertility-Determinants-Discussion-Paper.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Fertility-Determinants-Discussion-Paper</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Fertility-Study-NIH-Manuscript.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Fertility-Study-NIH-Manuscript</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Jeffery-Supply-Demand-DemographicsMarriageIndia.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Jeffery-Supply-Demand-DemographicsMarriageIndia</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/KhapPanchayats&SexRatio.pdf" target="_blank" class="acc-link">
+              <span class="link-name">KhapPanchayats&SexRatio</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Kinship-Structure,-Female-Autonomy,-and-Demographic-Behavior-in-India-Dyson-and-Moore-1983.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Kinship-Structure,-Female-Autonomy,-and-Demographic-Behavior-in-India-Dyson-and-Moore-1983</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/MarryForWhat-MateSelectioninINDIA.pdf" target="_blank" class="acc-link">
+              <span class="link-name">MarryForWhat-MateSelectioninINDIA</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Missing-Girls-in-the-South-Caucasus-Countries-Monica-Das-Gupta.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Missing-Girls-in-the-South-Caucasus-Countries-Monica-Das-Gupta</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Muslim-and-Non-Muslim-differences-in-female-autonomy-and-fertiliy.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Muslim-and-Non-Muslim-differences-in-female-autonomy-and-fertiliy</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Myths-about-Muslim-Fertility-in-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Myths-about-Muslim-Fertility-in-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/On-Kinship-Female-Autonomy-Demography-Tim-Dyson.pdf" target="_blank" class="acc-link">
+              <span class="link-name">On-Kinship-Female-Autonomy-Demography-Tim-Dyson</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/PEW-Religious-Composition-of-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">PEW-Religious-Composition-of-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/POPPOV-Womens-Empowerment-and-Fertility.pdf" target="_blank" class="acc-link">
+              <span class="link-name">POPPOV-Womens-Empowerment-and-Fertility</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Patrilocality-and-Missing-Women-(November-2013).pdf" target="_blank" class="acc-link">
+              <span class="link-name">Patrilocality-and-Missing-Women-(November-2013)</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Proximate-Determinants-of-Fertility-bongaarts1987.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Proximate-Determinants-of-Fertility-bongaarts1987</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Reducing-Fertility-in-Developing-Countries-A-Review-of-Determinants-and-Policy-Levers-Bulato.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Reducing-Fertility-in-Developing-Countries-A-Review-of-Determinants-and-Policy-Levers-Bulato</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Religion-and-decision-to-use-contraception-in-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Religion-and-decision-to-use-contraception-in-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/SaffronDemography.pdf" target="_blank" class="acc-link">
+              <span class="link-name">SaffronDemography</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Tim-Dyson-Kinship-Reation-FemaleAutonomy-PdfToWord.docx" target="_blank" class="acc-link">
+              <span class="link-name">Tim-Dyson-Kinship-Reation-FemaleAutonomy-PdfToWord</span>
+              <span class="link-badge">DOCX</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Tim-Dyson-Kinship-Reation-FemaleAutonomy.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Tim-Dyson-Kinship-Reation-FemaleAutonomy</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/WhenDoesRELIGIONInfluenceFERTILITY.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WhenDoesRELIGIONInfluenceFERTILITY</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Why-is-Son-Preference-so-Persistent-in-East-and-South-Asia-Monica-Das-Gupta.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Why-is-Son-Preference-so-Persistent-in-East-and-South-Asia-Monica-Das-Gupta</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/Women-Politics-Demography-Democracy-PDR-2018.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Women-Politics-Demography-Democracy-PDR-2018</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/08-Fertility-Sociology-and-Determinants/patriarchal-demographics.pdf" target="_blank" class="acc-link">
+              <span class="link-name">patriarchal-demographics</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 09</span>
+                  <h3 class="acc-title">Public Health and Global Health</h3>
+                </div>
+                <span class="acc-count">18 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/Analytical-Framework-Child-Survival-Developing-Countries.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Analytical-Framework-Child-Survival-Developing-Countries</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/AttaingGlobHealth-Eng.pdf" target="_blank" class="acc-link">
+              <span class="link-name">AttaingGlobHealth-Eng</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/ConceptualframeworkforactiononSDH-eng.pdf" target="_blank" class="acc-link">
+              <span class="link-name">ConceptualframeworkforactiononSDH-eng</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/Edhlinger-Edward-HealthEquity.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Edhlinger-Edward-HealthEquity</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/EpidemiologicalTransition.pdf" target="_blank" class="acc-link">
+              <span class="link-name">EpidemiologicalTransition</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/Factsheet-determinants-of-health-May-2018-(1).pdf" target="_blank" class="acc-link">
+              <span class="link-name">Factsheet-determinants-of-health-May-2018-(1)</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/Health-and-Wealth-of-Nations-2016.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Health-and-Wealth-of-Nations-2016</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/HealthInequality-InIndia-NFHS3-2008.pdf" target="_blank" class="acc-link">
+              <span class="link-name">HealthInequality-InIndia-NFHS3-2008</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/Height,-health,-and-inequality-the-distribution-of-adult-heights-in-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Height,-health,-and-inequality-the-distribution-of-adult-heights-in-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/INFANT-MORTALITY-AMONG-THE-MEXICAN-ORIGIN-POPULATION-IN-THE-UNITED-STATES.pdf" target="_blank" class="acc-link">
+              <span class="link-name">INFANT-MORTALITY-AMONG-THE-MEXICAN-ORIGIN-POPULATION-IN-THE-UNITED-STATES</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/Rethinking-African-AIDS-epidemic.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Rethinking-African-AIDS-epidemic</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/Trend-in-International-Health-Inequality.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Trend-in-International-Health-Inequality</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/United-States-Inequality-Health.pdf" target="_blank" class="acc-link">
+              <span class="link-name">United-States-Inequality-Health</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/UrbanPovertyHealth.pdf" target="_blank" class="acc-link">
+              <span class="link-name">UrbanPovertyHealth</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/deaton-income-health-and-wellbeing-around-the-world-evidence-from-gallup-world-poll-jep-spring2008.pdf" target="_blank" class="acc-link">
+              <span class="link-name">deaton-income-health-and-wellbeing-around-the-world-evidence-from-gallup-world-poll-jep-spring2008</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/height-health-dev-aug07.pdf" target="_blank" class="acc-link">
+              <span class="link-name">height-health-dev-aug07</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/rajan2013.pdf" target="_blank" class="acc-link">
+              <span class="link-name">rajan2013</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/09-Public-Health-and-Global-Health/tarlov1999.pdf" target="_blank" class="acc-link">
+              <span class="link-name">tarlov1999</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 10</span>
+                  <h3 class="acc-title">Population Theory and History</h3>
+                </div>
+                <span class="acc-count">14 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Coale1974-TheHistory-of-Human-Population.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Coale1974-TheHistory-of-Human-Population</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Delays-in-release-of-Census-data-Article.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Delays-in-release-of-Census-data-Article</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Demographic-Transition-in-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Demographic-Transition-in-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Historical-Demography-of-India-JSTOR.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Historical-Demography-of-India-JSTOR</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/India-Demography-Budget-Chapter.pdf" target="_blank" class="acc-link">
+              <span class="link-name">India-Demography-Budget-Chapter</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/India-HistoricalDemography-4396322.pdf" target="_blank" class="acc-link">
+              <span class="link-name">India-HistoricalDemography-4396322</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Malthus-An-essay-on-the-principle-of-population.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Malthus-An-essay-on-the-principle-of-population</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Malthus-and-the-Less-Developed-World-The-Pivotal-Role-of-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Malthus-and-the-Less-Developed-World-The-Pivotal-Role-of-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Population-and-Education-India-PNAS-2018.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Population-and-Education-India-PNAS-2018</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/PopulationALivelyIntroduction-McFalls.pdf" target="_blank" class="acc-link">
+              <span class="link-name">PopulationALivelyIntroduction-McFalls</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Social-demography-Dejong-Paper.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Social-demography-Dejong-Paper</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/Srinivas-Goli-Demographic-Assessment-India.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Srinivas-Goli-Demographic-Assessment-India</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/TwilightOfTheCenus-DavidColeman.pdf" target="_blank" class="acc-link">
+              <span class="link-name">TwilightOfTheCenus-DavidColeman</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/10-Population-Theory-and-History/social-demography-Dejong-Papers.pdf" target="_blank" class="acc-link">
+              <span class="link-name">social-demography-Dejong-Papers</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 11</span>
+                  <h3 class="acc-title">Population Policy and ICPD</h3>
+                </div>
+                <span class="acc-count">17 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/Cairo-Conference-on-Population-and-Development-Macintosh-Finkle-1994.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Cairo-Conference-on-Population-and-Development-Macintosh-Finkle-1994</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/Demography,-Feminism,-and-the-Science-Policy-Nexus-1997.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Demography,-Feminism,-and-the-Science-Policy-Nexus-1997</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/Family-Planning-Full-Report.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Family-Planning-Full-Report</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/Family-Planning-to-Reproductive-Health-Challenges-Facing-India-Leela-Visaria-et-al-1999.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Family-Planning-to-Reproductive-Health-Challenges-Facing-India-Leela-Visaria-et-al-1999</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/Hartmann2015-EPW-Indias-Population-Programme.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Hartmann2015-EPW-Indias-Population-Programme</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/Hopes-Dreams-and-anxieties-Basu&Desai2016-IndiaOneChildFamilies.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Hopes-Dreams-and-anxieties-Basu&Desai2016-IndiaOneChildFamilies</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/ICPD-Cairo-Coneference-at-15-Years-Achieving-Sexual-and-Reproductive-Health.pdf" target="_blank" class="acc-link">
+              <span class="link-name">ICPD-Cairo-Coneference-at-15-Years-Achieving-Sexual-and-Reproductive-Health</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/India-Family-Planning-Status.pdf" target="_blank" class="acc-link">
+              <span class="link-name">India-Family-Planning-Status</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/New-Population-Policies-Advancing-Womens-rights-Eng-Lori-2001.pdf" target="_blank" class="acc-link">
+              <span class="link-name">New-Population-Policies-Advancing-Womens-rights-Eng-Lori-2001</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/PopulationControlInIndia-Connelly2006.pdf" target="_blank" class="acc-link">
+              <span class="link-name">PopulationControlInIndia-Connelly2006</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/UN-ICPD-Cairo-1994-report.pdf" target="_blank" class="acc-link">
+              <span class="link-name">UN-ICPD-Cairo-1994-report</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/UN-Population-Policy-Discussion-Paper-1995.pdf" target="_blank" class="acc-link">
+              <span class="link-name">UN-Population-Policy-Discussion-Paper-1995</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/UnmentNeedFamilyPlanning-india.pdf" target="_blank" class="acc-link">
+              <span class="link-name">UnmentNeedFamilyPlanning-india</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/Unmet-Need-for-Family-Planning-inDeveloping-Countries-Casterline.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Unmet-Need-for-Family-Planning-inDeveloping-Countries-Casterline</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/WCU2014-UNMET-NEED-metadata.pdf" target="_blank" class="acc-link">
+              <span class="link-name">WCU2014-UNMET-NEED-metadata</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/World-Family-Planning-2017-Highlights.pdf" target="_blank" class="acc-link">
+              <span class="link-name">World-Family-Planning-2017-Highlights</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/11-Population-Policy-and-ICPD/programme-of-action-Web-ENGLISH.pdf" target="_blank" class="acc-link">
+              <span class="link-name">programme-of-action-Web-ENGLISH</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 12</span>
+                  <h3 class="acc-title">Population Projections</h3>
+                </div>
+                <span class="acc-count">5 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/12-Population-Projections/2-ProjectionMethods.pdf" target="_blank" class="acc-link">
+              <span class="link-name">2-ProjectionMethods</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/12-Population-Projections/PopProjection-DemogProfileIndia.pdf" target="_blank" class="acc-link">
+              <span class="link-name">PopProjection-DemogProfileIndia</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/12-Population-Projections/Population-Projection-Report-2006-by-RGI.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Population-Projection-Report-2006-by-RGI</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/12-Population-Projections/Report-Population-Projection-2019.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Report-Population-Projection-2019</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 13</span>
+                  <h3 class="acc-title">Nutrition and Food Security</h3>
+                </div>
+                <span class="acc-count">5 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/13-Nutrition-and-Food-Security/AccessFood-document.pdf" target="_blank" class="acc-link">
+              <span class="link-name">AccessFood-document</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/13-Nutrition-and-Food-Security/Food-and-Nutrition-in-India-Facts-and-Interpretations.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Food-and-Nutrition-in-India-Facts-and-Interpretations</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/13-Nutrition-and-Food-Security/Nutrition-Brief.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Nutrition-Brief</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/13-Nutrition-and-Food-Security/Population-and-nutrition-An-essay-on-European-demographic-history.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Population-and-nutrition-An-essay-on-European-demographic-history</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/13-Nutrition-and-Food-Security/Reducing-stunting-and-wasting.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Reducing-stunting-and-wasting</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-header collapsed" onclick="toggleRefAccordion(this)">
+            <div class="acc-content-wrapper">
+                <div class="acc-meta">
+                  <span class="acc-eyebrow">CATEGORY 14</span>
+                  <h3 class="acc-title">Urbanization and Cities</h3>
+                </div>
+                <span class="acc-count">6 files</span>
+            </div>
+          </button>
+          <div class="accordion-body collapsed">
+    
+            <a href="PUBP233-Demography/References/14-Urbanization-and-Cities/Census2011-Urban-Agglomerations-1Lakh-Plus.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Census2011-Urban-Agglomerations-1Lakh-Plus</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/14-Urbanization-and-Cities/Census2011-Urbanisation-Chapter8.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Census2011-Urbanisation-Chapter8</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/14-Urbanization-and-Cities/Lessons-from-Gurgaon-ShrutiRajagopalan.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Lessons-from-Gurgaon-ShrutiRajagopalan</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/14-Urbanization-and-Cities/Rise-and-Fall-of-Polluters-Pays-Principle.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Rise-and-Fall-of-Polluters-Pays-Principle</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/14-Urbanization-and-Cities/Status-OfIndian-Cities-Shruti-Rajagopalan.pdf" target="_blank" class="acc-link">
+              <span class="link-name">Status-OfIndian-Cities-Shruti-Rajagopalan</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+            <a href="PUBP233-Demography/References/14-Urbanization-and-Cities/What-researching-cremations-of-the-dead-in-colonial-India-taught-me-about-life-in-our-cities-today.pdf" target="_blank" class="acc-link">
+              <span class="link-name">What-researching-cremations-of-the-dead-in-colonial-India-taught-me-about-life-in-our-cities-today</span>
+              <span class="link-badge">PDF</span>
+            </a>
+        
+          </div>
+        </div>
+    </div>
+    </div>
+  </main>
+</div>
+
+<!-- ── Footer ── -->
+<footer class="page-footer">
+  PUBP 233: Introduction to Demography &bull; FLAME University &bull; 2026 &bull;
+  <a href="mailto:shivakumar.jolad@flame.edu.in">Shivakumar Jolad</a>
+</footer>
+
+<script>
+// ── Overview toggle
+function toggleOverview() {
+  const btn = document.getElementById('overviewToggle');
+  const body = document.getElementById('overviewBody');
+  btn.classList.toggle('open');
+  body.classList.toggle('show');
+}
+
+// ── Sidebar active link on scroll
+const sections = document.querySelectorAll('[id^="slides"], [id^="data"], [id^="references"]');
+const sideLinks = document.querySelectorAll('.sidebar-nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      sideLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar-nav a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+// ── References Accordion Toggle
+function toggleRefAccordion(btn) {
+  const body = btn.nextElementSibling;
+  btn.classList.toggle('collapsed');
+  body.classList.toggle('collapsed');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+Location,Year,Age,Sex,Cause of death or injury,Risk factor,Measure,Value,Lower bound,Upper bound
+India,2017,All ages,Both,Self-harm and interpersonal violence,Metabolic risks,YLDs,6663,4767.794394,8875.394122
+India,2017,All ages,Both,Self-harm and interpersonal violence,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Self-harm and interpersonal violence,Metabolic risks,"YLDs per 100,000",0,0.345352115,0.642883454
+India,2017,All ages,Both,Self-harm and interpersonal violence,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Self-harm and interpersonal violence,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Self-harm and interpersonal violence,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Self-harm and interpersonal violence,Behavioral risks,YLDs,183882,129372.8263,252506.6684
+India,2017,All ages,Both,Self-harm and interpersonal violence,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Self-harm and interpersonal violence,Behavioral risks,"YLDs per 100,000",13,9.371037306,18.29015782
+India,2017,All ages,Both,Unintentional injuries,Metabolic risks,YLDs,449447,321439.2538,597392.3342
+India,2017,All ages,Both,Unintentional injuries,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Unintentional injuries,Metabolic risks,"YLDs per 100,000",33,23.28324523,43.27172879
+India,2017,All ages,Both,Unintentional injuries,Environmental/occupational risks,YLDs,477475,326627.1268,660884.0522
+India,2017,All ages,Both,Unintentional injuries,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Unintentional injuries,Environmental/occupational risks,"YLDs per 100,000",35,23.65902546,47.87071047
+India,2017,All ages,Both,Unintentional injuries,Behavioral risks,YLDs,277715,107749.5571,539869.0091
+India,2017,All ages,Both,Unintentional injuries,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Unintentional injuries,Behavioral risks,"YLDs per 100,000",20,7.804769735,39.1050638
+India,2017,All ages,Both,Transport injuries,Metabolic risks,YLDs,153415,111325.493,202552.4991
+India,2017,All ages,Both,Transport injuries,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Transport injuries,Metabolic risks,"YLDs per 100,000",11,8.063790352,14.67175976
+India,2017,All ages,Both,Transport injuries,Environmental/occupational risks,YLDs,246801,168457.2129,341974.3918
+India,2017,All ages,Both,Transport injuries,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Transport injuries,Environmental/occupational risks,"YLDs per 100,000",18,12.20208967,24.77069471
+India,2017,All ages,Both,Transport injuries,Behavioral risks,YLDs,169402,86381.97209,276310.6978
+India,2017,All ages,Both,Transport injuries,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Transport injuries,Behavioral risks,"YLDs per 100,000",12,6.257022487,20.01438735
+India,2017,All ages,Both,Other non-communicable diseases,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Other non-communicable diseases,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Other non-communicable diseases,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Other non-communicable diseases,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Other non-communicable diseases,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Other non-communicable diseases,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Other non-communicable diseases,Behavioral risks,YLDs,0,0,0
+India,2017,All ages,Both,Other non-communicable diseases,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Other non-communicable diseases,Behavioral risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Musculoskeletal disorders,Metabolic risks,YLDs,542795,272159.4009,947436.0973
+India,2017,All ages,Both,Musculoskeletal disorders,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Musculoskeletal disorders,Metabolic risks,"YLDs per 100,000",39,19.71369083,68.62692321
+India,2017,All ages,Both,Musculoskeletal disorders,Environmental/occupational risks,YLDs,1877392,1316888.818,2605519.339
+India,2017,All ages,Both,Musculoskeletal disorders,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Musculoskeletal disorders,Environmental/occupational risks,"YLDs per 100,000",136,95.38799295,188.7291144
+India,2017,All ages,Both,Musculoskeletal disorders,Behavioral risks,YLDs,602316,389255.2468,873807.3626
+India,2017,All ages,Both,Musculoskeletal disorders,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Musculoskeletal disorders,Behavioral risks,"YLDs per 100,000",44,28.19545298,63.29367326
+India,2017,All ages,Both,Sense organ diseases,Metabolic risks,YLDs,302208,113034.1548,602680.1642
+India,2017,All ages,Both,Sense organ diseases,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Sense organ diseases,Metabolic risks,"YLDs per 100,000",22,8.18755617,43.65474935
+India,2017,All ages,Both,Sense organ diseases,Environmental/occupational risks,YLDs,1601829,1079588.834,2274784.603
+India,2017,All ages,Both,Sense organ diseases,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Sense organ diseases,Environmental/occupational risks,"YLDs per 100,000",116,78.19932151,164.7725569
+India,2017,All ages,Both,Sense organ diseases,Behavioral risks,YLDs,147882,92520.85297,223816.2374
+India,2017,All ages,Both,Sense organ diseases,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Sense organ diseases,Behavioral risks,"YLDs per 100,000",11,6.701688367,16.21198494
+India,2017,All ages,Both,Skin and subcutaneous diseases,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Skin and subcutaneous diseases,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Skin and subcutaneous diseases,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Skin and subcutaneous diseases,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Skin and subcutaneous diseases,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Skin and subcutaneous diseases,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Skin and subcutaneous diseases,Behavioral risks,YLDs,0,0,0
+India,2017,All ages,Both,Skin and subcutaneous diseases,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Skin and subcutaneous diseases,Behavioral risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Diabetes and kidney diseases,Metabolic risks,YLDs,6885946,4756646.071,9339611.573
+India,2017,All ages,Both,Diabetes and kidney diseases,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Diabetes and kidney diseases,Metabolic risks,"YLDs per 100,000",499,344.5445931,676.5087461
+India,2017,All ages,Both,Diabetes and kidney diseases,Environmental/occupational risks,YLDs,1644783,1034671.886,2300269.959
+India,2017,All ages,Both,Diabetes and kidney diseases,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Diabetes and kidney diseases,Environmental/occupational risks,"YLDs per 100,000",119,74.94579132,166.6185723
+India,2017,All ages,Both,Diabetes and kidney diseases,Behavioral risks,YLDs,2968420,1901539.144,4331849.868
+India,2017,All ages,Both,Diabetes and kidney diseases,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Diabetes and kidney diseases,Behavioral risks,"YLDs per 100,000",215,137.7367626,313.7747539
+India,2017,All ages,Both,Substance use disorders,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Substance use disorders,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Substance use disorders,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Substance use disorders,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Substance use disorders,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Substance use disorders,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Substance use disorders,Behavioral risks,YLDs,3645970,2559907.239,4777569.789
+India,2017,All ages,Both,Substance use disorders,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Substance use disorders,Behavioral risks,"YLDs per 100,000",264,185.4252314,346.0601891
+India,2017,All ages,Both,Mental disorders,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Mental disorders,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Mental disorders,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Mental disorders,Environmental/occupational risks,YLDs,1513095,627700.013,2714935.578
+India,2017,All ages,Both,Mental disorders,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Mental disorders,Environmental/occupational risks,"YLDs per 100,000",110,45.46704597,196.6546092
+India,2017,All ages,Both,Mental disorders,Behavioral risks,YLDs,1359039,929580.6455,1889751.805
+India,2017,All ages,Both,Mental disorders,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Mental disorders,Behavioral risks,"YLDs per 100,000",98,67.33357507,136.8829543
+India,2017,All ages,Both,Neurological disorders,Metabolic risks,YLDs,69595,24902.42617,134063.095
+India,2017,All ages,Both,Neurological disorders,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neurological disorders,Metabolic risks,"YLDs per 100,000",5,1.803791193,9.710773899
+India,2017,All ages,Both,Neurological disorders,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Neurological disorders,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neurological disorders,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Neurological disorders,Behavioral risks,YLDs,213496,125944.9713,320954.7181
+India,2017,All ages,Both,Neurological disorders,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neurological disorders,Behavioral risks,"YLDs per 100,000",15,9.122742844,23.24814819
+India,2017,All ages,Both,Digestive diseases,Metabolic risks,YLDs,589,306.0508623,1008.165258
+India,2017,All ages,Both,Digestive diseases,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Digestive diseases,Metabolic risks,"YLDs per 100,000",0,0.022168597,0.073025801
+India,2017,All ages,Both,Digestive diseases,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Digestive diseases,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Digestive diseases,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Digestive diseases,Behavioral risks,YLDs,70108,47426.37876,96776.02791
+India,2017,All ages,Both,Digestive diseases,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Digestive diseases,Behavioral risks,"YLDs per 100,000",5,3.435299186,7.009909222
+India,2017,All ages,Both,Chronic respiratory diseases,Metabolic risks,YLDs,140751,66746.22973,244604.981
+India,2017,All ages,Both,Chronic respiratory diseases,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Chronic respiratory diseases,Metabolic risks,"YLDs per 100,000",10,4.834720142,17.71780418
+India,2017,All ages,Both,Chronic respiratory diseases,Environmental/occupational risks,YLDs,3669962,2789073.065,4421373.865
+India,2017,All ages,Both,Chronic respiratory diseases,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Chronic respiratory diseases,Environmental/occupational risks,"YLDs per 100,000",266,202.0247103,320.2593669
+India,2017,All ages,Both,Chronic respiratory diseases,Behavioral risks,YLDs,2183452,1671013.912,2671437.773
+India,2017,All ages,Both,Chronic respiratory diseases,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Chronic respiratory diseases,Behavioral risks,"YLDs per 100,000",158,121.038816,193.5038737
+India,2017,All ages,Both,Cardiovascular diseases,Metabolic risks,YLDs,2249255,1640255.038,2939761.235
+India,2017,All ages,Both,Cardiovascular diseases,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Cardiovascular diseases,Metabolic risks,"YLDs per 100,000",163,118.8108167,212.9397107
+India,2017,All ages,Both,Cardiovascular diseases,Environmental/occupational risks,YLDs,421796,287974.5705,564187.7136
+India,2017,All ages,Both,Cardiovascular diseases,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Cardiovascular diseases,Environmental/occupational risks,"YLDs per 100,000",31,20.85925245,40.86657349
+India,2017,All ages,Both,Cardiovascular diseases,Behavioral risks,YLDs,1637526,1179397.889,2121509.693
+India,2017,All ages,Both,Cardiovascular diseases,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Cardiovascular diseases,Behavioral risks,"YLDs per 100,000",119,85.4289261,153.6701876
+India,2017,All ages,Both,Neoplasms,Metabolic risks,YLDs,21261,9424.123608,37776.55033
+India,2017,All ages,Both,Neoplasms,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neoplasms,Metabolic risks,"YLDs per 100,000",2,0.682630321,2.736320081
+India,2017,All ages,Both,Neoplasms,Environmental/occupational risks,YLDs,11166,7884.870496,14700.8629
+India,2017,All ages,Both,Neoplasms,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neoplasms,Environmental/occupational risks,"YLDs per 100,000",1,0.571135514,1.064847531
+India,2017,All ages,Both,Neoplasms,Behavioral risks,YLDs,154291,111485.4188,198504.0235
+India,2017,All ages,Both,Neoplasms,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neoplasms,Behavioral risks,"YLDs per 100,000",11,8.075374475,14.37851103
+India,2017,All ages,Both,Nutritional deficiencies,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Nutritional deficiencies,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Nutritional deficiencies,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Nutritional deficiencies,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Nutritional deficiencies,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Nutritional deficiencies,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Nutritional deficiencies,Behavioral risks,YLDs,15722830,10666711.39,22180400.68
+India,2017,All ages,Both,Nutritional deficiencies,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Nutritional deficiencies,Behavioral risks,"YLDs per 100,000",1139,772.6363659,1606.623031
+India,2017,All ages,Both,Maternal and neonatal disorders,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Maternal and neonatal disorders,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Maternal and neonatal disorders,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Maternal and neonatal disorders,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Maternal and neonatal disorders,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Maternal and neonatal disorders,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Maternal and neonatal disorders,Behavioral risks,YLDs,4120656,2822598.924,5792848.246
+India,2017,All ages,Both,Maternal and neonatal disorders,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Maternal and neonatal disorders,Behavioral risks,"YLDs per 100,000",298,204.4531343,419.60123
+India,2017,All ages,Both,Other infectious diseases,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Other infectious diseases,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Other infectious diseases,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Other infectious diseases,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Other infectious diseases,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Other infectious diseases,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Other infectious diseases,Behavioral risks,YLDs,17660,6145.082895,39636.68793
+India,2017,All ages,Both,Other infectious diseases,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Other infectious diseases,Behavioral risks,"YLDs per 100,000",1,0.44511512,2.87105795
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Behavioral risks,YLDs,0,0,0
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Neglected tropical diseases and malaria,Behavioral risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Enteric infections,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,Enteric infections,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Enteric infections,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,Enteric infections,Environmental/occupational risks,YLDs,2605567,1713967.078,3699500.528
+India,2017,All ages,Both,Enteric infections,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Enteric infections,Environmental/occupational risks,"YLDs per 100,000",189,124.1501009,267.9709369
+India,2017,All ages,Both,Enteric infections,Behavioral risks,YLDs,188219,120762.6832,273558.0234
+India,2017,All ages,Both,Enteric infections,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Enteric infections,Behavioral risks,"YLDs per 100,000",14,8.747367146,19.81499915
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Metabolic risks,YLDs,104878,59420.0128,160644.3471
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Metabolic risks,"YLDs per 100,000",8,4.304050339,11.63616977
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Environmental/occupational risks,YLDs,100753,64187.18394,147588.8027
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Environmental/occupational risks,"YLDs per 100,000",7,4.649357308,10.69049982
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Behavioral risks,YLDs,514664,347115.4043,718361.7351
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,Respiratory infections and tuberculosis,Behavioral risks,"YLDs per 100,000",37,25.14308064,52.03406939
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Metabolic risks,YLDs,0,0,0
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Metabolic risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Metabolic risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Environmental/occupational risks,YLDs,0,0,0
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Environmental/occupational risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Environmental/occupational risks,"YLDs per 100,000",0,0,0
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Behavioral risks,YLDs,413097,271517.872,625246.9598
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Behavioral risks,Percent of total YLDs,0,,
+India,2017,All ages,Both,HIV/AIDS and sexually transmitted infections,Behavioral risks,"YLDs per 100,000",30,19.6672221,45.28936064
+,,,,,,,,,
+"Global Burden of Disease Study 2017. Global Burden of Disease Study 2017 (GBD 2017) Results. Seattle, United States: Institute for Health Metrics and Evaluation (IHME), 2018.",,,,,,,,,
+Available from http://vizhub.healthdata.org/gbd-compare/,,,,,,,,,
+"For terms and conditions of use, please visit http://www.healthdata.org/about/terms-and-conditions",,,,,,,,,
